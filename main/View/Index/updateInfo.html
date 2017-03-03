@@ -1,0 +1,63 @@
+<?php ArView::load('user.js'); ?>
+<div class="weui-cells weui-cells-form" id="userInfo">
+    <form action="<?php echo arU('api/User/updateInfo'); ?>" method="post">
+    <div class="weui-cell">
+        <div class="weui-cell-hd">
+            <label class="weui-label">头像</label>
+        </div>
+        <div class="weui-cell__bd weui-cell-primary">
+            <div class="weui-uploader-input">
+                <img class="weui-uploader__input-box" src="{photo}" width="100" height="100" alt="">
+            </div>
+            <!-- <div class="weui-uploader__input-box">
+                <input class="weui-uploader__input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" id="i1" onchange="previewImage(this)">
+            </div> -->
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell-hd">
+            <label class="weui-label">昵称</label>
+        </div>
+        <div class="weui-cell__bd weui-cell-primary">
+            <input class="weui-input" name="nickname" type="text" placeholder="请输入昵称" value="{nickname}">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell-hd">
+            <label class="weui-label">微信</label>
+        </div>
+        <div class="weui-cell__bd weui-cell-primary">
+            <?php if (arModule('Lib.User')->hasBindWechat()): ?>
+            <p>已绑定</p>
+            <?php else :?>
+            <p><a href="<?php echo arModule('wechat.Base')->loginUrl(); ?>">去绑定</a></p>
+            <?php endif ?>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell-hd">
+            <label class="weui-label">QQ</label>
+        </div>
+        <div class="weui-cell__bd weui-cell-primary">
+            <input class="weui-input" name="qq" type="text" placeholder="请输入QQ号" value="{qq}">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell-hd">
+            <label class="weui-label">邮箱</label>
+        </div>
+        <div class="weui-cell-bd weui-cell-primary">
+            <input class="weui-input" name="email" type="text" placeholder="请输入邮箱" value="{email}">
+        </div>
+    </div>
+    <div class="weui-btn-area">
+        <button class="weui-btn weui-btn_primary">提交</button>
+    </div>
+    </form>
+</div>
+
+<script>
+    $(function (){
+        userInfo();
+    });
+</script>

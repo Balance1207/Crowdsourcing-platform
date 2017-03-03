@@ -1,0 +1,176 @@
+/*h4 , h5 {
+	font-weight: bold;
+}*/
+
+.substance {
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+.concern {
+	line-height: 56px;
+}
+
+.concern a {
+	border: solid 1px #e7e7e7;
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+}
+
+.concern a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+.star {
+	color: greenyellow;;
+}
+
+.item_project {
+	background: #e7e7e7;margin-top: 20px;
+}
+
+.item_user_img {
+	float: left;
+}
+
+.item_user_img img {
+	height: 70px;
+	display: block;
+	padding: 7px;
+}
+
+.item_user_box1,.item_user_box2 {
+	float: left;padding:5px 10px 10px 10px;
+}
+
+.item_user_box1 a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+.report {
+	margin-left: 15px;
+	font-size: 12px;
+}
+
+.stem_from {
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+.identity {
+	border-right: solid 1px;
+	margin-right: 5px;
+	padding-right: 5px;
+}
+
+.item_information {
+	border: solid 1px #e7e7e7;margin-top: 20px;
+}
+
+.item_classify {
+	padding: 10px;
+}
+
+.project_profile , .project_element , .project_description {
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+.project_element-info {
+	background: #e7e7e7;padding: 5px;
+}
+
+.item_position , .item_log {
+	margin-top: 20px;
+	font-size: 13px;
+}
+
+.item_position hr , .item_log hr {
+	margin-top: 0px;
+}
+
+
+.item_user_log {
+	margin-bottom: 10px;
+	border-bottom: dotted 1px #e7e7e7;
+}
+
+.item_user_log img {
+	height: 60px;display: block;padding: 7px;
+}
+
+.item_log_div a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+.pro_members {
+	border-bottom: dotted 1px #e7e7e7;
+}
+
+.pro_members img{
+	height: 50px;
+	padding: 7px;
+}
+
+.add_log_box {
+	display: none;
+}
+
+.add_log_box div{
+	padding: 0px;
+}
+
+.add_log_box input {
+	border-radius: 0px;
+}
+
+.pro_photo {
+	cursor: pointer;
+}
+
+.pro_user , .pro_position {
+	padding: 15px 0px 0px 5px;
+}
+
+.info_box {
+	display:none;
+	margin-left: 20px;
+}
+
+.pepole {
+	display: inline-block;
+}
+
+.send_content {
+	margin-top: 20px;
+}
+
+.send_content span {
+	display:block;
+}
+
+.send_content textarea {
+	width: 95%;
+	height: 115px;
+}
+
+.send_btn {
+	margin-top: 20px;
+}
+
+.add_log_box {
+	margin-left: 68px;
+	margin-top: 20px;
+}
+
+.red_star {
+	color: red;
+}
+
+.add_btn {
+	padding: 3px 20px 3px 20px;
+}
+

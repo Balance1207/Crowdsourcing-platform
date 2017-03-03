@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <?php
+            $isMobile = arComp('tools.util')->isMobile();
+            ArView::load('jquery.js', 1);
+            if (!$isMobile) :
+                ArView::load('layer/layer.js', 1);
+            else :
+                ArView::load('layer_mobile/layer.js', 1);
+                ArView::load('/js/layer_mobile/need/layer.css', 1);
+                ArView::load('coopui.css');
+                ArView::load('coopui.js', true);
+            endif;
+            ArView::start();
+        ?>
+    </head>
+    <body>
+    </body>
+
+        <?php if (!$isMobile): ?>
+        <script>
+        layer.msg("<?php echo $show; ?>", {
+          icon: 1,
+          time: <?php echo $time; ?> * 1000 //2秒关闭（如果不配置，默认是3秒）
+        }, function(){
+          window.location.href = "<?php echo $url; ?>";
+        });
+
+        </script>
+        <?php
+        else:
+
+        ?>
+    <script>
+
+     // layer.open({
+     //    content: '<?php echo $show; ?>'
+     //      ,style: 'background-color:#09C1FF; color:#fff; border:none;' //自定风格
+     //      ,time: <?php echo $time; ?>
+     //      ,end:function(){
+     //          window.location.href = "<?php echo $url; ?>";
+     //      }
+     //    });
+    coop.open_msg_page('操作成功', '<?php echo $show; ?>', '<?php echo $url; ?>', 'success');
+    </script>
+        <?php
+        endif;
+        ArView::end();
+        ?>
+</html>

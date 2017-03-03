@@ -1,0 +1,331 @@
+<!--个人管理-->
+<?php ArView::load('weui.min.css'); ?>
+<?php ArView::load('jquery-weui.css'); ?>
+<?php ArView::load('jquery-2.1.4.js'); ?>
+<?php ArView::load('jquery-weui.js'); ?>
+<?php //ArView::load('wqUm.js'); ?>
+<?php //ArView::layout('abc'); ?>
+
+<!-- <button id="unfoldAllBtn" >点击</button> -->
+<div class="panel-group" id="accordion" ontouchstart>
+    <!-- 我的项目 开始 -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="<?php echo arU('um_project') ?>">
+                    我的项目
+                    <span class="glyphicon glyphicon-arrow-right pull-right"></span>
+                </a>
+            </h4>
+        </div>
+    </div>
+    <!-- 我的仓库 开始 -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="<?php echo arU('Git/listGit') ?>">
+                    我的仓库
+                    <span class="glyphicon glyphicon-arrow-right pull-right"></span>
+                </a>
+            </h4>
+        </div>
+    </div><!-- 我的仓库 结束 -->
+    <!-- 我的任务 开始 -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="<?php echo arU('Track/myList') ?>">
+                    我的任务
+                    <span class="glyphicon glyphicon-arrow-right pull-right"></span>
+                </a>
+            </h4>
+        </div>
+    </div><!-- 我的任务 结束 -->
+    <!-- 资料修改 开始-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                资料编辑
+              </a>
+              <span class="caret mzm-caret-fixed"></span>
+              </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <form class="" role="form">
+                <?php
+                    if(isset($userInf)):
+                ?>
+                    <div class="center-block" style="width:40%">
+                        <div class="thumbnail">
+                        <?php
+                            if(isset($userInf['photo']) && $userInf['photo'] ){
+                        ?>
+                            <img src="<?php echo arCfg('UPLOAD_FILE_SERVER_PATH') . $userInf['photo'];?>" width="100" height="100" style="height:100px" alt="头像" id="avatarPreview">
+                        <?php
+                            }else{
+                        ?>
+                            <img src="<?php echo arCfg('PATH.GPUBLIC'); ?>images/avatar.jpg" width="100" height="100" style="height:100px" alt="头像" id="avatarPreview">
+                        <?php
+                            }
+                        ?>
+                            <div class="caption text-center">
+                                <div id="fileBtnWrap" class="btn btn-primary text-center" role="button">
+                                    更换
+                                    <input type="file" id="uploadFileBtn" name="photo" accept="image/png,image/gif,image/jpeg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">昵称(职位-姓名)</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" name="nickname" class="form-control" value="<?php if(isset($userInf['nickname']) && $userInf['nickname'] ){echo $userInf['nickname'];}else{echo '职位-姓名';}?>">
+                    </div>
+                    <br>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">Q Q</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" name="qq" class="form-control" value="<?php if(isset($userInf['qq']) && $userInf['qq'] ){echo $userInf['qq'];}else{echo 'QQ号';}?>">
+                    </div>
+                    <br>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">微信</span>
+                        <?php if (arModule('Lib.User')->hasBindWechat()): ?>
+                       已绑定<?php echo $userInf['nickname'];?>
+                        <?php else :?>
+                        <a href="<?php echo arModule('wechat.Base')->loginUrl(); ?>">去绑定</a>
+                        <?php endif ?>
+                    </div>
+                    <br>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">邮箱</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" name="email" class="form-control" value="<?php if(isset($userInf['email']) && $userInf['email'] ){echo $userInf['email'];}else{echo '邮箱';}?>">
+                    </div>
+                    <br>
+                    <div class="text-center" style="margin: 10px 0;">
+                        <input id="umEditSubmitBtn" class="btn btn-default" type="button" value="提交">
+                        <input id="umEditCancelBtn" class="btn btn-default" type="button" value="取消">
+                    </div>
+                <?php
+                    endif;
+                ?>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 密码服务 开始 -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">密码服务</a>
+                <span class="caret mzm-caret-fixed"></span>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body mzm-panel-body-wrap">
+                <div class="panel-group" id="accordion2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion2" href="#collapseSecOne">
+                              密码修改
+                            </a>
+                            <span class="caret mzm-caret-fixed"></span>
+                            </h4>
+                        </div>
+                        <div id="collapseSecOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <form role="form">
+                                    <div class="input-group has-feedback">
+                                        <span class="input-group-addon">旧密码</span>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <input type="password" name="oldPwd" class="form-control" placeholder="6~15位数字或字母">
+                                    </div>
+                                    <br>
+                                    <div class="input-group has-feedback">
+                                        <span class="input-group-addon">新密码</span>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <input type="password" name="newPwd" class="form-control" placeholder="6~15位数字或字母">
+                                    </div>
+                                    <br>
+                                    <div class="input-group has-feedback">
+                                        <span class="input-group-addon">再输入</span>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <input type="password" name="newPwd2" class="form-control" placeholder="6~15位数字或字母" disabled>
+                                    </div>
+                                    <br>
+                                    <div class="text-center" style="">
+                                        <input class="btn btn-default" id="pwdFixCommitBtn" type="button" value="确定">
+                                        <input class="btn btn-default" id="pwdFixCancelBtn" type="button" value="取消">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseSecTwo">
+                                  密码安全
+                                </a>
+                                <span class="caret mzm-caret-fixed"></span>
+                            </h4>
+                        </div>
+                        <div id="collapseSecTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <form role="form" class="bundSet">
+                                    <p class="eamilTips" style="display: none;"></p>
+                                    <div class="input-group has-feedback">
+                                        <span class="input-group-addon">绑定邮箱</span>
+                                        <input type="text" class="form-control email" placeholder="请输入邮箱"/>
+                                    </div>
+                                    <br>
+                                    <p class="phoneTips" style="display: none;"></p>
+                                    <div class="input-group has-feedback">
+                                        <span class="input-group-addon">绑定手机</span>
+                                        <input type="text" class="form-control phone" placeholder="请输入手机号码">
+                                        <a class="input-group-addon getValidateCode" href="javascript:;">
+                                            获取验证码
+                                        </a>
+                                    </div>
+                                    <div class="text-right limitedTime">
+                                        <span id="limited_time">59</span>秒
+                                    </div>
+                                    <div>
+                                        <a id="bind_weix" class="btn btn-default btn-block" href="<?php echo arU('um_binding_info') ?>">绑定微信</a>
+                                        <a class="btn btn-default btn-block" href="<?php echo arU('um_binding_info') ?>">解除微信</a>
+                                    </div>
+                                    <br>
+                                    <div class="text-center" style="">
+                                        <input class="btn btn-default" type="button" value="确定">
+                                        <input class="btn btn-default" type="button" value="取消">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -8px;">
+                    &times;
+                </button>
+                <h5 class="modal_title" style="margin:0"></h5>
+            </div>
+            <div class="modal-body">
+                <div class="modal-main"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modalBtn" class="btn btn-default" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload=function(){
+        umJs();
+        wqUmJs();
+    };
+</script>
+<!--个人管理 END-->
+
+<!-- <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                提成管理
+              </a>
+              <span class="caret mzm-caret-fixed"></span>
+              </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body table-responsive mzm-panel-body-fixed mzm-table-responsive-fixed mzm-panel-body-wrap">
+                <div class="panel-group" id="accordion3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThrOne">
+                              任务查看
+                            </a>
+                            <span class="caret mzm-caret-fixed"></span>
+                            </h4>
+                        </div>
+                        <div id="collapseThrOne" class="panel-collapse collapse">
+                            <div class="panel-body table-responsive mzm-panel-body-fixed mzm-table-responsive-fixed">
+                                <table class="table  table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="mzm-col-width">项目名称</th>
+                                            <th class="text-center">项目任务</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">项目1</th>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">项目2</th>
+                                            <td>Jacob</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">项目3</th>
+                                            <td>Larry</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThrTwo">
+                              项目报告
+                            </a>
+                            <span class="caret mzm-caret-fixed"></span>
+                            </h4>
+                        </div>
+                        <div id="collapseThrTwo" class="panel-collapse collapse">
+                            <div class="panel-body table-responsive mzm-panel-body-fixed mzm-table-responsive-fixed">
+                                <table class="table  table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="mzm-col-width">项目名称</th>
+                                            <th class="text-center">项目报告</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">项目1</th>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">项目2</th>
+                                            <td>Jacob</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">项目3</th>
+                                            <td>Larry</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->

@@ -1,0 +1,28 @@
+<?php ArView::load('track.js'); ?>
+<div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__bd" id="load-more">
+
+        </div>
+    </div>
+</div>
+
+<div id="show-list" class="weui-cells">
+
+
+</div>
+
+<div id="list_tpl" style="display:none">
+    <a class="weui-cell weui-cell_access" href="{track_url}">
+        <div class="weui-cell__hd">
+            [{itemName}]
+        </div>
+        <div class="weui-cell__bd">
+            <p>{tid}.{tname}</p>
+        </div>
+        <div class="weui-cell__ft {level}">查看</div>
+    </a>
+</div>
+<script>
+    myTrackList();
+</script>

@@ -1,0 +1,69 @@
+
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 职位管理
+    <span class="c-gray en">&gt;</span> 职位列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm" url="<?php echo arU('del'); ?>"
+                    />
+        </span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">职位列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>职位ID</th>
+            <th>职位名称</th>
+            <th>所属部门</th>
+            <th>项目ID</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($result['data'] as $row) { ?>
+        <tr class="text-c">
+            <td width="8%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $row['id']?>"/></td>
+            <td width="10%"><?php echo $row['id']?></td>
+            <td width="15%"><?php echo $row['j_name']?></td> 
+            <td width="15%"><?php echo $row['dName'] ?></td>  
+            <td width="10%"><?php echo $row['i_id']?></td>       
+
+            <td class="td-manage">
+            
+                <a title="编辑" href="<?php echo arU('update',array('id' => $row['id'])); ?>" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                   <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('del',array('id' => $row['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="margin-left:8px;text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+                <a title="分配权限" href="<?php echo arU('showAuth',array('id' => $row['id'])); ?>" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                   <i class="Hui-iconfont" style="font-size: 16px">&#xe61f;</i>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $result['pageHtml'] ?>
+        </ul>
+    </div>
+</div>

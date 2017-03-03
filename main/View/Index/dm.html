@@ -1,0 +1,282 @@
+<!--部门管理-->
+<div class="panel-group dmWrap" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">基本查询</a>
+            <span class="caret mzm-caret-fixed"></span>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse in">
+            <div class="panel-body" style="padding-top: 25px;padding-bottom: 25px;">
+                <form role="form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="输入搜索内容">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+              href="#collapseOne">部门添加</a>
+            <span class="caret mzm-caret-fixed"></span>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <form class="" role="form" id="dmAddForm">
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">名称</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" class="form-control" placeholder="名称" name="dmAddName">
+                    </div>
+                    <br>
+                    <div class="table-responsive" id="dmAddedTable">
+                        <table class="table  table-bordered mzm-table-responsive-fixed">
+                        </table>
+                    </div>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon">职位</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true" style="right:82px"></span>
+                        <input type="text" class="form-control" placeholder="职位" name="dmJob">
+                        <div class="input-group-btn">
+                            <button type="button" id="dmforStaffBtn" class="btn btn-default mzm-addmore-btn" tabindex="-1" data-mzm-add="#mzm-add-staff" style="margin-left:0;border-left:0">添加成员</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <input id="dmAddBtn" class="btn btn-default" type="button" value="提交">
+                        <input id="dmAddCancel" class="btn btn-default" type="button" value="取消">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">部门查看&amp;编辑</a>
+            <span class="caret mzm-caret-fixed"></span>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body mzm-panel-body-fixed">
+                <div class="manage_wrap">
+                    <span class="mzm-manage-btn pull-left glyphicon glyphicon-remove"></span>
+                    <span class="mzm-manage-btn pull-right glyphicon glyphicon-cog"></span>
+                </div>
+                <div id="depWrap">
+                    <ul id="myTab" class="nav nav-tabs">
+                    <?php
+                      if(isset($depJobUsers)):
+                        foreach($depJobUsers as $key => $value):
+                    ?>
+                       <li <?php if($key == 0){echo 'class="active"';}?>>
+                          <a href="#dep<?php echo $key+1;?>" data-toggle="tab" data-id="<?php echo $value['id'];?>"><?php echo $value['d_name'];?></a>
+                       </li>
+                    <?php
+                      endforeach;endif;
+                    ?>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                    <?php
+                      if(isset($depJobUsers)):
+                        foreach($depJobUsers as $key => $value):
+                    ?>
+
+
+                       <div class="tab-pane fade <?php if($key == 0){echo 'in active';}?>" id="dep<?php echo $key+1;?>">
+                          <div class="text-center depDelBtnWrap">
+                            <span class="glyphicon glyphicon-remove"></span>
+                          </div>
+                          <br>
+                          <?php
+                            if(isset($value['staff'])):
+                              foreach($value['staff'] as $v):
+                                if(isset($v['users'])){
+                                  $names = '';
+                                  $arr = array();
+                                  $arrid = array();
+                                  foreach($v['users'] as $kk => $vv){
+                                    $arr[] = $vv;
+                                    $arrid[] = $vv['id'];
+                                    $names .= $vv['nickname'].'&nbsp;'; 
+                                  }
+
+                                  $details = json_encode($arr);
+                                  $str = json_encode($arrid);
+
+                                }else{
+                                  $details = '';
+                                  $names = '';
+                                  $str = '';
+                                }
+                          ?>
+                          <div class="input-group">
+                                <span class="input-group-addon job_name" data-id="<?php echo$v['id'];?>" data-name="<?php echo$v['j_name'];?>"><?php echo $v['j_name'];?></span>
+                                <input type="text" class="form-control txtPopup" data-details='<?php echo $details;?>' data-ids="<?php echo $str;?>" value="<?php echo $names;?>" readonly>
+                                <span class="input-group-addon removeAddon">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </span>
+                          </div>
+                          <br>
+                          <?php
+                            endforeach;endif;
+                          ?>
+                          <div class="text-center depAddBtnWrap">
+                              <span class="glyphicon glyphicon-plus"></span>
+                          </div>
+                       </div>
+                       <?php
+                        endforeach;endif;
+                      ?>
+
+
+                       <!-- <div class="tab-pane fade" id="dep2">
+                          <p>部门2</p>
+                       </div>
+                       <div class="tab-pane fade" id="dep3">
+                          <p>部门3</p>
+                       </div>
+                       <div class="tab-pane fade" id="dep4">
+                          <p>部门4</p>
+                       </div>
+                       <div class="tab-pane fade" id="dep5">
+                          <p>部门5</p>
+                       </div>
+                       <div class="tab-pane fade" id="dep6">
+                          <p>部门6</p>
+                       </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -8px;">
+                    &times;
+                </button>
+                <h5 class="modal_title"></h5>
+            </div>
+            <div class="modal-body scrollable" style="max-height: 300px">
+                <div class="modal-main">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modalBtn" class="btn btn-default" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload=function(){
+        dmJs();
+    };
+</script>
+<!--部门管理 END-->
+<!-- <div class="input-group mzm-add-content has-feedback" id="mzm-add-staff">
+    <span class="input-group-addon">成员</span>
+    <span class="glyphicon form-control-feedback" aria-hidden="true" style="right:82px"></span>
+    <input type="text" class="form-control" placeholder="成员间用&amp;隔开" name="dmAddStaff" disabled="disabled">
+    <div class="input-group-btn">
+        <button type="button" class="btn btn-default mzm-addsumbit-btn" tabindex="-1" id="dmAddConfirmBtn">确定添加</button>
+    </div>
+</div>
+<br> -->
+<!-- <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+              href="#collapseFour">
+              部门成员
+            </a>
+            <span class="caret mzm-caret-fixed"></span>
+          </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse">
+            <div class="panel-body table-responsive mzm-panel-body-fixed mzm-table-responsive-fixed">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="mzm-col-width">前端</th>
+                            <td>
+                                <span class="mzm-man-wrap">Mark</span>
+                                <span class="mzm-man-wrap">Mark</span>
+                                <span class="mzm-man-wrap">Mark</span>
+                                <span class="mzm-man-wrap">Mark</span>
+                                <span class="mzm-man-wrap">Mark</span>
+                                <span class="mzm-man-wrap">Mark</span>
+                                <span class="mzm-man-wrap">Mark</span>
+                                <span class="mzm-man-wrap">Mark</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">后端</th>
+                            <td>Jacob</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">经理</th>
+                            <td>Larry</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> -->
+<!--  <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+              href="#collapseThree">
+              部门编辑
+            </a>
+            <span class="caret mzm-caret-fixed"></span>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body table-responsive mzm-panel-body-fixed mzm-table-responsive-fixed">
+                <table class="table  table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="mzm-col-width">部门名称</th>
+                            <th class="text-center">人员组成</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">部门1</th>
+                            <td>
+                                <span class="mzm-man-wrap">郑骥<span class="mzm-man-icon glyphicon glyphicon-menu-hamburger"></span></span>
+                                <span class="mzm-man-wrap">郑骥<span class="mzm-man-icon glyphicon glyphicon-menu-hamburger"></span></span>
+                                <span class="mzm-man-wrap">郑骥<span class="mzm-man-icon glyphicon glyphicon-menu-hamburger"></span></span>
+                                <span class="mzm-man-wrap">郑骥<span class="mzm-man-icon glyphicon glyphicon-menu-hamburger"></span></span>
+                                <span class="mzm-man-wrap">郑骥<span class="mzm-man-icon glyphicon glyphicon-menu-hamburger"></span></span>
+                                <span class="mzm-man-wrap">郑骥<span class="mzm-man-icon glyphicon glyphicon-menu-hamburger"></span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">部门2</th>
+                            <td>Jacob</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">部门3</th>
+                            <td>Larry</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center" style="margin: 10px 0;">
+                <input class="btn btn-default" type="button" value="提交">
+                <input class="btn btn-default" type="button" value="取消">
+            </div>
+        </div>
+    </div> -->
+ 

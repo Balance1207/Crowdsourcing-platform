@@ -1,0 +1,28 @@
+.bodyer{
+	overflow: hidden;
+}
+
+.breadcrumb a{
+	text-decoration: none;
+}
+
+.form-horizontal{
+	margin: 50px 0 0 150px;
+}
+
+.form-control{
+	width: 260px;
+}
+
+.fileUpload{
+	width: 130px;
+	position: relative;
+	left: 570px;
+	bottom: 295px;
+}
+
+.submit{
+	position: relative;
+	bottom: 60px;
+	left: 237px;
+}

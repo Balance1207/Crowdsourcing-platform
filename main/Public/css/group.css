@@ -1,0 +1,181 @@
+.member-list > li {
+	padding-top: 25px;
+	padding-bottom: 15px;
+	text-align: center;
+}
+
+.member-list img {
+	width: 55px;
+	height: 55px;
+}
+
+/*.closeLayer {
+	display: none;
+	z-index: 99;
+	position: absolute;
+	top: 15%;
+	left: 65%;
+}
+
+.closeLayer img {
+	width: 22px;
+	height: 22px;
+}*/
+
+/*.divide {
+	margin-top: 15px;
+	margin-bottom: 5px;
+	height: 5px;
+	background: #D0D0D0;
+}*/
+
+.group {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.group-name {
+	padding-top: 5px;
+}
+
+.boundary {
+	border-bottom: 1px solid #D0D0D0;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.drop-out {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.details-wrap {
+	width: 94%;
+	margin-left: 3%;
+	border: 1px solid #404040;
+	background-color: #fff;
+	border-radius: 5px;
+	position: absolute;
+	top: 23%;
+	display: none;
+	padding-bottom: 15px;
+}
+
+.details-wrap h4 {
+	background-color: #404040; 
+	color: #fff;
+	height: 45px; 
+	line-height: 45px; 
+	text-align: center;
+	margin-top: 0;
+	border-radius: 2px;
+	font-size: 18px;
+}
+
+.container {
+	margin-top: 15px;
+}
+
+/*.details-wrap button {
+	display: block;
+	margin: 20px auto 20px;
+	width: 80%;
+	border-radius: 5px;
+}*/
+/*
+.head-picture {
+	margin: 0 15px 0 5%;
+}
+*/
+/*.details {
+	margin-top: 20px;
+}
+
+.details img {
+	width: 55px;
+	height: 55px;
+}
+
+.details > div {
+	float: left;
+}
+*/
+
+.information div {
+	font-size: 13px;
+}
+
+.profession > span {
+	margin-left: 10%;
+}
+
+.message-box {
+	width: 94%;
+	margin-left: 3%;
+	border: 1px solid #404040;
+	background-color: #fff;
+	border-radius: 5px;
+	position: absolute;
+	top: 23%;
+	display: none;
+	padding-bottom: 15px;
+}
+
+.message-box h4 {
+	background-color: #404040; 
+	color: #fff;
+	height: 45px; 
+	line-height: 45px; 
+	text-align: center;
+	margin-top: 0;
+	border-radius: 2px;
+	font-size: 18px;
+}
+
+.message-box img {
+	margin: 15px auto 0;
+}
+
+.QR-bar-box {
+	width: 76%;
+	margin-left: 12%;
+	border: 1px solid #404040;
+	background-color: #fff;
+	border-radius: 5px;
+	position: absolute;
+	top: 23%;
+	display: none;
+	padding-bottom: 15px;
+}
+
+.QR-bar-box h4 {
+	background-color: #404040; 
+	color: #fff;
+	height: 45px; 
+	line-height: 45px; 
+	text-align: center;
+	margin-top: 0;
+	border-radius: 2px;
+	font-size: 18px;
+}
+
+.QR-bar-box img {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: -15px;
+}
+
+/*
+.message-box div {
+	margin: 15px 10px;
+}
+
+.message-box button {
+	display: block;
+	margin: 20px auto 20px;
+	width: 70%;
+	border-radius: 5px;
+}*/
+.weui-btn{
+	font-size:12px;
+}

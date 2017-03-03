@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>表单</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+
+        
+		<?php ArView::load('/plugins/layui/css/layui.css');?>
+		<?php ArView::load('login.css');?>
+		<?php ArView::load('/plugins/layui/layui.js');?>
+		<?php ArView::start(); ?>
+
+		
+	</head>
+
+	<body class="beg-login-bg">
+		<!--登录盒子-->
+		<div class="beg-login-box">
+			<header>
+				<h1>后台登录</h1>
+			</header>
+			<!--登录主体-->
+			<div class="beg-login-main">
+				
+			 <form class="layui-form" action="">
+			 	<div class="layui-form-item">
+						<label class="beg-login-icon">
+                           <i class="layui-icon">&#xe612;</i>
+                       </label>
+						<input type="text" name="userName" lay-verify="userName" autocomplete="off" placeholder="这里输入登录名" class="layui-input">
+				</div>
+				
+				
+				
+                <div class="layui-form-item">
+						<label class="beg-login-icon">
+                             <i class="layui-icon">&#xe642;</i>
+                        </label>
+						<input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+			            <!--<div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>-->
+                </div>
+				
+				
+			
+
+		        <div class="beg-pull-left beg-login-remember">
+					<label>记住帐号？</label>
+					<input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">
+				</div>
+				
+				
+				
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn rebtn " lay-submit="" lay-filter="demo1"><i class="layui-icon">&#xe650;</i> 登&nbsp;录</button>
+					</div>
+				</div>
+			  </form>
+				
+			</div>
+		</div>
+		<?php ArView::end(); ?>
+		<script>
+		
+			layui.use(['form', 'layedit', 'laydate'], function() {
+				var form = layui.form(),
+					layer = layui.layer,
+					layedit = layui.layedit,
+					laydate = layui.laydate;
+
+				//创建一个编辑器
+//				var editIndex = layedit.build('LAY_demo_editor');
+				//自定义验证规则
+				form.verify({
+					userName: function(value) {
+						if(value.length < 5) {
+							return '标题至少得522个字符啊';
+						}
+					},
+					password: [/(.+){6,12}$/, '密码必须6到12位'],
+					content: function(value) {
+						layedit.sync(editIndex);
+					}
+				});
+
+				//监听提交
+				form.on('submit(demo1)', function(data) {
+//					layer.alert(JSON.stringify(data.field), {
+//						title: '最终的提交信息'
+//					})
+                    location.href='index.html';
+                    return false;
+					
+				});
+			});
+		</script>
+	</body>
+
+</html>

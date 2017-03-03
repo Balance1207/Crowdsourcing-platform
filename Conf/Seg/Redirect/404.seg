@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <?php
+            $isMobile = arComp('tools.util')->isMobile();
+            if (!$isMobile) :
+                ArView::load('jquery.js', 1);
+                ArView::load('layer/layer.js', 1);
+            else :
+                ArView::load('layer_mobile/layer.js', 1);
+                ArView::load('/js/layer_mobile/need/layer.css', 1);
+            endif;
+            ArView::start();
+        ?>
+    </head>
+    <body>
+    </body>
+
+        <?php if (!$isMobile): ?>
+        <script>
+        layer.msg("页面不存在", {
+          icon: 2,
+          time: 5 * 1000 //2秒关闭（如果不配置，默认是3秒）
+        }, function(){
+        	history.go(-1);
+        });
+
+        </script>
+        <?php
+        else:
+
+        ?>
+    <script>
+
+     layer.open({
+        content: '页面不存在'
+          ,style: 'background-color:#09C1FF; color:#fff; border:none;' //自定风格
+          ,time: 5
+          ,end:function(){
+              history.go(-1);
+          }
+        });
+      </script>
+        <?php
+
+        endif;
+        ArView::end();
+         ?>
+</html>

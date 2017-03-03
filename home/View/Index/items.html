@@ -1,0 +1,121 @@
+<link href="<?php echo arCfg('PATH.PUBLIC'); ?>css/infoPage.css" rel="stylesheet" type="text/css"/>
+<!-- 中间信息部分 -->
+<div class="informationPage">
+    <div class="container main  clearfix">
+        <div class="row">
+            <div class="col-md-9">
+                <?php foreach($resultItems as $items) {?>
+                <div class="col-md-12 backgroundColor">
+                    <a href="##">
+                        <div class="col-md-3">
+                            <div class="iconWrap">
+                                <img class="icon" src="<?php echo arCfg('PATH.PUBLIC'); ?>images/web.png">
+                                </img>
+                            </div>
+                        </div>
+                        <div class="col-md-1 delimiter hidden-sm hidden-xs">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="desc">
+                                <div class="infoTitle">
+                                    <?php echo $items['i_name']?>
+                                </div>
+                                <div class="digest">
+                                    <div>
+                                        <div>
+                                            金额
+                                        </div>
+                                        <div class="strong">
+                                            <?php echo $items['money']?>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            项目周期
+                                        </div>
+                                        <div class="strong">
+                                            <?php echo $items['days']?>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            参与角色
+                                        </div>
+                                        <div class="strong">
+                                            前端开发、PHP工程师
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="demand">
+                                    <h5>
+                                        职位要求：
+                                        <span class="strong">
+                                            1.熟练使用jQuery  2.bootstrap响应式布局
+                                        </span>
+                                    </h5>
+                                    <h5>
+                                        招募人数：
+                                        <span class="strong">
+                                            7人
+                                        </span>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <?php }?>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="bagColor">
+                    <div class="tag">
+                        热门职位
+                    </div>
+                    <div class="hotJob">
+                        <a href="#">
+                            PHP
+                        </a>
+                        <a href="#">
+                            Java
+                        </a>
+                        <a href="#">
+                            C++
+                        </a>
+                        <a href="#">
+                            Nodejs
+                        </a>
+                        <a href="#">
+                            Web前端
+                        </a>
+                        <a href="#">
+                            HTML5
+                        </a>
+                        <a href="#">
+                            响应式开发
+                        </a>
+                        <a href="#">
+                            Android
+                        </a>
+                        <a href="#">
+                            iOS
+                        </a>
+                        <a href="#">
+                            Hadoop
+                        </a>
+                    </div>
+                </div>
+                <div class="advertisement">
+                    <a href="#">
+                        <img class="employ" src="<?php echo arCfg('PATH.PUBLIC'); ?>images/zhaopin1.png"/>
+                    </a>
+                    <a href="#">
+                        <img class="employ" src="<?php echo arCfg('PATH.PUBLIC'); ?>images/zhaopin2.png"/>
+                    </a>
+                    <a href="#">
+                        <img class="employ" src="<?php echo arCfg('PATH.PUBLIC'); ?>images/zhaopin3.png"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

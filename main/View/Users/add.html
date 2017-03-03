@@ -1,0 +1,45 @@
+<!--登录页面-->
+<div id="loginMask">
+    <div id="loginWrap">
+        <div class="panel panel-default mzm-panel-default-fixed">
+            <form id="signup" class="panel-collapse collapse mzm-collapsing-fixed">
+                <div class="panel-body">
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon" style="width:82px">用户名</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="text" class="form-control" name="tel" placeholder="手机号码">
+                    </div>
+                    <br>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon" style="width:82px">用户密码</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="password" maxlength="15" class="form-control" name="password"
+                               placeholder="6~15位(字母数字)">
+                    </div>
+                    <br>
+                    <div class="input-group has-feedback">
+                        <span class="input-group-addon" style="width:82px">再次输入</span>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <input type="password" maxlength="15" class="form-control" name="password2" placeholder="再次输入密码"
+                               disabled="disabled">
+                    </div>
+                    <br>
+                </div>
+            </form>
+        </div>
+        <div class="panel-heading mzm-panel-heading-fixed">
+            <input type="button" id="signupBtn" class="btn btn-default btn-lg btn-block mzm-btn-toggle" value="确认"
+                   data-toggle="collapse" data-parent="#accordion" href="#signup">
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.onload = function () {
+        $("#topTitle").text("添加用户");
+    };
+
+
+</script>
+<!--登录页面 END-->

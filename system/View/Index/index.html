@@ -1,0 +1,260 @@
+﻿<header class="Hui-header cl">
+    <a class="Hui-logo l" title="H-ui.admin v2.3" href="javascript:;">后台管理系统</a>
+    <a class="Hui-logo-m l" href="/" title="H-ui.admin">H-ui</a>
+
+    <ul class="Hui-userbar">
+
+        <li class="dropDown dropDown_hover" >
+            <a href="#" class="dropDown_A">
+                <?php echo $this->adminUser['username']; ?>
+                <i class="Hui-iconfont">&#xe6d5;</i>
+            </a>
+            <ul class="dropDown-menu radius box-shadow">
+                <li><a href="#">个人信息</a></li>
+                <li><a href="#">切换账户</a></li>
+                <li><a href="<?php echo arU('Users/login'); ?>">退出</a></li>
+            </ul>
+        </li>
+
+        <li class="dropDown dropDown_hover" >
+            <a href="#" class="dropDown_A" id="newsStyle">新消息
+                <span class="badge badge-danger" id="newsNum">0</span>
+            </a>
+            <ul class="dropDown-menu radius box-shadow">
+                <li>
+                    <a href="javascript:;">
+                        <b style="color:red" id="newsNum1">0</b>&nbsp;个待审核管理员
+                    </a>
+                    <a href="javascript:;">
+                        <b style="color:red" id="newsNum2">0</b>&nbsp;个待审核新发布项目
+                    </a>
+                    <a href="javascript:;">
+                        <b style="color:red" id="newsNum3">0</b>&nbsp;个待审核个人申请项目
+                    </a>
+                </li>
+                <style type="text/css">
+                    .redStyle {
+                        color: red;
+                    }
+
+                    .yellowStyle {
+                        color: blue;
+                    }
+                </style>
+            </ul>
+        </li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+    </ul>
+    <a aria-hidden="false" class="Hui-nav-toggle" href="#"></a></header>
+
+<!--左边菜单栏-->
+<aside class="Hui-aside">
+    <input runat="server" id="divScrollValue" type="hidden" value=""/>
+    <div class="menu_dropdown bk_2">
+
+        <dl id="menu-product">
+            <dt><i class="Hui-iconfont">&#xe639;</i> 项目管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Product/showList',array('type'=>1)); ?>" href="javascript:void(0)">项目列表</a></li>
+                    <li><a _href="<?php echo arU('Product/personalApply');?>" href="javascript:void(0)">个人申请</a></li>
+                    <li><a _href="<?php echo arU('Product/addProduct'); ?>" href="javascript:void(0)">发布项目</a></li>
+                    <li><a _href="<?php echo arU('Git/showList'); ?>" href="javascript:void(0)">仓库管理</a></li>
+                    <li><a _href="<?php echo arU('Product/showList',array('type'=>-1)); ?>" href="javascript:void(0)">项目回收</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-news">
+            <dt><i class="Hui-iconfont">&#xe68a;</i> 消息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('News/newsList');?>" href="javascript:void(0)">消息列表</a></li>
+                    <li><a _href="<?php echo arU('News/sendNews'); ?>" href="javascript:void(0)">发送消息</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl id="menu-member">
+            <dt><i class="Hui-iconfont">&#xe60d;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Member/memberList');?>" href="javascript:;">用户列表</a></li>
+                    <li><a _href="<?php echo arU('Member/addMember'); ?>" href="javascript:;">添加用户</a></li>
+                    <li><a _href="<?php echo arU('Member/changePassword'); ?>" href="javascript:;">修改密码</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl id="menu-wechat">
+            <dt><i class="Hui-iconfont">&#xe694;</i> 微信管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Member/memberList');?>" href="javascript:;">微信XX</a></li>
+                    <li><a _href="member-del.html" href="javascript:;">微信XX</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <?php if (arModule('Lib.Auth')->hasSysRights(S_admin_usersModel::ROLE_SUPER_ADMIN)): ?>
+        <dl id="menu-admin">
+            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Role/adminRole'); ?>" href="javascript:void(0)">角色管理</a></li>
+                    <li><a _href="admin-permission.html" href="javascript:void(0)">权限管理</a></li>
+                    <li><a _href="<?php echo arU('UsersManage/adminList'); ?>" href="javascript:void(0)">管理员列表</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <?php endif ?>
+
+        <dl id="menu-system">
+            <dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="system-base.html" href="javascript:void(0)">系统设置</a></li>
+                    <li><a _href="system-category.html" href="javascript:void(0)">栏目管理</a></li>
+                    <li><a _href="system-data.html" href="javascript:void(0)">数据字典</a></li>
+                    <li><a _href="system-shielding.html" href="javascript:void(0)">屏蔽词</a></li>
+                    <li><a _href="system-log.html" href="javascript:void(0)">系统日志</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl id="menu-category">
+            <dt><i class="Hui-iconfont">&#xe6bf;</i> 分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Category/categoryList');?>" href="javascript:;">分类列表</a></li>
+                    <li><a _href="<?php echo arU('Category/add'); ?>" href="javascript:;">添加分类</a></li>
+                </ul>
+            </dd>
+        </dl> 
+
+        <dl id="menu-department">
+            <dt><i class="Hui-iconfont">&#xe62b;</i> 部门管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Dept/DeptList');?>" href="javascript:;">部门列表</a></li>
+                    <li><a _href="<?php echo arU('Dept/add'); ?>" href="javascript:;">添加部门</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl id="menu-departmentJobs">
+            <dt><i class="Hui-iconfont">&#xe602;</i> 职位管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Job/jobList');?>" href="javascript:;">职位列表</a></li>
+                    <li><a _href="<?php echo arU('Job/add'); ?>" href="javascript:;">添加职位</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+         <dl id="menu-authority">
+            <dt><i class="Hui-iconfont">&#xe63c;</i> 权限组管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('AuthGroup/authGroupList');?>" href="javascript:;">权限组列表</a></li>
+                    <li><a _href="<?php echo arU('AuthGroup/add');?>" href="javascript:;">添加权限组</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <dl id="menu-authority">
+            <dt><i class="Hui-iconfont">&#xe63c;</i> 权限管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a _href="<?php echo arU('Authority/authList');?>" href="javascript:;">权限列表</a></li>
+                    <li><a _href="<?php echo arU('Authority/add');?>" href="javascript:;">添加权限</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+    </div>
+</aside>
+<div class="dislpayArrow"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<section class="Hui-article-box">
+    <div id="Hui-tabNav" class="Hui-tabNav">
+        <div class="Hui-tabNav-wp">
+            <ul id="min_title_list" class="acrossTab cl">
+                <li class="active"><span title="我的桌面"
+                                         data-href="<?php echo arU('Index/welcome'); ?>">我的桌面</span><em></em></li>
+            </ul>
+        </div>
+        <div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S"
+                                                  href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a
+                id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">
+            &#xe6d7;</i></a></div>
+    </div>
+    <div id="iframe_box" class="Hui-article">
+        <div class="show_iframe">
+            <div style="display:none" class="loading"></div>
+            <iframe scrolling="yes" frameborder="0" src="<?php echo arU('Index/welcome'); ?>"></iframe>
+        </div>
+    </div>
+</section>
+
+<!--js部分-->
+<script type="text/javascript" src="<?php echo arCfg('PATH.PUBLIC') ?>lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.js"></script>
+<script type="text/javascript" src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.admin.js"></script>
+<script type="text/javascript">
+
+    var timer;
+    $(function () {
+
+        // 接收新消息
+        function getUncheckedNum(url, id) {
+            $.ajax({
+                type: 'get',
+                url: url,
+                dataType: 'json',
+                async: true,
+                success: function (data) {
+                    window.newsStyle = data.ret_msg;
+                    $(id).text(data.ret_msg);
+                }
+            });
+        }
+
+        // 定时刷新
+        setInterval(function () {
+            // 待审核管理员
+            getUncheckedNum('<?php echo arU("UsersManage/uncheckedNum");?>', '#newsNum1');
+            // 待审核项目
+            getUncheckedNum('<?php echo arU("Product/uncheckedNum");?>', '#newsNum2');
+            // 待审核个人申请项目
+            getUncheckedNum('<?php echo arU("Product/uncheckedPersonalApply");?>', '#newsNum3');
+
+            var newsNum1 = $("#newsNum1").text();
+            var newsNum2 = $("#newsNum2").text();
+            var newsNum3 = $("#newsNum3").text();
+
+            $("#newsNum").text(parseInt(newsNum1) + parseInt(newsNum2)+ parseInt(newsNum3))
+
+        }, 10000)
+
+        // 有新消息时闪烁
+        timer = setInterval(function () {
+            if (parseInt($("#newsNum").text()) != 0) {
+                if (!$("#newsStyle").hasClass("redStyle")) {
+                    $("#newsStyle").removeClass("yellowStyle");
+                    $("#newsStyle").addClass("redStyle");
+                } else {
+                    $("#newsStyle").removeClass("redStyle");
+                    $("#newsStyle").addClass("yellowStyle");
+                }
+            } else {
+                $("#newsStyle").removeClass("yellowStyle");
+                $("#newsStyle").removeClass("redStyle");
+            }
+
+        }, 1000);
+
+    });
+
+
+</script>
+

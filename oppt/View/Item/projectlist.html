@@ -1,0 +1,341 @@
+
+		<div class="admin-main">
+
+			<blockquote class="layui-elem-quote">
+				<a href="javascript:;" class="layui-btn layui-btn-small" id="add">
+					<i class="layui-icon">&#xe608;</i> 添加信息
+				</a>
+				<a href="#" class="layui-btn layui-btn-small" id="import">
+					<i class="layui-icon">&#xe608;</i> 导入信息
+				</a>
+				<a href="#" class="layui-btn layui-btn-small">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 导出信息
+				</a>
+				<a href="javascript:;" class="layui-btn layui-btn-small" id="search">
+					<i class="layui-icon">&#xe615;</i> 搜索
+				</a>
+			</blockquote>
+			<fieldset class="layui-elem-field">
+				<legend>数据列表</legend>
+				<div class="layui-field-box">
+					<table class="site-table table-hover">
+						<thead>
+							<tr>
+								<th><input type="checkbox" id="selected-all"></th>
+								<th>编号</th>
+								<th>项目名称</th>
+								<th>发布人</th>
+								<th>合同日期</th>
+								<th>需求描述</th>
+								<th>项目进度</th>
+								<th>金额（元）</th>
+								<th>审核状态</th>
+								<th>项目状态</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="addBox" >
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>099</td>
+								<td> 演示站点发布成功啦</td>
+								<td>Beginner</td>
+								<td>2016-11-16 11:50</td>
+								<td>1298</td>
+								<td>正常</td>
+								<td>99</td>
+								<td style="text-align:center;">正常</td>
+								<td></td>
+								<td>
+									<a href="javascript:;" class="view-p">预览</a>
+									<a href="javascript:;" class="edit">编辑</a>
+									<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>099</td>
+								<td>博客的功能。</td>	
+								<td>就是我</td>
+								<td>2016-11-18 10:18</td>
+								<td>74</td>
+								<td>正常</td>
+								<td>0</td>
+
+								<td style="text-align:center;">正常</td>
+								<td></td>
+								<td>
+									<a href="#" class="view-p">预览</a>
+									<a href="javascript:;" class="edit">编辑</a>
+									<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>099</td>
+								<td>博客的功能。</td>	
+								<td>Beginner</td>
+								<td>2016-11-17 14:20</td>
+								<td>144</td>
+								<td>正常</td>
+								<td>0</td>
+								<td style="text-align:center;">正常</td>
+								<td></td>
+								<td>
+									<a href="#" class="view-p">预览</a>
+									<a href="javascript:;" class="edit">编辑</a>
+									<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>099</td>
+								<td>博客的功能。</td>								
+								<td>Beginner</td>
+								<td>2016-11-16 16:43</td>
+								<td>663</td>
+								<td>草稿</td>
+								<td>0</td>
+								<td style="text-align:center;">正常</td>
+								<td></td>
+								<td>
+									<a href="#" class="view-p">预览</a>
+									<a href="javascript:;" class="edit">编辑</a>
+									<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>099</td>
+								<td>博客的功能。</td>	
+								<td>31</td>
+								<td>2016-11-18 13:22</td>
+								<td>138</td>
+								<td>草稿</td>
+								<td>213</td>
+								<td style="text-align:center;">正常</td>
+								<td></td>
+							    <td>
+									<a href="#" class="view-p">预览</a>
+									<a href="javascript:;" class="edit">编辑</a>
+									<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>099</td>
+								<td>博客的功能。</td>	
+								<td>123</td>
+								<td>2016-11-19 22:03</td>
+								<td>0</td>
+								<td>草稿</td>
+								<td>0</td>
+								<td style="text-align:center;">正常</td>
+								<td></td>
+								<td>
+									<a href="#" class="view-p">预览</a>
+									<a href="javascript:;" class="edit">编辑</a>
+									<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>099</td>
+								<td>博客的功能。</td>	
+								<td>qweqwe</td>
+								<td>2016-11-19 00:35</td>
+								<td>59</td>
+								<td>正常</td>
+								<td>0</td>
+								<td style="text-align:center;">正常</td>
+								<td></td>
+								<td>
+									<a href="#" class="view-p">预览</a>
+									<a href="javascript:;" class="edit">编辑</a>
+									<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>
+								</td>
+							</tr>
+							
+
+
+
+
+						</tbody>
+					</table>
+
+				</div>
+			</fieldset>
+			<div class="admin-table-page">
+				<div id="page" class="page">
+				</div>
+			</div>
+		</div>
+		<?php ArView::end(); ?>
+
+		<script>
+			layui.config({
+				base: JSV.PATH_APP_SERVER+'Public/plugins/layui/modules/'
+			});
+
+
+
+			layui.use(['icheck', 'laypage','layer'], function() {
+				var $ = layui.jquery,
+					laypage = layui.laypage,
+					layer = parent.layer === undefined ? layui.layer : parent.layer;
+				$('input').iCheck({
+					checkboxClass: 'icheckbox_flat-green'
+				});
+
+				//page
+
+
+				$('#search').on('click', function() {
+					parent.layer.alert('你点击了搜索按钮')
+				});
+//               添加成员
+                $("#add").on('click',function(){
+                	var index1=layer.open({
+                		type:2,
+                		title:"添加信息框",
+                		content:JSV.PATH_APP_SERVER+'Item/add',
+                		area: ['1300px', '300px'],
+                		success: function(layero, index){
+                              var body = layer.getChildFrame('body', index);
+                              var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+                             
+                              body.find('#sub').on('click',function(){
+                              	var num=body.find("input.num").val();
+                              	var projectName=body.find("input.projectName").val();
+                              	var personName=body.find("input.personName").val();
+                              	var dat=body.find("input.date").val();
+                              	var req=body.find("input.req").val();
+                              	var projectTime=body.find("input.projectTime").val();
+                              	var money=body.find("input.money").val();
+                              	var checkStatus=body.find("input.checkStatus").val();
+                              	var projectStatus=body.find("input.projectStatus").val();
+                              	
+                              	var tr=document.createElement("tr");
+				     	        var html='<td><input type="checkbox"></td>'+
+				     	         '<td>'+num+'</td>'+
+				     	         '<td>'+projectName+'</td>'+
+				     	         '<td>'+personName+'</td>'+
+				     	         '<td>'+dat+'</td>'+
+				     	         '<td>'+req+'</td>'+
+				     	         '<td>'+projectTime+'</td>'+
+				     	         '<td>'+money+'</td>'+
+				     	         '<td>'+checkStatus+'</td>'+
+				     	         '<td>'+projectStatus+'</td>'+
+				     	         '<td>'+
+				     	             '<a href="#" class="view-p">预览</a>'+
+				     	             '<a href="/manage/article_edit_9">编辑</a>'+
+				     	             '<a href="javascript:;" data-id="6" data-opt="del"  class="move-p">删除</a>'+
+				     	          '</td>';
+				     	           tr.innerHTML=html;
+			     	               document.querySelector("#addBox").appendChild(tr);
+                              	   layer.close(index1);
+                              })
+                         }
+                	})
+                })
+//             编辑成员
+               $(".edit").on('click',function(){
+               	   $target=$(this);
+                	var index3=layer.open({
+                		type:2,
+                		title:"添加信息框",
+                		content:JSV.PATH_APP_SERVER+'Item/edit',
+                		area: ['1300px', '300px'],
+                		success: function(layero, index){
+                              var body = layer.getChildFrame('body', index);
+                              var iframeWin = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+//                           
+                              body.find("input.num").val($target.parent().parent().children("td:eq(1)").html());
+                              body.find("input.projectName").val($target.parent().parent().children("td:eq(2)").html());
+                              body.find("input.personName").val($target.parent().parent().children("td:eq(3)").html());
+                              body.find("input.date").val($target.parent().parent().children("td:eq(4)").html());
+                              body.find("input.req").val($target.parent().parent().children("td:eq(5)").html());
+                              body.find("input.projectTime").val($target.parent().parent().children("td:eq(6)").html());
+                              body.find("input.money").val($target.parent().parent().children("td:eq(7)").html());
+                              body.find("input.checkStatus").val($target.parent().parent().children("td:eq(8)").html());
+                              body.find("input.projectStatus").val($target.parent().parent().children("td:eq(9)").html());
+                              
+                              
+                              body.find('#save').on('click',function(){
+                              	var num=body.find("input.num").val();
+                              	var projectName=body.find("input.projectName").val();
+                              	var personName=body.find("input.personName").val();
+                              	var dat=body.find("input.date").val();
+                              	var req=body.find("input.req").val();
+                              	var projectTime=body.find("input.projectTime").val();
+                              	var money=body.find("input.money").val();
+                              	var checkStatus=body.find("input.checkStatus").val();
+                              	var projectStatus=body.find("input.projectStatus").val();
+                              	
+                              	$target.parent().parent().children("td:eq(1)").html(num);
+                              	$target.parent().parent().children("td:eq(2)").html(projectName);
+                              	$target.parent().parent().children("td:eq(2)").html(personName);
+                              	$target.parent().parent().children("td:eq(1)").html(dat);
+                              	$target.parent().parent().children("td:eq(1)").html(req);
+                              	$target.parent().parent().children("td:eq(1)").html(projectTime);
+                              	$target.parent().parent().children("td:eq(1)").html(checkStatus);
+                            
+                              	   layer.close(index3);
+                              })
+                         }
+                	})
+                })
+//           删除成员
+                  $(".move-p").on('click',function(){
+                  	$target=$(this);
+                	var index2=layer.open({
+                		type:2,
+                		title:"删除提示信息",
+                		content:JSV.PATH_APP_SERVER+'Item/move',
+                		area: ['400px', '200px'],
+                		success: function(layero, index){
+                              var body = layer.getChildFrame('body', index);
+                              var iframeWin = window[layero.find('iframe')[0]['name']]; 
+                              body.find('#move-Yes').on('click',function(){
+                              	   $target.parent().parent().remove();
+							       layer.close(index2);
+                              });
+                              body.find('#move-No').on('click',function(){
+							       layer.close(index2);
+                              })
+                         }
+                	})
+                })
+
+
+				$('#import').on('click', function() {
+					var that = this;
+					var index = layer.tips('只想提示地精准些', that,{tips: [1, 'white']});
+					$('#layui-layer'+index).children('div.layui-layer-content').css('color','#000000');
+				});
+
+				$('.site-table tbody tr').on('click', function(event) {
+					var $this = $(this);
+					var $input = $this.children('td').eq(0).find('input');
+					$input.on('ifChecked', function(e) {
+						$this.css('background-color', '#EEEEEE');
+					});
+					$input.on('ifUnchecked', function(e) {
+						$this.removeAttr('style');
+					});
+					$input.iCheck('toggle');
+				}).find('input').each(function() {
+					var $this = $(this);
+					$this.on('ifChecked', function(e) {
+						$this.parents('tr').css('background-color', '#EEEEEE');
+					});
+					$this.on('ifUnchecked', function(e) {
+						$this.parents('tr').removeAttr('style');
+					});
+				});
+				$('#selected-all').on('ifChanged', function(event) {
+					var $input = $('.site-table tbody tr td').find('input');
+					$input.iCheck(event.currentTarget.checked ? 'check' : 'uncheck');
+				});
+			});
+		</script>

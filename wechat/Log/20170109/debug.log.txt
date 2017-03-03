@@ -1,0 +1,296 @@
+------2017-01-09 11:28:26 1483932506------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 11:28:30 1483932510------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 11:28:53 1483932533------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 11:53:57 1483934037------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 11:53:58 1483934038------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 11:53:59 1483934039------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:03 1483935003------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:13 1483935013------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:14 1483935014------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:14 1483935014------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:15 1483935015------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:16 1483935016------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:17 1483935017------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:17 1483935017------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:18 1483935018------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:19 1483935019------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:19 1483935019------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:20 1483935020------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:30 1483935030------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:31 1483935031------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:31 1483935031------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:32 1483935032------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:34 1483935034------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:10:38 1483935038------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:11:00 1483935060------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:08 1483935128------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:12 1483935132------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:14 1483935134------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:15 1483935135------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:16 1483935136------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:16 1483935136------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:17 1483935137------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:17 1483935137------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:17 1483935137------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:18 1483935138------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:18 1483935138------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)
+------2017-01-09 12:12:19 1483935139------
+array (
+  'header' => '<div style="width:98%;bottom:30px"><div style="border-top:1px #666 dashed;background:#f1f1f1;text-align:center;font-size:20px;margin:10px 0px 10px;">[DEBUG SERVER_ERROR INFO] </div>',
+  'showMsg' => '<div style="padding:5px;background:#f3f3f1;line-height:30px">&nbsp;&nbsp;<b style=\'color:red;\'>ERROR</b> [256] class : WeChatController does not exist !<br />
+  Fatal error on line 129 in file E:\\web\\quickoa\\arphp.php, PHP 5.5.17 (WINNT)<br />
+<br></div>',
+  'footer' => '</div>',
+)

@@ -1,0 +1,145 @@
+
+<!--私信部分-->
+<div id="userWrap">
+    <!-- 顶部加载预览未读消息 -->
+    <div class="showUnReadMsg"></div>
+    <div class="itemsBox">
+        <!-- 信息主页面 开始 -->
+        <div class="item msgMain">
+        	<div class="msgTitle">
+    			<p class="msg">
+                    <a href="javascript:;" class="unReadMsg">
+                        <span>未读消息</span>
+                        <span class="badge" id="unReadMsgShow">0</span>
+                    </a>
+                    <a href="javascript:;" class="btn btn-xs btn-primary pull-right" id="openMsgModal">发送私信</a>
+                </p>
+    			<div class="modal fade sendMsgModal" tabindex="-1" role="dialog" >
+    				<div class="modal-dialog">
+    				    <div class="modal-content">
+    				      	<div class="modal-header" id="p1015">
+    			      	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    			      	        <h4 class="modal-title" id="myModalLabel">发私信</h4>
+    			      	    </div>
+    			      	    <div class="modal-body">
+    			      	    	<div class="row">
+    				      	    	<label for="" class="col-xs-3">
+    				      	    		收信人：
+    				      	    	</label>
+    				      	    	<div class="col-xs-9 inputItem">
+    				      	    		<input type="text" name="addressee" id="addressee" class="col-xs-9 ">
+    				      	    	</div>
+    				      	    </div>
+    				      	    <div class="row">
+    				      	    	<label for="" class="col-xs-3">内&nbsp;&nbsp;容&nbsp;：</label>
+    				      	    	<div class="col-xs-9 inputItem">
+    					      	    	<textarea name="sendMsg" id="sendMsg" class="col-xs-9"></textarea>
+    				      	    	</div>
+    				      	    </div>
+    			      	    </div>
+    			      	    <div class="modal-footer text-right" id="p1016">
+    			      	        <button type="button" class="btn btn-primary btn-xs" id="sendMsgBtn">发送</button>
+    			      	    </div>
+    				    </div>
+    				</div>
+    			</div>
+        	</div>
+        	<div class="msgContent" id="outer">
+                <div class="downStatues"></div>
+                <!-- 主消息盒子 -->
+        		<ul class="media-list" id="comeMsgBox"></ul>
+        	</div>
+        </div><!-- 信息主页面 结束 -->
+        <!-- 信息内容页面 开始 -->
+        <div class="item msgContentBox" style="display:none;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="msg text-center">
+                        <a href="javascript:;" class="btn btn-xs btn-success pull-left" id="backMsgMain">私信</a>
+                        <span class="thisSenderName" id="" data-account="">等等</span>
+                        <a href="javascript:;" class="btn btn-xs btn-success pull-right" id="refreshMsgContentBox">刷新</a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="replyHeadMsg">
+                        <li class="media">
+                            <a href="javascript:;" class="pull-left">
+                                <img class="meia-object headMsg" src="" alt="头像">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading sender"></h4>
+                                <p class="comeMsg"></p>
+                            </div>
+                        </li>
+                    </ul>
+                    <textarea name="replyMsgContent" id="replyMsgContent"></textarea>
+                    <p class="replyMsgContentTips"></p>
+                </div>
+                <div class="panel-footer text-right">
+                    <a href="javascript:;" class="btn btn-primary btn-xs" id="replyMsgBtn">发送</a>
+                </div>
+            </div>
+            <div class="msgContent">
+                <ul class="media-list" id="sonMsgBox"></ul>
+            </div>
+        </div><!-- 信息内容页面 结束 -->
+    </div>
+    <!-- 底部加载消息等待状态 开始 -->
+    <div class="upStatues"></div>
+    <!-- <div class="end text-center"></div> -->
+    <div class="MyShade"></div>
+    <!-- 发送消息模板 -->
+    <div style="display:none">
+        <!-- 主消息模板 -->
+        <div id="mainMsgModal">
+            <li class="media delMainClass" id="msg_id_tpl"  data-account="userTel">
+                <a href="javascript:;" class="pull-left">
+                    <img class="meia-object headMsg" src="photoSrcModal" alt="头像">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading sender">senderNameModal</h4>
+                    <p class="comeMsg">comMsgContenMoal</p>
+                    <div class="replyMsgBox">
+                        <ul class="media-list wReplyMsgBox" id="主消息id"></ul>
+                    </div>
+                    <div class="text-right tips">
+                        <span class="pull-left">sendtime</span>
+                        <a href="javascript:;" class="slideToggle"><span class="num"></span>条信息</a>
+                        <a href="javascript:;" class="reply">回复</a>
+                        <a href="javascript:;" class="delMainMsgBtn">删除</a>
+                    </div>
+                </div>
+            </li>
+        </div>
+        <!-- 子消息模板 -->
+        <div id="sonMsgMoal">
+            <li class="media delClass" id="sonMsg_id_tpl">
+                <a href="javascript:;" class="pull-left">
+                    <img src="photoSrcModal" alt="头像">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">senderNameModal</h4>
+                    <div class="readSonMsg" id="子消息id">comMsgContenMoal</div>
+                    <div class="time">
+                        <span>sendTime</span>
+                        <a href="javascript:;" class="btn btn-xs pull-right delBtn">删除</a>
+                    </div>
+                </div>
+            </li>
+        </div>
+        <!-- 未读消息模板 -->
+        <div id="unReadMsgModal">
+            <div class="unReadMsgItem">
+                <div class="unReadMsg_tpl" id="unReadMsg_id_tpl" data-account="account_tpl" data-msgId="mainMsgId_tpl" data-src="mainMsgSrc_tpl" data-content="mainMsgContent_tpl" data-name="toName">
+                    <span class="senderName">nameTpl</span><span class="sendTime">sendTimeTpl</span>
+                </div>
+                <p class="content">contentTpl</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	window.onload = function(){
+		Msg_index();
+	};
+</script>

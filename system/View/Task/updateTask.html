@@ -1,0 +1,150 @@
+<?php ArView::load('track.js'); ?>
+<?php //ArView::layout(''); ?>
+
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 项目管理 
+    <span class="c-gray en">&gt;</span><a href="<?php echo arU('Product/showList',array('type'=>1)); ?>""> 项目列表</a> 
+    <span class="c-gray en">&gt;</span><a href="<?php echo arU('showList', array('iid' => $iid))?>"> 任务列表</a>
+    <span class="c-gray en">&gt;</span><a href=""> 任务修改</a> 
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-article-add">
+        <input type="hidden" name="taskId" value="<?php if(isset($taskInfo['tid'])) { echo $taskInfo['tid']; } ?>">
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务名称：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="<?php if(isset($taskInfo['tname'])) { echo $taskInfo['tname']; }?>" placeholder=""
+                       name="tname">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务进度：</label>
+            <div class="formControls col-2">
+                <span class="select-box">
+                    <select class="select" name="dev_status">
+                        <option value="0">-- 请选择 --</option>
+                        <?php foreach($trackStatus as $row) {?>
+                        <option value="<?php echo $row['id']; ?>"
+                        <?php if(isset($taskInfo['dev_status'])) {
+                            if(  $taskInfo['dev_status'] ==  $row['id']){
+                                echo "selected = 'selected'";
+                             }
+                       }?>
+                        ><?php echo $row['name']; ?></option>
+                        <?php } ?>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务审核：</label>
+            <div class="formControls col-2">
+                    <?php
+                // 调用用html seg 直接输出 select标签
+                  arSeg(
+                     array(
+                        // seg文件
+                        'segKey' => 'Html/select',
+                        // <select name="name">
+                        'name' => 'status',
+                        // 适配器数据 数组
+                        'map' => U_item_trackModel::$STATUS_MAP,
+                        // map 多维数组适配器
+                        // 'mapbundle' => array(array(), 'keyfield', 'showfield'),
+                        // 选中的value selected = selected
+                        'selected' => $taskInfo['status'],
+                        'extra' => 'class="select-box"'
+                     )
+                  );
+                ?>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务级别：</label>
+            <div class="formControls col-2">
+                    <?php
+                // 调用用html seg 直接输出 select标签
+                  arSeg(
+                     array(
+                        // seg文件
+                        'segKey' => 'Html/select',
+                        // <select name="name">
+                        'name' => 'level',
+                        // 适配器数据 数组
+                        'map' => U_item_trackModel::$LEVEL_MAP,
+                        // map 多维数组适配器
+                        // 'mapbundle' => array(array(), 'keyfield', 'showfield'),
+                        // 选中的value selected = selected
+                        'selected' => $taskInfo['level'],
+                        'extra' => 'class="select-box"'
+                     )
+                  );
+                ?>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务描述：</label>
+            <div class="formControls col-4">
+                <textarea name="content" style="height: 150px" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100"
+                          dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)"><?php if(isset($taskInfo['content'])) { echo $taskInfo['content']; } ?>
+                </textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务当前执行人：</label>
+            <div class="formControls col-2">
+                <?php foreach ($trackUsers as $trackUser): ?>
+                    <span><?php echo $trackUser['user']['nickname']; ?><a href="javascript:deleteUser('<?php echo $trackUser['tid'] ?>', '<?php echo $trackUser['uid'] ?>');">删除</a></span>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>分配人员：</label>
+            <div class="formControls col-2">
+                 <select name="assignuser[]" id="assignuser" class="selectpicker" multiple data-assignuser-button="true">
+                <?php foreach ($itemUsers as $itemUser): ?>
+                    <option
+                    <?php if (in_array($itemUser['user']['id'], array_keys($trackUsers))): ?>
+                        selected
+                    <?php endif ?>
+                     value="<?php echo $itemUser['user']['id']; ?>"><?php echo $itemUser['user']['nickname']; ?></option>
+                <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务日志：</label>
+            <div class="formControls col-4">
+                <ul class="list-group">
+                    <?php foreach ($taskLogs as $taskLog): ?>           
+                      <li class="list-group-item"><?php echo $taskLog['opuser']; ?>&nbsp;&nbsp;<?php echo $taskLog['content']; ?>&nbsp;&nbsp;<?php echo $taskLog['time'].'<br>'; ?>
+                      </li>            
+                    <?php endforeach; ?>
+                </ul>                
+            </div> 
+        </div>
+        <div class="row cl">
+            <div class="col-10 col-offset-2">
+                <button class="btn btn-secondary radius ajax-post" type="submit">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
+                <button class="btn btn-default radius" type="button" id="reset" style="margin-left: 20px">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>
+

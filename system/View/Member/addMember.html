@@ -1,0 +1,202 @@
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-article-add">
+        <input type="hidden" name="id" value="<?php if(isset($preList['id'])) { echo $preList['id']; } ?>">
+        <?php if(isset($preList['user_number'] )) {  ?>
+        <div class="row cl">
+            <label class="form-label col-2">编号：</label>
+            <label class="form-label col-3" style="text-align: left"><?php echo $preList['user_number'] ?></label>
+        </div>
+        <?php } ?>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>昵称：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="<?php if(isset($preList['nickname'])) { echo $preList['nickname']; }?>" placeholder=""
+                       name="nickname">
+            </div>
+        </div>
+        <!--<div class="row cl">-->
+        <!--<label class="form-label col-2"><span class="c-red">*</span>头像：</label>-->
+        <!--<div class="formControls col-2" style="position: relative;">-->
+            <!--<input type="text" class="input-text"-->
+                   <!--value="<?php if(isset($preList['money'])) { echo $preList['money']; } ?>" placeholder=""-->
+                   <!--name="money">-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <?php if(!isset($preList['id'] )) {  ?>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>密码：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text" placeholder="" name="password">
+            </div>
+        </div>
+        <?php } ?>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>Tel：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="<?php if(isset($preList['tel'])) { echo $preList['tel']; } ?>" placeholder=""
+                       name="tel">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>Email：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="<?php if(isset($preList['email'])) { echo $preList['email']; } ?>" placeholder=""
+                       name="email">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>QQ：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="<?php if(isset($preList['qq'])) { echo $preList['qq']; } ?>" placeholder=""
+                       name="qq">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>WeChat：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text" style="height: 30px"
+                       value="<?php if(isset($preList['weixin'])) { echo $preList['weixin']; } ?>"
+                       placeholder="" name="weixin">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>部门：</label>
+            <div class="formControls col-2">
+                <select id="departmentSelect" class="selectpicker show-tick form-control" data-width="100%" multiple
+                        title="-- 请选择 --" name="departments[]">
+                    <?php foreach($departments as $department) { ?>
+                    <option value="<?php echo $department['id']; ?>"
+                    <?php
+                        if(isset($preList['department'] )){
+                            foreach($preList['department'] as $v) {
+                                if($v ==  $department['id']) echo "selected = 'selected'";
+                            }
+                        }
+                      ?> >
+                    <?php echo $department['d_name']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>入职时间：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" id="laydate1" class="input-text laydate-icon" style="height: 30px"
+                       value="<?php if(isset($preList['registerDate'])) { echo $preList['registerDate']; } ?>"
+                       placeholder="" name="registerDate">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>职务：</label>
+            <div class="formControls col-2">
+                <select id="departmentJobsSelect" class="selectpicker show-tick form-control" data-width="100%" multiple
+                        title="-- 请选择 --" name="departmentJobs[]">
+                    <?php foreach($departmentJobs as $departmentJob) { ?>
+                    <option value="<?php echo $departmentJob['id']; ?>"
+                    <?php
+                        if(isset($preList['job'] )){
+                            foreach($preList['job'] as $v) {
+                                if($v ==  $departmentJob['id']) echo "selected = 'selected'";
+                            }
+                        }
+                      ?> >
+                    <?php echo $departmentJob['j_name']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>工资(元)：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text " style="height: 30px"
+                       value="<?php if(isset($preList['salary'])) { echo $preList['salary']; } ?>"
+                       placeholder="" name="salary">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>权限级别：</label>
+            <div class="formControls col-2">
+                <span class="select-box">
+                    <select class="select" name="level">
+                        <option value="0">-- 请选择 --</option>
+                        <option value="1"
+                        <?php
+                        if(isset($preList['level'])) {
+                            if($preList['level'] == 1) {
+                                echo "selected = 'selected'";
+                            }
+                        }
+                        ?> >超级管理员</option>
+                        <option value="2"
+                        <?php
+                        if(isset($preList['level'])){
+                            if($preList['level'] == 2) {
+                                echo "selected = 'selected'";
+                            }
+                        }
+                        ?> >管理员</option>
+                        <option value="3"
+                        <?php
+                        if(isset($preList['level'])){
+                            if($preList['level'] == 3) {
+                                echo "selected = 'selected'";
+                            }
+                        }
+                        ?> >普通人员</option>
+                    </select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-10 col-offset-2">
+                <button class="btn btn-secondary radius ajax-post" type="submit">&nbsp;&nbsp;添加&nbsp;&nbsp;</button>
+                <button class="btn btn-default radius" type="button" id="reset" style="margin-left: 20px">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--js部分-->
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.form.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/common.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.validate.min.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layer/layer.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layui/layui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.admin.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/laydate/laydate.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/bootstrap-select.js"></script>
+<script>
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).parent().parent().parent().find('textarea').prop('value', "");
+        $(this).parent().parent().parent().find('input').prop('value', "");
+        $(this).parent().parent().parent().find('option').prop("selected", false);
+        ;
+    });
+
+    // 时间控件
+    laydate.skin('molv');
+    laydate({
+        format: 'YYYY-MM-DD hh:mm:ss',
+        elem: '#laydate1'
+    });
+
+
+</script>

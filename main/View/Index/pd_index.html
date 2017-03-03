@@ -1,0 +1,89 @@
+<div class="container" id="pdWrap">
+   <div class="row">
+      <div class="col-xs-6 col-sm-3">
+         <div class="thumbnail">
+            <img src="<?php echo arComp('url.route')->host().'/Upload/';?>0b0b844b66faec1ae1cbac3e80f74d99.jpg" 
+            alt="通用的占位符缩略图">
+            <div class="caption clearfix">
+               <h4>项目1</h4>
+               <p class="pdJoinNum pull-left"><span>5</span>人参与</p>
+               <p class="pdProgress pull-right">50%</p>
+            </div>
+         </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+         <div class="thumbnail">
+            <img src="/wp-content/uploads/2014/06/kittens.jpg" 
+            alt="通用的占位符缩略图">
+            <div class="caption clearfix">
+               <h4>项目1</h4>
+               <p class="pdJoinNum pull-left"><span>5</span>人参与</p>
+               <p class="pdProgress pull-right">50%</p>
+            </div>
+         </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+         <div class="thumbnail">
+            <img src="/wp-content/uploads/2014/06/kittens.jpg" 
+            alt="通用的占位符缩略图">
+            <div class="caption clearfix">
+               <h4>项目1</h4>
+               <p class="pdJoinNum pull-left"><span>5</span>人参与</p>
+               <p class="pdProgress pull-right">50%</p>
+            </div>
+         </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+         <div class="thumbnail">
+            <img src="/wp-content/uploads/2014/06/kittens.jpg" 
+            alt="通用的占位符缩略图">
+            <div class="caption clearfix">
+               <h4>项目1</h4>
+               <p class="pdJoinNum pull-left"><span>5</span>人参与</p>
+               <p class="pdProgress pull-right">50%</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-body">
+            连接错误
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">
+               确定
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+   $(function(){
+      $(".thumbnail").on("click",function(){
+         $.ajax({
+            url: '/path/to/file',
+            type: 'POST',
+            data: {param1: 'value1'},
+         })
+         .done(function() {
+            console.log("success");
+            location.href="";
+         })
+         .fail(function() {
+            console.log("error");
+            $("#myModal").modal("show");
+         });
+         
+      })
+      $('#myModal').modal({
+       backdrop: "static",
+       show:false
+      })
+   })
+   
+</script>

@@ -1,0 +1,126 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 用户管理
+    <span class="c-gray en">&gt;</span> 用户列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="get">
+        <div class="text-c"> 昵称：
+            <input type="text" name="keywordNickname" value="<?php echo $keywordNickname ?>" class="input-text"
+                   style="width:150px"
+                   placeholder="输入昵称">
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tel：
+            <input type="text" name="keywordTel" value="<?php echo $keywordTel ?>" class="input-text"
+                   style="width:150px"
+                   placeholder="输入Tel">
+
+            <button type="submit" class="btn btn-success" name="" style="margin-left: 10px"><i class="Hui-iconfont">
+                &#xe665;</i> 搜索
+            </button>
+            <button type="button" class="btn btn-success" id="reset" value="清空" style="margin-left: 10px">清空</button>
+        </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm"
+                    url="<?php echo arU('deleteMember'); ?>"/>
+        </span>
+        <span class="r">共有数据：<strong><?php echo $totalCount ?></strong> 条</span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">用户列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <!--<th>ID</th>-->
+            <th>员工编号</th>
+            <th>昵称</th>
+            <th>头像</th>
+            <th>Tel</th>
+            <th>Email</th>
+            <th>QQ</th>
+            <th>WeChat</th>
+            <th>部门</th>
+            <th>入职时间</th>
+            <th>职务</th>
+            <th>工资(元)</th>
+            <th>权限级别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($rows as $row) { ?>
+        <tr class="text-c">
+            <td width="3%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $row['id']?>"/></td>
+            <!--<td width="5%"><?php echo $row['id']?></td>-->
+            <td width="6%"><?php echo $row['user_number']?></td>
+            <td width="6%"><?php echo $row['nickname']?></td>
+            <td width="6%">
+                <img style="width: 40px;height: 40px" src="<?php echo $row['photo']?>" alt="头像">
+            </td>
+            <td width="6%"><?php echo $row['tel']?></td>
+            <td width="7%"><?php echo $row['email']?></td>
+            <td width="6%"><?php echo $row['qq']?></td>
+            <td width="6%"><?php echo $row['weixin']?></td>
+           
+
+            <td width="15%">
+                <?php echo $row['department']?>
+                <a title="编辑部门" href="javascript:openUrl('<?php echo arU('selectDept',array('id' => $row['id']))?>') " style="text-decoration:none;" class="editlist"><i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i></a>
+            </td>
+            <td width="6%"><?php echo $row['registerDate']?></td>
+            <td width="15%">
+                <?php echo $row['job']?>
+                <a title="编辑职位" href="javascript:openUrl('<?php echo arU('selectJob',array('id' => $row['id']))?>') " style="text-decoration:none;" class="editjob"><i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i></a>
+            </td>
+            <td width="5%"><?php echo $row['salary']?></td>
+            <td width="5%"><?php echo $level[$row['level']]?></td>
+
+            <td class="td-manage">
+                <a title="发送消息"
+                   href="javascript:openUrl('<?php echo arU('News/sendNews',array('id'=>$row['id'],'nickname'=>$row['nickname'])); ?>')"
+                   class="ml-5"
+                   style="text-decoration:none ">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6c5;</i>
+                </a>
+                <a title="修改密码" href="javascript:openUrl('<?php echo arU('changePassword',array('id'=>$row['id'])); ?>')" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe63f;</i>
+                </a>
+                <a title="编辑" href="javascript:openUrl('<?php echo arU('addMember',array('id'=>$row['id'])); ?>');" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('deleteMember',array('id'=>$row['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="margin-left:8px;text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $pageHtml ?>
+        </ul>
+    </div> 
+</div>
+
+<script>
+    $('tbody tr:nth-child(odd)').css("background-color", "#F5F5F5");
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value', "");
+    });
+</script>

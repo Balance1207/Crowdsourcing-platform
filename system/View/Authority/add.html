@@ -1,0 +1,63 @@
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-article-add">
+        <div class="row cl">
+            <label class="form-label col-2">权限名称：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="" placeholder=""
+                       name="name">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2">权限检查名：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="" placeholder=""
+                       name="action">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2">排序：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="" placeholder=""
+                       name="sorder">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2">所属权限组：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <select name="sid">
+                    <?php foreach($info as $vol){ ?>
+                    <option value="<?php echo $vol['sid'] ?>"><?php echo $vol['name'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        
+
+        <div class="row cl">
+            <div class="col-10 col-offset-2">
+                <button class="btn btn-secondary radius ajax-post" type="submit">&nbsp;&nbsp;添加&nbsp;&nbsp;</button>
+                <button class="btn btn-default radius" type="button" id="reset" style="margin-left: 20px">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<script>
+    $('#reset').click(function () {
+        $(this).parent().parent().parent().find('textarea').prop('value', "");
+        $(this).parent().parent().parent().find('input').prop('value', "");
+        $(this).parent().parent().parent().find('option').prop("selected", false);
+        ;
+    });
+
+
+</script>

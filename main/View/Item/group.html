@@ -1,0 +1,223 @@
+<?php ArView::load('group.css'); ?>
+<?php ArView::load('group.js'); ?>
+
+<script> var prejectId = '<?php echo arRequest('iid');?>'; </script>
+<!-- 项目成员管理 -->
+<div class="member-manage">
+	<!-- 成员列表 -->
+	<div class="container">
+		<ul class="member-list row">
+			<!-- <li class="col-sm-2 col-xs-3">
+				<a href="#"><img src="<?php echo arCfg('PATH.PUBLIC'); ?>images/weixin.png" class="person"></a>
+				<div class="closeLayer">
+					<img src="<?php echo arCfg('PATH.PUBLIC'); ?>images/delPer.png">
+				</div>
+			</li> -->
+			<!-- <li class="col-sm-2 col-xs-3">
+				<a href="#" class="del"><img src="<?php echo arCfg('PATH.PUBLIC'); ?>images/del.png"></a>
+			</li> -->
+		</ul>
+		<ul id="memberList" style="display: none">
+			<li class="col-sm-2 col-xs-3" data-id="{idCard}" data-name="{userName}" data-tel="{userTel}">
+				<img src="{srcPhotos}" class="person">
+<!-- 				<div class="closeLayer">
+					<img src="<?php echo arCfg('PATH.PUBLIC'); ?>images/delPer.png">
+				</div> -->
+			</li>
+		</ul>
+	</div>
+	<!-- <div class="divide"></div> -->
+	<!-- 群组信息 -->
+	<!-- <div class="container group">
+		<ul class="group-name row">
+			<li class="pull-left">群组名称</li>
+			<a href="#" class="change-name"><li class="pull-right">未命名<span class="glyphicon glyphicon-menu-right"></span></li></a>
+		</ul>
+		<div class="boundary row"></div>
+		<ul class="qr-code row">
+			<li class="pull-left">群二维码</li>
+			<a href="#" class="change-code"><li class="pull-right"><img src="<?php echo arCfg('PATH.PUBLIC'); ?>images/QR-bar.jpg" width="20px" height="20px"><span class="glyphicon glyphicon-menu-right"></span></li></a>
+		</ul>
+		<div class="boundary row"></div>
+		<ul class="affiche row">
+			<li class="pull-left">群公告</li>
+			<a href="#" class="change-affiche"><li class="pull-right">未设置<span class="glyphicon glyphicon-menu-right"></span></li></a>
+		</ul>
+		<div class="boundary row"></div>
+		<ul class="group-message row">
+			<li class="pull-left">群助手</li>
+			<a href="<?php echo arU('Index/pm3') ?>" class="new-passage"><li class="pull-right">人员审核<span class="glyphicon glyphicon-menu-right"></span></li></a>
+		</ul>
+	</div> -->
+	<div class="weui-cells">
+		<a class="weui-cell weui-cell_access group-name items-url" href="{items_url}">
+			<div class="weui-cell__bd">
+				<p>群组名称</p>
+			</div>
+			<div class="weui-cell__ft i_name">
+				{i_name}
+			</div>
+		</a>
+		<a class="weui-cell weui-cell_access group-qr-code">
+			<div class="weui-cell__bd">
+				<p>群二维码</p>
+			</div>
+			<div class="weui-cell__ft">
+				<img class="QR-bar" src="{url}" width="24px" height="24px">
+			</div>
+		</a>
+		<!-- <a class="weui-cell weui-cell_access manage-group" href="javascript:;">
+			<div class="weui-cell__bd">
+				<p>群助手</p>
+			</div>
+			<div class="weui-cell__ft">
+				<span style="vertical-align:middle; font-size: 17px;">人员审核</span>
+				<span class="weui-badge">New</span>
+			</div>
+		</a> -->
+	</div>
+	<div class="weui-cells__title perTaskList" style="margin-top: 20px;font-size: larger;">任务列表</div>
+	<div class="weui-cells task-list">
+        <!-- <a id="task-list" class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd">
+                <p>cell standard</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </a> -->
+        <div class="model" style="display: none;">
+	        <a id="taskList" class="weui-cell weui-cell_access" href="{track_url}">
+	            <div class="weui-cell__bd" task-name="{tName}">
+	                <p>{tName}</p>
+	            </div>
+	            <div class="weui-cell__ft"></div>
+	        </a>
+	    </div>
+    </div>
+	<div class="container" id="container">
+		<div class="page dialog js_show">
+		    <div class="page__bd page__bd_spacing">
+		        <a href="javascript:;" class="weui-btn weui-btn_warn drop-out" id="showIOSDialog1">退出群组</a>
+		    </div>
+		</div>
+	</div>
+	<!-- <div class="divide"></div> -->
+	<!-- <div class="page__bd page__bd_spacing">
+        <a href="javascript:;" class="weui-btn weui-btn_warn" id="showIOSDialog1">退出群组</a>
+    </div> -->
+    <!-- <div class="dialogs">
+	    <div class="js_dialog" id="iosDialog1" style="opacity: 0; display: none;">
+	        <div class="weui-mask"></div>
+	        <div class="weui-dialog">
+	            <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
+	            <div class="weui-dialog__bd">退出后不会通知群组中其他成员，且不会再接收此群聊消息</div>
+	            <div class="weui-dialog__ft">
+	                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+	                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+	            </div>
+	        </div>
+	    </div>
+    </div> -->
+    <!-- <div id="dialogs">
+        <div class="js_dialog" id="iosDialog1" style="opacity: 0; display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">退出群组</strong></div>
+                <div class="weui-dialog__bd">退出后不会通知群组中其他成员，且不会再接收此群聊消息</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+	<!-- <div class="details-wrap">
+		<h4>详细资料<span class="remove glyphicon glyphicon-remove pull-right" style="padding: 8px 8px;"></span></h4>
+		<div class="details clearfix">
+			<div class="head-picture ">
+				<img class="userImg" src="">
+			</div>
+			<div class="information">
+				<div class="nick_name"></div>
+				<div class="wechat">微信：Money_888</div>
+				<div class="tel"></div>
+			</div>
+		</div>
+		<div class="boundary" style="width: 95%;margin: 10px 0 10px 5%;"></div>
+		<div class="profession">
+			<span>职位</span><span>web前端工程师</span>
+		</div>
+		<div class="boundary" style="width: 95%;margin: 10px 0 10px 5%;"></div>
+		<button type="button" class="btn btn-success btn-sm send-message">发送消息</button>
+	</div> -->
+	<!-- <form class="message-box">
+		<h4>消息框<span class="remove glyphicon glyphicon-remove pull-right" style="padding: 8px 8px;"></span></h4>
+		<div class="form-group">
+			<label for="main-body">正文：</label>
+			<textarea class="form-control" rows="4" id="main-body" placeholder="内容"></textarea>
+		</div>
+		<button type="button" class="btn btn-success btn-sm send-meassage">发送</button>
+	</form> -->
+	<div class="details-wrap" pro-id="">
+		<h4>详细资料</h4>
+	    <div class="weui-cells" style="margin: 0 0; padding: 10px 0;">
+	        <div class="weui-cell details">
+	            <div class="weui-cell__hd" style="position: relative; margin-left: 10px; margin-right: 20px;">
+	                <img class="userImg" src="" style="width: 60px;display: block">    
+	            </div>
+	            <div class="weui-cell__bd">
+	                <p class="nick_name">但偏偏雨渐渐</p>
+	                <p class="wechat" style="font-size: 14px;color: #888888;">微信号:Balance_888</p>
+	                <p class="tel" style="font-size: 14px;color: #888888;">手机号:18599998885</p>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="container" id="container">
+			<div class="page button js_show">
+	    		<div class="page__bd page__bd_spacing">
+	        		<a href="javascript:;" class="weui-btn weui-btn_primary send-message-box">发送消息</a>
+	        		<a href="javascript:;" class="weui-btn weui-btn_default close-message-box">关闭</a>
+	   			</div>
+			</div>
+		</div>
+	</div>
+	<div class="message-box" pro-id="">
+		<h4>消息框</h4>
+		<img class="userImg" src="" style="width: 60px;display: block">
+	    <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea content" placeholder="请输入文本" rows="3"></textarea>
+                    <!-- <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+                </div>
+            </div>
+        </div>
+	    <div class="container" id="container">
+			<div class="page button js_show">
+	    		<div class="page__bd page__bd_spacing">
+	        		<a href="javascript:;" class="weui-btn weui-btn_primary send-message" id="showToast">发送</a>
+	        		<a href="javascript:;" class="weui-btn weui-btn_default close-send-message">关闭</a>
+	   			</div>
+			</div>
+		</div>
+	</div>
+	<div class="QR-bar-box">
+		<h4>二维码</h4>
+		<img src="">
+		<div class="container" id="container">
+			<div class="page button js_show">
+	    		<div class="page__bd page__bd_spacing">
+	        		<a href="javascript:;" class="weui-btn weui-btn_default close-bar-box">关闭</a>
+	   			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	window.onload = function(){
+		itemMemberInfo();
+		user_box();
+		sendMessage();
+		userItemsList();
+		exit_group();
+	};
+</script>

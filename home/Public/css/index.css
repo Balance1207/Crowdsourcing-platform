@@ -1,0 +1,192 @@
+.topBanner {
+	height: 450px;
+	background: url(../images/timg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+a:hover ,a:focus{
+	text-decoration: none;
+	color: rgb(206, 19, 19);
+}
+
+.bannerLeft {
+	height: 450px;
+	/*background: url(../images/logo.png) no-repeat center;*/
+}
+
+.bannerRight {
+	height: 350px;
+	position: absolute;
+	right: -533px;
+}
+
+.bannerForm {
+	margin-top: 100px;
+	color: white;
+	width: 380px;
+	border: 1px solid #15223e;
+	padding: 27px;
+	background:rgba(5,19,41,0.29);
+}
+.check-box, .radio-box{
+	padding: 0px;
+}
+
+.loginWord {
+	margin-bottom: 20px;
+	font-size: 17px;
+	/*font-weight: bolder;*/
+}
+.formGroup{
+	margin: 14px 0px;
+
+}
+.forgetPwd {
+	color: white;
+	padding-left:31px;
+}
+.forgetPwd:hover {
+	text-decoration: none;
+	color:#49fb11;
+}
+.content {
+	background: #eee;
+}
+
+.content_left_top {
+	margin-top: 40px;
+	background: white;
+}
+
+.product {
+	/*margin-top: 20px;*/
+	border-left: solid 3px #54abd4;
+	height: 34px;
+	margin-left: 15px;
+}
+
+.product h4 {
+	line-height: 34px;
+	padding-left: 10px;
+}
+
+.circle {
+	bottom: -30px;
+	position: static;
+	text-align: center;
+	width: 60%;
+	margin-left: 20%;
+}
+
+.carousel-indicators .active {
+	background-color: #dd514c;
+}
+
+.carousel-indicators li {
+	border: 1px solid #dd514c;
+}
+
+.thumbnail {
+	padding: 0px;
+	margin: 0px;
+}
+
+.productShow_a {
+	margin-top: 20px;
+}
+
+.proIntroduce {
+	position: absolute;
+	top: 36%;
+	text-align: center;
+	left: 0%;
+}
+
+.proIntroduce a {
+	color: blueviolet;
+}
+
+.project .caption {
+	background: #5eb95e;
+	text-align: center;
+}
+.project .caption p{
+	text-align: center;
+	margin-bottom: 0px;
+}
+.content{
+	font-size: 15px;
+	color: black;
+}
+
+.project .caption a:hover {
+	color: #c70a0a;
+}
+
+.content_left_bottom {
+	margin-top: 20px;
+	background: white;
+}
+
+.project {
+	margin-top: 20px;
+}
+
+.more a {
+	color: #CCCCCC;
+	font-size: 12px;
+}
+
+.more a:hover {
+	color: #428bca;
+}
+
+.contentRight {
+	margin-top: 40px;
+	background: white;
+}
+
+.classify {
+	margin: 20px;
+}
+
+.contentRight a {
+	display: inline-block;
+	background: #5eb95e;
+	border-radius: 11px;
+	text-align: center;
+	margin-top: 10px;
+	padding: 6px;
+}
+
+.blank {
+	height: 40px;
+}
+.footer a{
+    color:rgb(12, 247, 12) ;
+}
+.footer a:hover{
+	color:#f5d21c;
+}
+.navbar .nav  li a:hover, .navbar .nav li span a:hover {
+  color: #90fb7e;
+ /* background: yellow;*/
+ direction: none;
+ background-color: transparent;
+}
+.formGroup .btn{
+	padding: 4px 148px;
+}
+.footer{
+	border-top:1px solid black; 
+   }
+.product-top{
+	height: 100px;
+	background:#eee;
+}
+.maskBar{
+	background-color: #8AD4304D;
+	height: 80px;
+}
+.maskWraper.hover .maskBox{
+	background-color: rgba(255,255,255,.15);
+}

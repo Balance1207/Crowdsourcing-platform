@@ -1,0 +1,42 @@
+.application-record {
+	margin-top: 5px;
+}
+
+.time {
+	margin-left: 5%;
+}
+
+.personnel-audit img {
+	width: 50px;
+	height: 50px;
+}
+
+.btn-group > .btn+.dropdown-toggle {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.dropdown-menu {
+	min-width: 68px;
+	margin-top: 1px;
+}
+
+.dropdown-menu > li {
+	height: 24px;
+	font-size: 12px;
+	padding: 0 0;
+} 
+
+.have-accepted {
+	display: none;
+}
+
+.boundary {
+	width: 95%;
+	margin: 20px 0 15px 5%;
+	color: #e5e5e5;
+}
+
+.accept {
+	border-bottom: 1px solid #e5e5e5;
+}

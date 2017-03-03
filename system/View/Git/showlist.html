@@ -1,0 +1,116 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 项目管理
+    <span class="c-gray en">&gt;</span> 仓库列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="get">
+        <div class="text-c"> 仓库：
+            <input type="text" name="keyword" value="<?php echo $keyword ?>" class="input-text" style="width:250px"
+                   placeholder="输入仓库名称">
+            <button type="submit" class="btn btn-success" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+            <button type="button" class="btn btn-success" id="reset" value="清空" style="margin-left: 10px">清空</button>
+
+        </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm"
+                    url="<?php echo arU('delGit'); ?>"/>
+             <!--<input type="button" value="全部审核" class="btn btn-primary radius ajax-post"-->
+             <!--url="<?php echo arU('changeStatus',array('audit'=>1)); ?>"/>-->
+        </span>
+        <span class="r">共有数据：<strong><?php echo $totalCount ?></strong> 条</span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">仓库列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>编号</th>
+            <th>仓库名称</th>
+            <th>仓库地址</th>
+            <th>所属项目</th>
+            <th>仓库描述</th>
+            <th>创建人</th>
+            <th>申请信息</th>
+            <th>仓库状态(用户)</th>
+            <th>审核状态</th>
+            <th>仓库状态(管理员)</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($gits as $git) { ?>
+        <tr class="text-c">
+            <td width="4%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $git['id']?>"/></td>
+            <td width="4%"><?php echo $git['id']?></td>
+            <td width="8%" style="text-align: left"><?php echo $git['name']?></td>
+            <td width="6%"><a target="_blank" href="http://<?php echo $git['address']?>"><?php echo $git['address']?></a></td>
+            <td width="6%"><?php echo $git['i_name']?></td>
+            <td width="6%"><?php echo $git['description']?></td>
+            <td width="6%"><?php echo $git['creator']?></td>
+            <td width="6%"><?php echo $git['content']?></td>
+            <td width="6%"><?php echo $git['online']?></td>
+            <td width="5%">
+                <?php if($git['status']==1) { ?>
+                <a href="<?php echo arU('changeStatus',array('id'=>$git['id'],'status'=>(1-$git['status']))); ?>"
+                   class="label label-success radius ajax-get">已审核</a>
+                <?php } else { ?>
+                <a href="<?php echo arU('changeStatus',array('id'=>$git['id'],'status'=>(1-$git['status']))); ?>"
+                   class="label radius ajax-get">未审核</a>
+                <?php } ?>
+            </td>
+            <td width="5%">
+                <?php if($git['audit']==1) { ?>
+                <a href="<?php echo arU('disableGit',array('id'=>$git['id'],'audit'=>(1-$git['audit']))); ?>"
+                   class="label label-success radius ajax-get">已启用</a>
+                <?php } else { ?>
+                <a href="<?php echo arU('disableGit',array('id'=>$git['id'],'audit'=>(1-$git['audit']))); ?>"
+                   class="label radius ajax-get">已禁用</a>
+                <?php } ?>
+            </td>
+            <td class="td-manage">
+                <a title="修改" href="<?php echo arU('updateGit',array('id'=>$git['id'])); ?>" class="ml-5"
+                   style="text-decoration:none ">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('delGit',array('id'=>$git['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="text-decoration:none ;margin-left: 12px">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $pageHtml ?>
+        </ul>
+    </div>
+</div>
+<!--js部分-->
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.form.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/common.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.validate.min.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layer/layer.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>layui/layui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.admin.js"></script>
+<script>
+    $('tbody tr:nth-child(odd)').css("background-color", "#F5F5F5");
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value', "");
+    });
+</script>

@@ -1,0 +1,201 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 消息管理
+    <span class="c-gray en">&gt;</span> 消息列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="get">
+        <div class="text-c"> 发件人：
+            <input type="text" name="keywordSender" value="<?php echo $keywordSender ?>" class="input-text"
+                   style="width:150px"
+                   placeholder="输入发件人ID">
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 收件人：
+            <input type="text" name="keywordReceiver" value="<?php echo $keywordReceiver ?>" class="input-text"
+                   style="width:150px"
+                   placeholder="输入收件人ID">
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 内容：
+            <input type="text" name="keywordContent" value="<?php echo $keywordContent ?>" class="input-text"
+                   style="width:150px"
+                   placeholder="输入内容">
+            <button type="submit" class="btn btn-success" name="" style="margin-left: 10px"><i class="Hui-iconfont">
+                &#xe665;</i> 搜索
+            </button>
+            <button type="button" class="btn btn-success" id="reset" value="清空" style="margin-left: 10px">清空</button>
+        </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm"
+                    url="<?php echo arU('deleteNews'); ?>"/>
+        </span>
+        <span class="r">共有数据：<strong><?php echo $totalCount ?></strong> 条</span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="14">
+                <a href="<?php echo arU('newsList',array('type'=>1)); ?>">普通消息</a>
+                <a href="<?php echo arU('newsList',array('type'=>2)); ?>" style="margin-left: 30px;color: red">系统消息</a>
+            </th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <!--<th>消息ID</th>-->
+            <th>发件人ID</th>
+            <th>发件人</th>
+            <th>收件人ID</th>
+            <th>收件人</th>
+            <th>内容</th>
+            <th>发送时间</th>
+            <th>回复条数</th>
+            <th>消息类型</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($rows as $row) { ?>
+        <tr class="text-c">
+            <td width="4%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $row['msg_id']?>"/></td>
+            <!--<td width="5%"><?php echo $row['msg_id']?></td>-->
+            <td width="4%"><?php echo $row['sender']?></td>
+            <td width="6%"><?php echo $row['sendername']?></td>
+            <td width="4%"><?php echo $row['receiver']?></td>
+            <td width="6%"><?php echo $row['receivername']?></td>
+            <td width="50%" id="contenttext" style="text-align: left;"
+                title="<?php echo $row['content']?>"><?php echo $row['content']?></td>
+            <td width="10%"><?php echo $row['send_time']?></td>
+            <td width="4%"><?php echo $row['childrenCount']?></td>
+
+            <?php if($row['type']=="系统消息") { ?>
+            <td width="6%" style="color: crimson"><?php echo $row['type']?></td>
+            <?php }else{ ?>
+            <td width="6%"><?php echo $row['type']?></td>
+            <?php } ?>
+
+            <td class="td-manage">
+                <a title="查看" href="javascript:;" did="<?php echo $row['msg_id'] ?>"
+                   content="<?php echo $row['content']?>"
+                   class="ml-5 checkNews"
+                   style="text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe695;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('deleteNews',array('id'=>$row['msg_id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="text-decoration:none;margin-left: 20px">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+        <!--超出隐藏-->
+        <!--<style>
+            table {
+                width:100%;
+                table-layout: fixed; /* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+            }
+
+            td {
+                width:100%;
+                word-break: keep-all; /* 不换行 */
+                white-space: nowrap; /* 不换行 */
+                overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+                text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/
+            }
+        </style>-->
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $pageHtml ?>
+        </ul>
+    </div>
+
+    <!--显示子消息回复列表-->
+    <div id="checkNews" class="pd-20" style="display: none">
+        <form action="" method="post" class="form form-horizontal" id="form-admin-add">
+            <div class="row cl">
+                <label class="form-label col-2">主消息：</label>
+                <label class="form-label col-10 newsContent" style="text-align: left"></label>
+            </div>
+            <div class="row cl" id="children">
+                <label class="form-label col-2">回复消息：</label>
+                <label class="form-label col-2 " style="text-align: left"></label>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+<script>
+    $('tbody tr:nth-child(odd)').css("background-color", "#F5F5F5");
+
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value', "");
+    });
+
+
+    /********************************子消息弹框 开始*************************************************/
+        // layer弹框
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        var alterBox_index;
+
+        // 点击登录后弹出登录框
+        $(".checkNews").click(function () {
+            // 定义在外面，函数闭包
+            window.checkObj = $(this);
+
+            // 回显消息
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("newsChildrenList");?>',
+                dataType: 'json',
+                data: {'msg_id': window.checkObj.attr('did')},
+                async: false,
+                success: function (data) {
+                    // 先清除之前的添加的div
+                    $("#children").find('.row').remove();
+                    var children = data.data.children;
+                    $(".newsContent").html(window.checkObj.attr('content')) // 注意改变属性方式
+                    var childrenDom = null;
+                    $.each(children, function () {
+                        childrenDom = '<div class="row cl" >' +
+                                '<label class="form-label col-15" style="text-align: left;">' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                                + this.sendername + '&nbsp;&nbsp;To&nbsp;&nbsp;' + this.receivername + '&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + this.content + '</label>' +
+                                '</div>';
+                        $("#children").append(childrenDom);
+                    })
+                }
+            });
+
+
+            // 弹框放在click方法里面
+            alterBox_index = layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 1,
+                shade: 0.2,
+                shadeClose: false,
+                content: $("#checkNews"),
+                area: ['600px', '350px']
+            });
+
+//            // 取消事件
+//            $('.resetbtn').click(function () {
+//                layer.close(alterBox_index);
+//            });
+
+        });
+    });
+    /********************************子消息弹框 结束*************************************************/
+
+
+</script>

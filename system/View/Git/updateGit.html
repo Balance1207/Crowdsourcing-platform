@@ -1,0 +1,198 @@
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-article-add">
+        <input type="hidden" name="gitId" value="<?php if(isset($gitInfo['id'])) { echo $gitInfo['id']; } ?>">
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>仓库名称：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="<?php if(isset($gitInfo['name'])) { echo $gitInfo['name']; }?>" placeholder=""
+                       name="name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>仓库地址：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="<?php if(isset($gitInfo['address'])) { echo $gitInfo['address']; } ?>" placeholder=""
+                       name="address">
+            </div>
+        </div>
+        <!-- <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>所属项目：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="hidden" name="item" id="i_id"
+                       value="<?php if(isset($gitInfo['i_id'])) { echo $gitInfo['i_id']; } ?>">
+                <input type="text" class="input-text receiverName"
+                       value="<?php if(isset($gitInfo['item'])) { echo $gitInfo['item']; } ?>"
+                       placeholder="" name="itemName">
+                <div id="receiverName" style="width:100px;max-height:215px;overflow-y:scroll;overflow-x: hidden; padding:5px 0; position:absolute;z-index:10;
+                top: 1px;right: -100px;background-color: #F5F5F5; display: none">
+
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>创建人：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="hidden" name="publisher" id="u_id"
+                       value="<?php if(isset($gitInfo['u_id'])) { echo $gitInfo['u_id']; } ?>">
+                <input type="text" class="input-text receiverName"
+                       value="<?php if(isset($gitInfo['publisher'])) { echo $gitInfo['publisher']; } ?>"
+                       placeholder="" name="publisherName">
+                <div id="receiverName" style="width:100px;max-height:215px;overflow-y:scroll;overflow-x: hidden; padding:5px 0; position:absolute;z-index:10;
+                top: 1px;right: -100px;background-color: #F5F5F5; display: none">
+
+                </div>
+            </div>
+        </div> -->
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>申请信息：</label>
+            <div class="formControls col-4">
+                <textarea name="content" style="height: 150px" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100"
+                          dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">
+                   <?php if(isset($gitInfo['content'])) { echo $gitInfo['content']; } ?>
+                </textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>仓库状态：</label>
+            <div class="formControls col-2">
+                <span class="select-box">
+                    <select class="select" name="audit">
+                        <option value="-1">-- 请选择 --</option>
+                        <option value="0"
+                        <?php
+                        if(isset($gitInfo['audit'])) {
+                            if($gitInfo['audit'] == 0) {
+                                echo "selected = 'selected'";
+                            }
+                        }
+                        ?> >已禁用</option>
+                        <option value="1"
+                        <?php
+                        if(isset($gitInfo['audit'])){
+                            if($gitInfo['audit'] == 1) {
+                                echo "selected = 'selected'";
+                            }
+                        }
+                        ?> >已启用</option>
+                    </select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>仓库描述：</label>
+            <div class="formControls col-4">
+                <textarea name="description" style="height: 150px" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100"
+                          dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">
+                   <?php if(isset($gitInfo['description'])) { echo $gitInfo['description']; } ?>
+                </textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-10 col-offset-2">
+                <button class="btn btn-secondary radius ajax-post" type="submit">&nbsp;&nbsp;修改&nbsp;&nbsp;</button>
+                <button class="btn btn-default radius" type="button" id="reset" style="margin-left: 20px">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--js部分-->
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.form.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/common.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.validate.min.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layer/layer.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layui/layui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.admin.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/laydate/laydate.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/bootstrap-select.js"></script>
+<script>
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).parent().parent().parent().find('textarea').prop('value', "");
+        $(this).parent().parent().parent().find('input').prop('value', "");
+        $(this).parent().parent().parent().find('option').prop("selected", false);
+        ;
+    });
+
+    // 时间控件
+    laydate.skin('molv');
+    laydate({
+        format: 'YYYY-MM-DD hh:mm:ss',
+        elem: '#laydate1'
+    });
+    laydate({
+        elem: '#laydate2',
+        format: 'YYYY-MM-DD hh:mm:ss',
+    });
+
+    // 开发周期单位
+    $('.daysNum').keyup(function () {
+        if ($('.daysNum').val() != "") {
+            $("#days").css('display', 'block');
+        } else {
+            $("#days").css('display', 'none');
+        }
+    });
+
+    // 双击选中
+    $("p").dblclick(function () {
+        var val = $(this).html();
+        var preVal = $('.daysNum').val();
+
+        $('.daysNum').val(preVal + val);
+        $("#days").css('display', 'none');
+    });
+
+
+    // 动态展示发布人
+    $('.receiverName').keyup(function () {
+        if ($('.receiverName').val() != "") {
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("News/receiverList");?>',
+                data: {'receiver': $('.receiverName').val()},
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    var receiver = data.data;
+                    $("#receiverName").empty();
+                    $("#receiverName").append(" <p value='all'>" + "全体成员" + "</p>");
+                    $("#receiverName").css('display', 'block');
+                    // 遍历添加
+                    for (i in receiver) {
+                        $("#receiverName").append(" <p value = " + receiver[i]['id'] + ">" + receiver[i]['nickname'] + "</p>");
+                    }
+                }
+            });
+        } else {
+            // 清空收件人
+            $("#receiverName").empty();
+            $("#receiverName").css('display', 'none');
+        }
+
+    });
+
+    // 选中收件人
+    $("#receiverName").on("dblclick", "p", function () {
+        var receiver = $(this).html();
+        var hiddenId = $(this).attr('value');
+        $(this).parent().prev('input').val(receiver);
+        $(this).parent().parent().find('#hiddenId').val(hiddenId);
+        // 清空收件人
+        $("#receiverName").empty();
+        $("#receiverName").css('display', 'none');
+    });
+
+</script>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="Keywords" content=""/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>quickOA</title>
+    <?php ArView::load('bootstrap.min.css'); ?>
+    <?php ArView::load('H-ui.css'); ?>
+	<?php ArView::load('common.css'); ?>
+	<?php ArView::load('productinfo.css'); ?>
+	<?php ArView::load('index.css'); ?>
+	<?php ArView::load('jquery.js',1); ?>
+	<?php ArView::load('layui/layui.js'); ?>
+	<?php ArView::load('bootstrap.min.js'); ?>
+	<?php ArView::load('H-ui.js'); ?>
+	<?php ArView::load('productinfo.js'); ?>
+
+
+	<?php ArView::start(); ?>
+</head>
+<body>
+ <div class="home">
+		<!--头部-->
+		<div  class="header" >
+			<!--头部导航-->
+			<div class="topNav">
+				<nav class="navbar navbar-fixed-top navbar-black" role="navigation">
+					<div >
+						<div class="row">
+							<!--LOGO图标-->
+								<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 col-md-offset-1 headerLogo">
+									<div class="navbar-header navbar-left">
+										<a href="###">
+											<img src="<?php echo arCfg('PATH.PUBLIC'); ?>images/c9.png"  height="74px" alt="logo" />
+										</a>
+									</div>
+								</div>
+								<!--分类导航项目-->
+								<div class="hidden-xs col-sm-8 col-md-4 col-md-offset-2 ">
+								<!--<div class="navbar-collapse collapse">-->
+									<ul class="nav navbar-nav pull-left proList">
+										<li><a href="<?php echo arU('Index/index')?>" >项目首页</a></li>
+										<li><a href="<?php echo arU('Index/showlist')?>">项目开发</a></li>
+										<li><a href="<?php echo arU('Index/items')?>">项目信息</a></li>
+									</ul>
+								</div>
+								<!--登录/注册-->
+								<div class="hidden-xs col-sm-3 col-md-4 ">
+									<!--<div class="navbar-collapse collapse">-->
+										<ul class="nav navbar-nav pull-right">
+										<?php if(arComp('list.session')->get('user')==null) { ?>
+											<li class="logins">
+												<span class="loginsLeft"><a href="<?php echo arU('Index/login')?>">登录</a></span>
+												<span><a href="<?php echo arU('Index/login')?>">注册</a></span>
+											</li>
+											<?php }else{ ?>
+											<li class="usernameId">
+												<span class="username">
+												<?php echo arComp('list.session')->get('user'); ?>												
+												</span>
+												<label class="newMsg">0</label>
+											</li>
+											<li class="exit" style="display: block;">
+												<a href="<?php echo arU('Index/logOut')?>">退出</a>
+											</li>
+											<?php } ?>
+										</ul>
+								</div>
+									<!--当变成小屏时，项目栏与登录注册合并-->
+								<div class="visible-xs-block col-xs-2 col-xs-offset-8">
+									<div class="nav pull-right dropDown" style="line-height: 74px;">
+										<a href="#ham" class="dropDown_A btn-lg" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+											<span class="glyphicon glyphicon glyphicon-fire" aria-hidden="true"></span>
+										</a>
+										<ul class="dropDown-menu menu radius box-shadow pull-right menuList">
+											<li><a href="###">首页</a></li>
+											<li><a href="###">项目首页</a></li>
+											<li><a href="###">信息</a></li>
+											<li><a href="###">登录</a></li>
+											<li><a href="###">注册</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+		<!--弹出层时，接收消息盒子模板-->
+			<div class="acceptMsgBox clearfix"></div>
+			<div class="acceptMsgList clearfix" style="display: none;">
+				<div class="sendInfo clearfix" style="margin-bottom: 10px;border-bottom: solid 1px #e7e7e7;padding: 10px 0px 10px 0px;background: rgba(184,206,230,0.8);">
+					<div class="col-lg-3" style="display: inline-block;text-align: center;">
+						<div class="sendUserPhoto">
+							<img style="width: 50px;" src="sendPhoto"/>
+						</div>
+						<div class="sendUserName" style="font-size: 12px;">sendName</div>
+						<div>sendTime</div>
+					</div>
+					<div class="sendUserContent col-lg-9" style="display: inline-block;">sendContent</div>
+					<div class="col-lg-12" style="margin-top: 15px;">
+						<!--<input class="replyMsg form-control" type="text" placeholder="请输入回复消息" style="display: none;" />-->
+						<textarea class="replyMsg form-control" placeholder="请输入回复消息" name="" style="display: none;resize:none;height: 90px;" ></textarea>
+					</div>
+					<div class="col-lg-12 clearfix" style="margin-top: 10px;">
+						<button class="replyBtn btn btn-primary col-lg-2 pull-right" type="button" style="margin-right: 0px;" onclick="reply($(this))">
+							回复
+						</button>
+						<button class="replySendBtn btn btn-primary col-lg-2 pull-right" data-index="sendUserTel" data-stel="sUserTel" type="button" onclick="sendMsg($(this))" style="margin-right: 0px;display: none;">
+							发送
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>			
+	
+
+							    
+						

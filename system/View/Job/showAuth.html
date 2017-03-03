@@ -1,0 +1,59 @@
+
+<div class="pd-20">
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="保存权限" class="btn btn-danger radius ajax-post confirm" url="<?php echo arU('addAuth',array('jid' => $jid)); ?>"
+                    />
+        </span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">权限列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>权限名称</th>
+            <th>权限检查名</th>
+            <th>所属权限组</th>
+        </tr>
+        </thead>
+
+          <tbody>
+        <?php foreach($result['data'] as $row) { ?>
+        <tr class="text-c">
+
+            <?php if(isset($info)){
+                 if(in_array($row['lid'],$info)){ ?>
+            <td width="8%"><input class="ids" type="checkbox" name="lid[]" value="<?php echo $row['lid']?>" checked="checked"/></td>
+            <?php }else{ ?>
+            <td width="8%"><input class="ids" type="checkbox" name="lid[]" value="<?php echo $row['lid']?>"/></td>
+            <?php } ?>
+            <?php }else{ ?>
+            <td width="8%"><input class="ids" type="checkbox" name="lid[]" value="<?php echo $row['lid']?>"/></td>
+            <?php } ?>
+            <td width="15%"><?php echo $row['name'] ?></td>
+            <td width="15%"><?php echo $row['action'] ?></td>
+            <td width="15%"><?php echo $row['pname']?></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $result['pageHtml'] ?>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    $('tbody tr:nth-child(odd)').css("background-color", "#F5F5F5");
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value', "");
+    });
+    
+</script>

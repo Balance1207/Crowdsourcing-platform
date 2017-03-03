@@ -1,0 +1,90 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 权限组管理
+    <span class="c-gray en">&gt;</span> 权限组列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">权限组列表</th>
+        </tr>
+        <tr class="text-c">
+            <th>权限组ID</th>
+            <th>权限组名称</th>
+            <th>权限组状态</th>
+            <th>描述</th>
+            <th>排序</th>
+            <th>所属权限组</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($result['data'] as $vol){ ?>
+            <tr class="text-c">
+                <td width="10%"><?php echo $vol['sid']?></td>
+                <td width="15%" style="text-align:left;padding-left: 40px;"><?php echo $vol['name']?></td>
+                <td width="15%"><?php echo $vol['status']?></td> 
+                <td width="15%"><?php echo $vol['des']?></td> 
+                <td width="15%"><?php echo $vol['sorder']?></td>
+                <td width="15%">顶级权限组</td>
+
+                <td class="td-manage">
+                    <a title="增加" href="<?php echo arU('add',array('psid' => $vol['sid'])); ?>" class="ml-5"
+                       style="margin-left:8px;text-decoration:none ">
+                       <i class="Hui-iconfont" style="font-size: 16px">&#xe604;</i>
+                    </a>
+                    <a title="编辑" href="<?php echo arU('update',array('sid' => $vol['sid'])); ?>" class="ml-5"
+                       style="margin-left:8px;text-decoration:none ">
+                       <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                    </a>
+                    <a title="删除" href="<?php echo arU('del',array('sid' => $vol['sid'])); ?>"
+                       class="ml-5 ajax-get confirm"
+                       style="margin-left:8px;text-decoration:none">
+                        <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                    </a>
+                </td>
+            </tr>
+            <?php if(isset($data)){
+                foreach($data as $value){
+                    if($vol['sid'] == $value['psid']){
+            ?>
+            <tr class="text-c">
+                <td width="10%"><?php echo $value['sid']?></td>
+                <td width="15%" style="text-align:left;padding-left: 80px;"><?php echo $value['name']?></td>
+                <td width="15%"><?php echo $value['status']?></td> 
+                <td width="15%"><?php echo $value['des']?></td> 
+                <td width="15%"><?php echo $value['sorder']?></td>
+                <td width="15%"><?php echo $vol['name']?></td>
+
+                <td class="td-manage">
+                    <a title="编辑" href="<?php echo arU('update',array('sid' => $value['sid'])); ?>" class="ml-5"
+                       style="margin-left:32px;text-decoration:none ">
+                       <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                    </a>
+                    <a title="删除" href="<?php echo arU('del',array('sid' => $value['sid'])); ?>"
+                       class="ml-5 ajax-get confirm"
+                       style="margin-left:8px;text-decoration:none">
+                        <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                    </a>
+                </td>
+            </tr>
+            <?php }} ?>
+            <?php } ?>
+
+            <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $result['pageHtml'] ?>
+        </ul>
+    </div>
+</div>

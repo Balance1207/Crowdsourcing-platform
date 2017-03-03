@@ -1,0 +1,57 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 权限管理
+    <span class="c-gray en">&gt;</span> 权限列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">权限列表</th>
+        </tr>
+        <tr class="text-c">
+            <th>权限ID</th>
+            <th>权限名称</th>
+            <th>权限检查名</th>
+            <th>排序</th>
+            <th>所属权限组</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($result['data'] as $vol){ ?>
+            <tr class="text-c">
+                <td width="10%"><?php echo $vol['lid']?></td>
+                <td width="15%"><?php echo $vol['name']?></td>
+                <td width="15%"><?php echo $vol['action']?></td> 
+                <td width="15%"><?php echo $vol['sorder']?></td>
+                <td width="15%"><?php echo $vol['pname']?></td>
+
+                <td class="td-manage">
+                    <a title="编辑" href="<?php echo arU('update',array('lid' => $vol['lid'])); ?>" class="ml-5"
+                       style="margin-left:8px;text-decoration:none ">
+                       <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                    </a>
+                    <a title="删除" href="<?php echo arU('del',array('lid' => $vol['lid'])); ?>"
+                       class="ml-5 ajax-get confirm"
+                       style="margin-left:8px;text-decoration:none">
+                        <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                    </a>
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $result['pageHtml'] ?>
+        </ul>
+    </div>
+</div>

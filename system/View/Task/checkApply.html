@@ -1,0 +1,84 @@
+<?php ArView::load('track.js'); ?>
+<?php //ArView::layout(''); ?>
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 项目管理
+    <span class="c-gray en">&gt;</span><a href="<?php echo arU('Product/showList',array('type'=>1)); ?>""> 项目列表</a> 
+    <span class="c-gray en">&gt;</span><a href="<?php echo arU('showList', array('iid' => $iid))?>"> 任务列表</a>
+    <span class="c-gray en">&gt;</span><a href=""> 任务申请审核</a>
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="<?php echo arU('Task/check'); ?>" method="post" class="form form-horizontal" id="form-article-add">
+        <input type="hidden" name="tid" value="<?php if(isset($track['tid'])) { echo $track['tid']; } ?>">
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务名称：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" readonly="readonly" class="input-text"
+                       value="<?php if(isset($track['tname'])) { echo $track['tname']; }?>" placeholder=""
+                       name="tname">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务审核：</label>
+            <div class="formControls col-2">
+                    <?php
+                // 调用用html seg 直接输出 select标签
+                  arSeg(
+                     array(
+                        // seg文件
+                        'segKey' => 'Html/select',
+                        // <select name="name">
+                        'name' => 'type',
+                        // 适配器数据 数组
+                        'map' => U_item_track_applyModel::$TYPE,
+                        // map 多维数组适配器
+                        // 'mapbundle' => array(array(), 'keyfield', 'showfield'),
+                        // 选中的value selected = selected
+                        'selected' => '--请选择--',
+                        'extra' => 'class="select-box"'
+                     )
+                  );
+                ?>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>申请人员：</label>
+            <div class="formControls col-2">
+                 <select name="uid[]" id="applyuser" class="selectpicker" multiple data-assignuser-button="true" title="-- 请选择 --">
+                 <?php foreach($users as $user) { ?>
+                    <option value="<?php echo $user['uid']; ?>"
+                     
+                      >
+                    <?php echo $user['nickname']; ?>
+                    </option>
+                    <?php } ?>
+                
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>回复信息：</label>
+            <div class="formControls col-4">
+                <textarea name="msg" style="height: 150px" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100"
+                          dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">
+                </textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+        
+        <div class="row cl">
+            <div class="col-10 col-offset-2">
+                <button class="btn btn-secondary radius ajax-post" type="submit">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
+                <button class="btn btn-default radius" type="button" id="reset" style="margin-left: 20px">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>

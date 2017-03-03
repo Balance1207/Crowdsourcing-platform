@@ -1,0 +1,98 @@
+<?php ArView::load('user.js'); ?>
+<?php ArView::load('weui.css'); ?>
+<!--个人主页-->
+<div id="userWrap">
+    <div class="panel panel-default" id="collapseOne">
+        <div class="panel-heading" style="border:0;">
+            <h4 class="panel-title clearfix">基本信息</h4>
+        </div>
+        
+    </div>
+    <!-- 个人信息 -->
+    <div class="weui_panel weui_panel_access" id="userInfo">
+    <div class="weui_panel_bd">
+        <a href="<?php echo arU('updateInfo'); ?>" class="weui_media_box weui_media_appmsg">
+            <div class="weui_media_hd">
+                <img class="weui_media_appmsg_thumb" src="{photo}" width="100" height="100" alt="">
+            </div>
+            <div class="weui_media_bd">
+                <h4 class="weui_media_title">昵称：{nickname}&nbsp;</h4>
+                <span>账号：{tel}</span>
+            </div>
+            <div class="weui_media_ft">
+                <span class="glyphicon glyphicon-cog"></span>
+            </div>
+        </a>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell-hd">
+            <label class="weui-label">微信</label>
+        </div>
+        <div class="weui-cell__bd weui-cell-primary">
+            <?php if (arModule('Lib.User')->hasBindWechat()): ?>
+                <p>已绑定</p>
+            <?php else :?>
+                <p><a href="<?php echo arModule('wechat.Base')->loginUrl(); ?>">去绑定</a></p>
+            <?php endif ?>
+        </div>
+    </div>
+    </div>
+    <!-- 参与的项目 -->
+    <div class="weui_panel weui_panel_access">
+    <div class="weui-cells__title">参与的项目</div>
+    <div class="weui-cells2">
+        <div class="weui-cell">
+            <div class="weui-cell__bd" id="load-more">
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="show-list2" class="weui-cells2">
+
+
+    </div>
+
+    <div id="list_tpl2" style="display:none">
+        <a class="weui-cell weui-cell_access" href="{items_url}">
+            <div class="weui-cell__bd">
+                [{i_name}]
+            </div>
+            <div class="weui-cell__ft">查看</div>
+        </a>
+    </div>
+    <!-- 参与的任务 -->
+    <div class="weui_panel weui_panel_access">
+    <div class="weui-cells__title">参与的任务</div>
+    <div class="weui-cells1">
+        <div class="weui-cell">
+            <div class="weui-cell__bd" id="load-more">
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="show-list1" class="weui-cells1">
+
+
+    </div>
+
+    <div id="list_tpl1" style="display:none">
+        <a class="weui-cell weui-cell_access" href="{track_url}">
+            <div class="weui-cell__bd">
+                [{tname}]
+            </div>
+            <div class="weui-cell__ft {level}">查看</div>
+        </a>
+    </div>
+</div>
+<!--个人主页 END-->
+<script>
+    $(function (){
+        myItemList();
+        myTrackList();
+        userInfo();
+    });
+    
+</script>

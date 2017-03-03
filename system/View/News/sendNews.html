@@ -1,0 +1,79 @@
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-article-add">
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>消息类型：</label>
+            <div class="formControls col-6">系统消息</div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>收件人：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="hidden" name="id" id="hiddenId" value="<?php if(isset($id)) { echo $id; } ?>">
+                <input type="text" class="input-text receiverName" value="<?php if(isset($nickname)) { echo $nickname; } ?>" name="receiver">
+                <div id="receiverName" style="width:200px;max-height:215px;overflow-y:scroll;overflow-x: hidden; padding:5px 0; position:absolute;z-index:10;
+                top: 1px;right: -190px;background-color: #F5F5F5; display: none">
+
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>消息内容：</label>
+            <div class="formControls col-4">
+                <textarea name="content" style="height: 150px" class="textarea" placeholder="说点什么...最少输入10个字符"
+                          datatype="*10-100"
+                          dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)"></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-10 col-offset-2">
+                <button class="btn btn-secondary radius ajax-post" type="submit">&nbsp;&nbsp;发送&nbsp;&nbsp;</button>
+                <button class="btn btn-default radius" type="reset" style="margin-left: 20px">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // 动态展示收件人
+    $('.receiverName').keyup(function () {
+        if ($('.receiverName').val() != "") {
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("receiverList");?>',
+                data: {'receiver': $('.receiverName').val()},
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    var receiver = data.data;
+                    $("#receiverName").empty();
+                    $("#receiverName").append(" <p value='all'>" + "全体成员" + "</p>");
+                    $("#receiverName").css('display', 'block');
+                    // 遍历添加
+                    for (i in receiver) {
+                        $("#receiverName").append(" <p value = " + receiver[i]['id'] + ">" + receiver[i]['tel'] + "（" + receiver[i]['nickname'] + "）" + "</p>");
+                    }
+                }
+            });
+        } else {
+            // 清空收件人
+            $("#receiverName").empty();
+            $("#receiverName").css('display', 'none');
+        }
+
+    });
+
+    // 选中收件人
+    $("div").on("dblclick", "p", function () {
+        var receiver = $(this).html();
+        var hiddenId = $(this).attr('value');
+        $(this).parent().prev('input').val(receiver);
+        $(this).parent().parent().find('#hiddenId').val(hiddenId);
+        // 清空收件人
+        $("#receiverName").empty();
+        $("#receiverName").css('display', 'none');
+    });
+
+</script>

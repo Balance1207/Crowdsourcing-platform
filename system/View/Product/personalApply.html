@@ -1,0 +1,263 @@
+﻿<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 项目管理
+    <span class="c-gray en">&gt;</span><a href=""> 个人申请项目</a>
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="get">
+        <div class="text-c"> 用户ID：
+            <input type="text" name="keyword" value="<?php echo $keyword ?>" class="input-text" style="width:250px"
+                   placeholder="输入用户ID">
+            <div class="col-md-2">
+                <?php
+                // 调用用html seg 直接输出 select标签
+                  arSeg(
+                     array(
+                        // seg文件
+                        'segKey' => 'Html/select',
+                        // <select name="name">
+                        'name' => 'type',
+                        // 适配器数据 数组
+                        'map' => U_item_task_applyModel::$TYPE,
+                        // map 多维数组适配器
+                        // 'mapbundle' => array(array(), 'keyfield', 'showfield'),
+                        // 选中的value selected = selected
+                        'selected' => arRequest('type', U_item_task_applyModel::TYPE_APPLYED),
+                        'extra' => 'class="form-control"'
+                     )
+                  );
+                ?>
+            </div>
+            <button type="submit" class="btn btn-success" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+            <button type="button" class="btn btn-success" id="reset" value="清空" style="margin-left: 10px">清空</button>
+
+        </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm"
+                    url="<?php echo arU('deletePersonalApply'); ?>"/>
+
+        </span>
+        <span class="r">共有数据：<strong><?php echo $totalCount ?></strong> 条</span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">个人申请项目</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>编号</th>
+            <th>用户ID</th>
+            <th>用户昵称</th>
+            <th>项目id</th>
+            <th>项目名称</th>
+            <th>申请消息</th>
+            <th>回复消息</th>
+            <th>审核状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($rows as $row) { ?>
+        <tr class="text-c">
+            <td width="5%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $row['id']?>"/></td>
+            <td width="6%"><?php echo $row['id']?></td>
+            <td width="6%"><?php echo $row['i_id']?></td>
+            <td width="8%"><?php echo $row['i_id_name']?></td>
+            <td width="6%"><?php echo $row['u_id']?></td>
+            <td width="10%"><?php echo $row['u_id_name']?></td>
+            <td width="22%" style="text-align: left"><?php echo $row['apply_msg']?></td>
+            <td width="22%" style="text-align: left"><?php echo $row['reply_msg']?></td>
+
+
+            <td width="8%"><?php echo U_item_task_applyModel::$TYPE[$row['type']]?></td>
+
+            <td class="td-manage">
+                <a title="审核项目"
+                   href="javascript:;" did="<?php echo $row['id'] ?>" class="ml-5 editlist"
+                   style="text-decoration:none ">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('deletePersonalApply',array('id'=>$row['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="text-decoration:none ;margin-left: 15px">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $pageHtml ?>
+        </ul>
+    </div>
+
+
+    <!--审核项目弹框-->
+    <div id="alterBox" class="pd-20" style="display: none">
+        <form action="" method="post" class="form form-horizontal" id="form-admin-add">
+            <div class="row cl">
+                <label class="form-label col-3">用户昵称：</label>
+                <label class="form-label col-3 userNames" style="text-align: left"></label>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-3">项目昵称：</label>
+                <label class="form-label col-3 itemName" style="text-align: left"></label>
+                <div class="col-4"></div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>审核状态：</label>
+                <div class="formControls col-8">
+                <span class="select-box" style="width:150px;">
+                  <?php
+      // 调用用html seg 直接输出 select标签
+      arSeg(
+         array(
+            // seg文件
+            'segKey' => 'Html/select',
+            // <select name="name">
+            'name' => 'admin-role',
+            // 适配器数据 数组
+            'map' => U_item_task_applyModel::$TYPE,
+            // map 多维数组适配器
+            // 'mapbundle' => array(array(), 'keyfield', 'showfield'),
+            // 选中的value selected = selected
+            'selected' => 0,
+            'extra' => 'id="roles" class="select"'
+         )
+      );
+?>
+				</span>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>消息内容：</label>
+                <div class="formControls col-5">
+                <textarea name="content" style="height: 80px" class="textarea" id="textarea"
+                          datatype="*30-100" dragonfly="true">
+                </textarea>
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-9 col-offset-3">
+                    <input type="hidden" class="userId" value="">
+                    <input class="btn btn-primary radius submitbtn" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                    <input style="margin-left: 30px" class="btn btn-primary radius resetbtn" type="reset"
+                           value="&nbsp;&nbsp;取消&nbsp;&nbsp;">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<!--js部分-->
+<script>
+    $('tbody tr:nth-child(odd)').css("background-color", "#F5F5F5");
+
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value', "");
+    });
+
+    // textarea中光标位置
+
+
+/********************************审核项目弹框 开始*************************************************/
+        // layer弹框
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        var alterBox_index;
+
+        // 点击登录后弹出登录框
+        $(".editlist").click(function () {
+            // 定义在外面，函数闭包
+            window.editobj = $(this);
+
+            // 回显消息
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("personalApplyView");?>',
+                dataType: 'json',
+                data: {'id': window.editobj.attr('did')},
+                async: false,
+                success: function (data) {
+                    $(".userNames").text(data.data.i_id_name)
+                    $(".userId").val(data.data.id)
+                    $(".itemName").text(data.data.u_id_name)
+
+                    $("#roles").children().each(function () {
+                        if ($(this).val() == data.data.flag) {
+                            $(this).selected();
+                        }
+                    });
+                }
+            });
+
+
+            // 弹框放在click方法里面
+            alterBox_index = layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                shade: 0.2,
+                shadeClose: false,
+                content: $("#alterBox"),
+                area: ['450px', '330px']
+            });
+
+
+            // 登录事件
+            $(".submitbtn").click(function () {
+                $.ajax({
+                    type: "post",
+                    url: '<?php echo arU("personalApplySubmit");?>',
+                    dataType: "json",
+                    data: {
+                        "id": $(".userId").val(),
+                        "type": $("#roles").find("option:selected").val(),
+                        "reply_msg": $("#textarea").val()
+                    },
+                    async: false,
+                    success: function (data) {
+                        if (1000 == data.ret_code) {
+                            layer.msg(data.ret_msg, {
+                                time: 1000, // 等待时间
+                                offset: 0, // 设置位置
+                                shift: 5,// 支持动画的场景
+                                icon: 1
+                            }, function () {
+//                                location.reload(); //重新加载当前页面
+                                location.href = data.url;
+
+                            });
+                        }
+                    },
+                    error: function () {
+                        layer.msg('请求错误！');
+                    }
+                });
+            });
+
+            // 取消事件
+            $('.resetbtn').click(function () {
+                layer.close(alterBox_index);
+            });
+
+        });
+    });
+    /********************************审核项目弹框 结束*************************************************/
+
+
+</script>

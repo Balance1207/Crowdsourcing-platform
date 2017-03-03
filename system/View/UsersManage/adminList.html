@@ -1,0 +1,547 @@
+﻿<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 管理员管理
+    <span class="c-gray en">&gt;</span> 管理员列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="get">
+        <div class="text-c"> 管理员：
+            <input type="text" name="keyword" value="<?php echo $keyword ?>" class="input-text" style="width:250px"
+                   placeholder="输入管理员名称">
+            <button type="submit" class="btn btn-success" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+            <button type="button" class="btn btn-success" id="reset" value="清空" style="margin-left: 10px">清空</button>
+
+        </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm"
+                    url="<?php echo arU('deleteAdminUsers'); ?>"/>
+            <input type="button" value="全部审核" class="btn btn-primary radius ajax-post"
+                   url="<?php echo arU('changeStatus',array('status'=>1)); ?>"/>
+            <a href="javascript:;" class="btn btn-primary radius addlist">
+                <i class="Hui-iconfont">&#xe600;</i> 添加管理员
+            </a>
+        </span>
+        <span class="r">共有数据：<strong><?php echo $totalCount ?></strong> 条</span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg">
+        <thead>
+        <tr>
+            <th scope="col" colspan="10">管理员列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>编号</th>
+            <th>管理员</th>
+            <th>最近登录时间</th>
+            <th>最近登录IP</th>
+            <th>注册时间</th>
+            <th>注册IP</th>
+            <th>角色</th>
+            <th>审核状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($rows as $row) { ?>
+        <tr class="text-c">
+            <td width="5%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $row['id']?>"/></td>
+            <td width="8%"><?php echo $row['usernum']?></td>
+            <td width="12%"><?php echo $row['username']?></td>
+            <td width="12%"><?php echo $row['last_login']?></td>
+            <td width="12%"><?php echo $row['last_ip']?></td>
+            <td width="12%"><?php echo $row['register_login']?></td>
+            <td width="12%"><?php echo $row['register_ip']?></td>
+            <td width="8%"><?php echo $handleRole[$row['role_id']]?></td>
+            <td width="8%" class="td-status">
+                <?php if($row['status']==1) { ?>
+                <a href="<?php echo arU('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status']))); ?>"
+                   class="label label-success radius ajax-get">已审核</a>
+                <?php } else { ?>
+                <a href="<?php echo arU('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status']))); ?>"
+                   class="label radius ajax-get">未审核</a>
+                <?php } ?>
+            </td>
+            <td class="td-manage">
+                <a title="分配角色" href="javascript:;" did="<?php echo $row['id'] ?>"
+                   role_id="<?php echo $row['role_id']?>"
+                   class="ml-5 editrole"
+                   style="text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe62c;</i>
+                </a>
+                <a title="编辑" href="javascript:;" did="<?php echo $row['id'] ?>" role_id="<?php echo $row['role_id']?>"
+                   class="ml-5 editlist"
+                   style="text-decoration:none ;margin-left: 20px">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('deleteAdminUsers',array('id'=>$row['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="text-decoration:none ;margin-left: 20px">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $pageHtml ?>
+        </ul>
+    </div>
+</div>
+
+<!--添加管理员部分-->
+<div id="alterBox" class="pd-20" style="display: none">
+    <form action="" method="post" class="form form-horizontal" id="form-admin-add">
+        <div class="row cl">
+            <label class="form-label col-3">编&nbsp;&nbsp;号：</label>
+            <label class="form-label col-3 userIdNum" style="text-align: left"></label>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-3"><span class="c-red">*</span>管理员：</label>
+            <div class="formControls col-5">
+                <input type="text" class="input-text registeruser" name="username" value="" placeholder="管理员">
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-3"><span class="c-red">*</span>初始密码：</label>
+            <div class="formControls col-5">
+                <input type="password" placeholder="密码" id="password" autocomplete="off" value=""
+                       class="input-text registerpwd"
+                       name="password">
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-3"><span class="c-red">*</span>确认密码：</label>
+            <div class="formControls col-5">
+                <input type="password" placeholder="确认密码" autocomplete="off" class="input-text reregisterpwd"
+                       name="repassword">
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-3">角&nbsp;&nbsp;色：</label>
+            <div class="formControls col-5">
+                <span class="select-box" style="width:150px;">
+                    <select id="roles" class="select" name="admin-role" size="1">
+                    </select>
+				</span>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-9 col-offset-3">
+                <input type="hidden" class="userid" value="">
+                <input class="btn btn-primary radius submitbtn" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input style="margin-left: 30px" class="btn btn-primary radius resetbtn" type="reset"
+                       value="&nbsp;&nbsp;取消&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--修改角色-->
+<div id="alterRole" class="pd-20" style="display: none">
+    <form action="" method="post" class="form form-horizontal">
+        <div class="row cl">
+            <label class="form-label col-3">管理员：</label>
+            <label class="form-label col-4 edituser" style="text-align: left"></label>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-3">角&nbsp;&nbsp;&nbsp;色：</label>
+            <div class="formControls col-5">
+                <span class="select-box" style="width:150px;">
+                    <select id="rolesEdit" class="select" name="admin-role" size="1">
+                    </select>
+				</span>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-9 col-offset-3">
+                <input type="hidden" class="edituserid" value="">
+                <input class="btn btn-primary radius submitbtn" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                <input style="margin-left: 30px" class="btn btn-primary radius resetbtn" type="reset"
+                       value="&nbsp;&nbsp;取消&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--js部分-->
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.form.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/common.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.validate.min.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layer/layer.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layui/layui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.js"></script>
+<script src="<?php echo arCfg('PATH.PUBLIC') ?>js/H-ui.admin.js"></script>
+<script>
+    var formvalidate;
+
+    // 列表不同颜色展示
+    $('tbody tr:nth-child(odd)').addClass('odd');
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value',"");
+    });
+
+    /********************************修改layer弹框 开始*************************************************/
+        // layer弹框
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        var alterBox_index;
+
+        // 点击登录后弹出登录框
+        $(".editlist").click(function () {
+            // 定义在外面，函数闭包
+            window.editobj = $(this);
+
+            // 展示角色信息
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("adminRole");?>',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    var roles = data.data;
+                    $("#roles").empty();
+                    $("#roles").append("<option value='0'>" + "--请选择--" + "</option>");
+                    for (i in roles) {
+                        $("#roles").append("<option value = " + i + ">" + roles[i] + "</option>");
+                    }
+                }
+            });
+
+            // 回显消息
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("modify");?>',
+                dataType: 'json',
+                data: {'id': window.editobj.attr('did')},
+                async: false,
+                success: function (data) {
+                    $(".registeruser").val(data.data.username) // 注意改变属性方式
+                    $(".userid").val(data.data.id)
+                    $(".userIdNum").text(data.data.usernum)
+                    $("#roles").children().each(function () {
+                        if ($(this).val() == data.data.role_id) {
+                            $(this).selected();
+                        }
+                    });
+                }
+            });
+
+
+            // 弹框放在click方法里面
+            alterBox_index = layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                shade: 0.2,
+                shadeClose: false,
+                content: $("#alterBox"),
+                area: ['600px', '350px']
+            });
+
+            // 取消事件
+            $('.resetbtn').click(function () {
+                layer.close(alterBox_index);
+            });
+
+        });
+    });
+    /********************************修改layer弹框 结束*************************************************/
+
+    /********************************添加layer弹框 开始*************************************************/
+
+        // layer弹框
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        var alterBox_index;
+
+        // 点击登录后弹出登录框
+        $(".addlist").click(function () {
+            // 定义在外面，函数闭包
+//            var editobj = $(this);
+
+            // 展示角色信息
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("adminRole");?>',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    var roles = data.data;
+                    $("#roles").empty();
+                    $("#roles").append("<option value='0'>" + "--请选择--" + "</option>");
+                    for (i in roles) {
+                        $("#roles").append("<option value = " + i + ">" + roles[i] + "</option>");
+                    }
+                }
+            });
+
+            // 弹框放在click方法里面
+            alterBox_index = layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                shade: 0.2,
+                shadeClose: false,
+                content: $("#alterBox"),
+                area: ['600px', '350px']
+            });
+
+            // 取消事件
+            $('.resetbtn').click(function () {
+                layer.close(alterBox_index);
+            });
+
+        });
+    });
+
+    /********************************添加layer弹框 结束*************************************************/
+
+
+    /********************************修改角色layer弹框 开始*************************************************/
+
+        // layer弹框
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        var alterBox_index;
+
+        // 点击登录后弹出登录框
+        $(".editrole").click(function () {
+            // 定义在外面，函数闭包
+            var editobj = $(this);
+
+            // 展示角色信息
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("adminRole");?>',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    var roles = data.data;
+                    $("#rolesEdit").empty();
+                    $("#rolesEdit").append("<option value='0'>" + "--请选择--" + "</option>");
+                    for (i in roles) {
+                        $("#rolesEdit").append("<option value = " + i + ">" + roles[i] + "</option>");
+                    }
+                }
+            });
+
+            // 回显消息
+            $.ajax({
+                type: 'get',
+                url: '<?php echo arU("modify");?>',
+                dataType: 'json',
+                data: {'id': editobj.attr('did')},
+                async: false,
+                success: function (data) {
+                    $(".edituser").text(data.data.username) // 注意改变属性方式
+                    $(".edituserid").val(data.data.id)
+                    $("#rolesEdit").children().each(function () {
+                        if ($(this).val() == data.data.role_id) {
+                            $(this).selected();
+                        }
+                    });
+                }
+            });
+
+            // 弹框放在click方法里面
+            alterBox_index = layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                shade: 0.2,
+                shadeClose: false,
+                content: $("#alterRole"),
+                area: ['400px', '200px']
+            });
+
+            // 登录事件
+            $(".submitbtn").click(function () {
+
+                $.ajax({
+                    type: "post",
+                    url: '<?php echo arU("editAdminRole");?>',
+                    dataType: "json",
+                    data: {
+                        "id": $(".edituserid").val(),
+                        "role_id": $("#rolesEdit").find("option:selected").val()
+                    },
+                    async: false,
+                    success: function (data) {
+                        if (1200 == data.ret_code) {
+                            layer.msg(data.ret_msg, {
+                                time: 1000, // 等待时间
+                                offset: 0, // 设置位置
+                                shift: 5,// 支持动画的场景
+                                icon: 1
+                            }, function () {
+                                location.reload(); //重新加载当前页面
+                            });
+                        }
+                    },
+                    error: function () {
+                        layer.msg('请求错误！');
+                    }
+                });
+            });
+
+            // 取消事件
+            $('.resetbtn').click(function () {
+                layer.close(alterBox_index);
+            });
+
+        });
+    });
+
+    /********************************修改角色layer弹框 结束*************************************************/
+
+    /********************************密码用户名验证 开始*************************************************/
+
+
+        //>>在使用验证规则之前自定义验证规则
+        //>>验证用户名
+    jQuery.validator.addMethod('checkUsername', function (value, element, param) {
+        //>>value: 表单元素的值  element:当前表单元素对象,   param: 验证规则后面的参数
+        if (param) {
+            return /^[a-zA-Z0-9\u4e00-\u9fa5-_]+$/.test(value);
+        }
+    }, '只能包含中文、英文、数字和下划线');
+
+
+    $(function () {
+        //>>找到表单指定验证规则
+        formvalidate = $('#form-admin-add').validate({
+            submitHandler: function (form) {
+                // 判断修改 添加两种状态
+                if (typeof(window.editobj) != "undefined") {
+                    url = '<?php echo arU("modify");?>'
+                } else {
+                    url = '<?php echo arU("addAdminUsers");?>'
+                }
+
+                $.ajax({
+                    type: "post",
+                    url: url,
+                    dataType: "json",
+                    data: {
+                        "id": $(".userid").val(),
+                        "username": $(".registeruser").val(),
+                        "password": $(".registerpwd").val(),
+                        "repassword": $(".reregisterpwd").val(),
+                        "role_id": $("#roles").find("option:selected").val()
+                    },
+                    async: false,
+                    success: function (data) {
+                        if (1200 == data.ret_code) {
+                            layer.msg(data.ret_msg, {
+                                time: 1000, // 等待时间
+                                offset: 0, // 设置位置
+                                shift: 5,// 支持动画的场景
+                                icon: 1
+                            }, function () {
+                                location.reload(); //重新加载当前页面
+                            });
+                        } else {
+                            layer.msg(data.ret_msg, {
+                                time: 1000, // 等待时间
+                                offset: 0, // 设置位置
+                                shift: 5,// 支持动画的场景
+                                icon: 2
+                            });
+                        }
+                    },
+                    error: function () {
+                        layer.msg('用户名已存在', {
+                            time: 1000, // 等待时间
+                            offset: 0, // 设置位置
+                            shift: 5,// 支持动画的场景
+                            icon: 2
+                        });
+                    }
+                });
+            },
+
+            //>>rules:验证规则
+            rules: {
+                username: {
+                    required: true,
+                    rangelength: [2, 15],
+                    checkUsername: true,
+//                    remote: JSV.PATH_APP_SERVER + 'Users/check',
+                },
+                password: {
+                    required: true,
+                    rangelength: [6, 20]
+                },
+                repassword: {
+                    required: true,
+                    rangelength: [6, 20],
+                    equalTo: "#password"
+                },
+            },
+
+            //>>messages: 不符合验证时的错误信息
+            messages: {
+                username: {
+                    required: '用户名不能够为空!',
+                    rangelength: '长度必须在2--15之间!',
+//                    remote: '用户名已存在!',
+                },
+                password: {
+                    required: '密码不能够为空!',
+                    rangelength: '长度必须在6--20之间!'
+                },
+                repassword: {
+                    required: '确认密码不能够为空!',
+                    rangelength: '长度必须在6--20之间!',
+                    equalTo: '确认密码和密码不一致!',
+                },
+            },
+
+            //>>第一个参数：输入框input错误；第二个参数，发生错误验证时的表单元素
+            errorPlacement: function (error, element) {
+                //>>每个验证表单发生错误，该方法都执行
+                var error_info = error.html();
+                if (error_info) {
+                    //>>找到span标签，向标签中放内容，并且加入样式
+                    var span = element.parent().next('div');
+                    var span_content = span.html();
+                    span.attr('span_content', span_content); //>>向span标签中加入内容
+                    //>>判断标签中是否已经有class的值
+                    if (element.parent().next('div').hasClass('dui')) {
+                        element.parent().next('div').html(error_info).removeClass('dui'); //>>如果再次错误，移除样式
+                    }
+                    element.parent().next('div').html(error_info).addClass('cuo'); //>>向span标签中加入自己定义的样式
+                }
+            },
+            //>>第一个参数是jquery对象,输入框input错误;第二个参数:dom对象,当前表单元素
+            success: function (error, element) {
+                //>>验证成功后，向span标签中加入自己定义的样式
+                $(element).parent().next('div').html('&nbsp;').addClass('dui');
+            }
+
+        });
+    });
+
+    /********************************密码用户名验证 结束*************************************************/
+
+</script>

@@ -1,0 +1,46 @@
+<div id="um_project_wrap">
+    <!-- 头部选项卡 开始 -->
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#all_project" role="tab" data-toggle="tab">全部项目</a></li>
+        <li><a href="#doing_project" role="tab" data-toggle="tab">正在开发</a></li>
+        <li><a href="#waste_project" role="tab" data-toggle="tab">废弃项目</a></li>
+    </ul><!-- 头部选项卡 结束 -->
+    <!-- 选项卡面板 开始 -->
+    <div id="myTabContent" class="tab-content">
+        <!-- 全部项目 开始 -->
+        <div class="tab-pane fade in active" id="all_project">
+            <div class="row all-project-wrap"></div>
+        </div><!-- 全部项目 结束 -->
+        <!-- 正在开发项目 开始 -->
+        <div class="tab-pane fade" id="doing_project">
+            <div class="row">
+                <p>您没有正在开发的项目&nbsp;^_^</p>
+            </div>
+        </div><!-- 正在开发项目 结束 -->
+        <!-- 废弃项目 开始 -->
+        <div class="tab-pane fade" id="waste_project">
+            <div class="row">
+                <p>您没有废弃的项目&nbsp;^_^</p>
+            </div>
+        </div><!-- 废弃项目 结束 -->
+    </div>
+</div>
+<script>
+    window.onload = function(){
+        umProjectJs();
+    }
+</script>
+<!-- 模板 -->
+<div id="project_modal" style="display: none;">
+    <div class="col-xs-6 col-sm-3" id="item_num">
+        <div class="thumbnail">
+            <img src="coderImg" width="100" style="height:100px" alt="项目二维码">
+            <div class="caption clearfix relative">
+                <h4 class="projectName">projectname</h4>
+                <p class="pdJoinNum pull-left"><span>parterNum</span>人参与</p>
+                <p class="pull-right status">查看</p>
+                <a id='itemID' href="<?php echo arU('pd_item',array('id'=>'aa')) ?>" class="fillMask"></a>
+            </div>
+        </div>
+    </div>
+</div>

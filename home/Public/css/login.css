@@ -1,0 +1,77 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+    padding-bottom: 5px;
+}
+
+h1 {
+	font-size: 65px;
+	color: #428bca;
+}
+
+body {
+	background: url(../images/backgound.png) no-repeat;
+	background-size: cover;
+}
+
+.hole_form {
+	margin-top: 3%;
+}
+
+#username-error,#password-error,#confirmpassword-error{
+	position: absolute;
+	top: 20%;
+	right: 5%;
+	font-weight: 100;
+}
+
+.rl_box {
+	font-size: 24px;
+	font-weight: bolder;
+	margin-bottom: 20px;
+}
+
+.rl_box a {
+	text-decoration: none;
+	color: #7B80AB;
+}
+
+.rl_box a:hover {
+	border-bottom: solid;
+	color: #428bca;
+}
+
+.form-group {
+	margin-bottom: 5px;
+}
+
+.register_form_box {
+	display: none;
+}
+
+.error {
+	color: red;
+	margin-bottom: 0px;
+	font-size: 12px;
+}
+
+.input-group-addon {
+	border: none;
+	padding: 0px;
+}
+
+.all_input {
+	font-size: 14px;
+}
+
+.all_btn {
+	margin-top: 20px;
+}
+
+.download {
+	margin-top: 40px;
+	margin-bottom: 30px;
+}

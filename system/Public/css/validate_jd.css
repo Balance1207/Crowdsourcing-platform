@@ -1,0 +1,15 @@
+.odd {
+    background-color: #F5F5F5;
+}
+
+.cuo {
+    color: red;
+    font-size: 14px;
+    padding: 0 10px 0 25px;
+    background: url(../images/psw-cuo.png) no-repeat left center;
+}
+
+.dui {
+    padding: 0 10px 0 25px;
+    background: url(../images/psw-dui.png) no-repeat left center;
+}

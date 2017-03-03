@@ -1,0 +1,9 @@
+前台： http://localhost/quickoa/
+
+账号：112233  密码：123456  
+
+
+
+后台：http://localhost/quickoa/system/Users/login
+
+账号：admin  密码：123456

@@ -1,0 +1,46 @@
+项目名称: quickoa 更名为coopcoder
+
+本框架前端采用coopui
+coopui.css 基于weui 1.1  coopui.js
+weui 文档地址  https://weui.io/
+
+后端arphp框架    文档  www.arphp.org/doc
+
+
+
+开发说明
+
+开发必看
+项目中常用技巧写法.txt
+
+接口说明统一在api目录实现
+
+GIT需单独新建自己的分支, 提交需带上自己名字
+
+
+
+
+规范要求
+
+前端
+
+    1. 操作数据库相关前台必须询问用户是否操作
+    2. 接口地址应该用动态地址
+    3. js,css 单独调用文件，统一用<?php ArView::load('your script.js/css'); ?> 调用;
+    4. 所有引用的第三方库全部放在全局Public/plugins下面  如jq，layer等
+    5. 熟悉angularjs 官网https://angularjs.org/w
+
+后端
+    1. 控制器不能直接调用Model 应该使用Module中间件
+    2. 函数公用性检查
+    3. 代码开发遵循PSR【1-4】规范
+    4. 接口统一在api目录，新增接口必须加入接口文档，做好测试。接口需遵循Restful设计原则
+    5. 数据库模型需实现 getDetailInfo方法，此方法逻辑实现数据库链接操作，参照U_usersModel实现
+    6. 参数尽量传全
+    7. 函数需要返回值
+    8. 必须开启所有错误报告， notice warnning 都必须解决干净
+
+    数据库建表说明s
+        用户级别以u_前缀
+        系统级别以s_前缀
+        数据级别以d_前缀

@@ -1,0 +1,178 @@
+<input type="hidden" id="TenantId" name="TenantId" value=""/>
+<div class="header"></div>
+<div class="loginWraper">
+    <div id="loginform"
+         style="background: url(<?php echo arCfg('PATH.PUBLIC') ?>images/admin-registerform-bg.png);margin-top: -233px;height:385px"
+         class="loginBox">
+        <form class="form form-horizontal" action="" method="post" id="testForm">
+            <div class="row cl">
+                <label class="form-label col-2"><i class="Hui-iconfont">&#xe60d;</i></label>
+                <div class="formControls col-6">
+                    <input name="username" type="text" placeholder="账户" style="width:300px" class="input-text size-L">
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-2"><i class="Hui-iconfont">&#xe60e;</i></label>
+                <div class="formControls col-6">
+                    <input name="password" type="password" id="password" placeholder="密码" style="width:300px"
+                           class="input-text size-L">
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-2"><i class="Hui-iconfont">&#xe60e;</i></label>
+                <div class="formControls col-6">
+                    <input name="repassword" type="password"  placeholder="确认密码" style="width:300px"
+                           class="input-text size-L">
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row cl">
+                <div class="formControls col-8 col-offset-2">
+                    <input class="input-text size-L" name="verify" type="text" placeholder="验证码" style="width:150px;">
+                    <img class="changeImg" src="<?php echo arU('confirm'); ?>" alt="验证码">
+                    <a id="kanbuq" class="changeImg" href="javascript:;">看不清，换一张</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="formControls col-8 col-offset-2">
+                    <label for="online">
+                        <a href="<?php echo arU('login'); ?>">已有账户，请登录！</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="formControls col-8 col-offset-2">
+                    <input name="" type="submit" class="btn btn-success radius size-L submitBtn"
+                           value="&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;册&nbsp;">
+                    <input style="margin-left: 50px" name="" type="reset" class="btn btn-default radius size-L"
+                           value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="footer">Copyright © 1998 - 2008 XXX XX. All Rights Reserved</div>
+
+<!--js部分-->
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.form.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/common.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/layer/layer.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC') ?>js/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+    // 更换图片验证码
+    $('.changeImg').click(function () {
+        var src = $('.changeImg').prop('src');
+        $('.changeImg').prop("src", src + '?s' + Math.random());
+    });
+
+
+    // 表单验证
+    jQuery.validator.addMethod('checkUsername', function (value, element, param) {
+        //>>value: 表单元素的值  element:当前表单元素对象,   param: 验证规则后面的参数
+        if (param) {
+            return /^[a-zA-Z0-9\u4e00-\u9fa5-]+$/.test(value);
+        }
+    }, '3-20位中文、字母、数字组成!');
+
+    $.validator.setDefaults({
+        submitHandler: function () {
+            // 通过向上按钮找到form
+            var form = $(".submitBtn").closest('form');
+            // 使用jquery.form.js插件实现的
+            form.ajaxSubmit({dataType: "json", success: showAjaxLayer});
+            // 取消默认操作
+            return false;
+
+            // 显示一个提示框,在使用时加载layer.js(拷贝整个layer文件夹到Public下)
+            function showAjaxLayer(data) {
+
+                var icon;
+                if (data.ret_code == '1000') {
+                    icon = 1; // 成功符号
+                } else {
+                    icon = 2; // 错误符号
+                }
+                layer.msg(data.ret_msg, {
+                    time: 1000, // 等待时间
+                    offset: 0, // 设置位置
+                    shift: 5,// 支持动画的场景
+                    icon: icon
+                }, function () {
+                    if (data.url) { // 如果有地址才转向
+                        location.href = data.url;
+                    }
+                });
+            }
+        }
+    });
+
+    $(function () {
+        //>>找到表单指定验证规则
+        formvalidate = $('#testForm').validate({
+
+            //>>rules:验证规则
+            rules: {
+                username: {
+                    required: true,
+                    rangelength: [2, 15],
+                    checkUsername: true,
+                    remote: JSV.PATH_APP_SERVER+'Users/check',
+                },
+                password: {
+                    required: true,
+                    rangelength: [6, 20]
+                },
+                repassword: {
+                    required: true,
+                    rangelength: [6, 20],
+                    equalTo: "#password"
+                },
+            },
+
+            //>>messages: 不符合验证时的错误信息
+            messages: {
+                username: {
+                    required: '用户名不能够为空!',
+                    rangelength: '长度必须在2--15之间!',
+                    remote: '用户名已存在!',
+                },
+                password: {
+                    required: '密码不能够为空!',
+                    rangelength: '长度必须在6--20之间!'
+                },
+                repassword: {
+                    required: '确认密码不能够为空!',
+                    rangelength: '长度必须在6--20之间!',
+                    equalTo: '确认密码和密码不一致!',
+                },
+            },
+
+            //>>第一个参数：输入框input错误；第二个参数，发生错误验证时的表单元素
+            errorPlacement: function (error, element) {
+                //>>每个验证表单发生错误，该方法都执行
+                var error_info = error.html();
+                if (error_info) {
+                    //>>找到span标签，向标签中放内容，并且加入样式
+                    var span = element.parent().next('div');
+                    var span_content = span.html();
+                    span.attr('span_content', span_content); //>>向span标签中加入内容
+                    //>>判断标签中是否已经有class的值
+                    if (element.parent().next('div').hasClass('dui')) {
+                        element.parent().next('div').html(error_info).removeClass('dui'); //>>如果再次错误，移除样式
+                    }
+                    element.parent().next('div').html(error_info).addClass('cuo'); //>>向span标签中加入自己定义的样式
+                }
+            },
+            //>>第一个参数是jquery对象,输入框input错误;第二个参数:dom对象,当前表单元素
+            success: function (error, element) {
+                //>>验证成功后，向span标签中加入自己定义的样式
+                $(element).parent().next('div').html('&nbsp;').addClass('dui');
+            }
+
+        });
+    });
+
+</script>

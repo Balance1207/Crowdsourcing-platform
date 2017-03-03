@@ -1,0 +1,219 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 项目管理
+    <span class="c-gray en">&gt;</span><a href="<?php echo arU('Product/showList',array('type'=>1)); ?>""> 项目列表</a> 
+    <span class="c-gray en">&gt;</span><a href="<?php echo arU('showList', array('iid' => $iid))?>"> 任务列表</a>
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="get">
+        <div class="text-c"> 任务：
+            <input type="text" name="keyword" value="<?php echo $keyword ?>" class="input-text" style="width:250px"
+                   placeholder="输入任务名称">
+            <div class="col-md-2">
+                <?php
+                // 调用用html seg 直接输出 select标签
+                  arSeg(
+                     array(
+                        // seg文件
+                        'segKey' => 'Html/select',
+                        // <select name="name">
+                        'name' => 'status',
+                        // 适配器数据 数组
+                        'map' => U_item_trackModel::$STATUS_MAP,
+                        // map 多维数组适配器
+                        // 'mapbundle' => array(array(), 'keyfield', 'showfield'),
+                        // 选中的value selected = selected
+                        'selected' => arRequest('status', U_item_trackModel::STATUS_APPROVED),
+                        'extra' => 'class="form-control"'
+                     )
+                  );
+                ?>
+            </div>
+
+            <button type="submit" class="btn btn-success" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+            <button type="button" class="btn btn-success" id="reset" value="清空" style="margin-left: 10px">清空</button>
+
+        </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm"
+                    url="<?php echo arU('delTask'); ?>"/> 
+            <a href="<?php echo arU('releaseTask',array('iid' => $iid)); ?>"><input type="button" value="添加" class="btn btn-success radius"></input></a>
+        </span>
+        <span class="r">共有数据：<strong><?php echo $totalCount ?></strong> 条</span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">任务列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>编号</th>
+            <th>任务名称</th>
+            <!-- <th>任务成员</th> -->
+            <th>任务当前执行人</th>
+            <th>所属项目</th>
+            <th>任务描述</th>
+            <th>任务状态</th>
+            <th>任务级别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($tasks as $task) { ?>
+        <tr class="text-c">
+            <td width="4%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $task['tid']?>"/></td>
+            <td width="4%"><?php echo $task['tid']?></td>
+            <td width="10%"><?php echo $task['tname']?></td>
+            <td width="10%"><?php if(isset($task['douser'])) {echo $task['douser'];} else { echo '---';}?></td>
+            <td width="10%"><a href="<?php echo arU('Product/addProduct',array('id'=>$iid))?>"><?php echo $task['item']?></a></td>
+            <!-- <td width="8%" style="text-align: left"></td> -->
+            <td width="20%"><?php echo $task['content']?></td>
+            <td width="15%"><strong><?php echo $task['dev_status']?></strong></td>
+            <td width="15%"><strong><?php echo $task['level']?></strong></td>
+            <!-- <td width="5%">
+                <?php if($task['status']==1) { ?>
+                <a href="<?php echo arU('checkTask',array('tid'=>$task['tid'],'status'=>(1-$task['status']))); ?>"
+                   class="label label-success radius ajax-get">已审核</a>
+                <?php } else { ?>
+                <a href="<?php echo arU('checkTask',array('tid'=>$task['tid'],'status'=>(1-$task['status']))); ?>"
+                   class="label radius ajax-get">未审核</a>
+                <?php } ?>
+            </td>      -->      
+            <td class="td-manage">
+                <a title="修改" href="<?php echo arU('updateTask',array('tid'=>$task['tid'])); ?>" class="ml-5"
+                   style="text-decoration:none ">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('delTask',array('tid'=>$task['tid'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="text-decoration:none ;margin-left: 12px">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+                <a title="任务变更日志" href="javascript:"
+                did="<?php echo $task['tid']; ?>"
+                    class="ml-5 editlist"
+                    style="text-decoration:none ">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe623;</i>
+                </a>
+                <a title="<?php echo $task['num']; ?>个任务申请待审核" href="<?php echo arU('checkApply',array('tid' =>$task['tid'])); ?>"
+                    class="ml-5 applylist"
+                    style="text-decoration:none ">
+                    <span class="badge badge-danger" id="newsNum"><?php echo $task['num']; ?></span>                    
+                </a>               
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $pageHtml ?>
+        </ul>
+    </div>
+
+
+    <!--任务日志弹框-->
+    <div id="alterBox" class="pd-20" style="display: none">
+        <div class="title" style="margin-bottom:10px">任务日志</div>
+            <div id="load-more">
+                <!--隐藏加载-->    
+            </div>
+
+        <div id="show-list">
+
+        </div>
+
+        <div id="list">
+            <div id="track_list" style="display:none">
+                <div class="" style="margin-bottom:10px">
+                    [{nickname}] [{content}] [{timeview}]
+                </div>
+                    
+            </div>
+            <div class="row cl">
+                    <div class="col-9 col-offset-3">
+                        <input style="margin-left: 30px" class="btn btn-primary radius resetbtn" type="reset"
+                               value="&nbsp;&nbsp;取消&nbsp;&nbsp;">
+                    </div>
+                </div>
+        </div>        
+    </div>
+
+</div>
+<!--js部分-->
+<script>
+    $('tbody tr:nth-child(odd)').css("background-color", "#F5F5F5");
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value', "");
+    });
+
+
+    // layer弹框
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        var alterBox_index;
+
+        $(".editlist").click(function () {
+            // 定义在外面，函数闭包
+            window.editobj = $(this);
+
+            $.ajax({
+                type: 'get',
+                url: JSV.PATH_SERVER+'api/Track/logList',
+                dataType: 'json',
+                data: {'tid': window.editobj.attr('did')},
+                async: false,
+                success: function (data) 
+                {
+                    if (data.data) 
+                    {
+                        var showModel = $('#track_list').html();
+                        var pushHtmlString = '';
+                        for (var i in data.data) {
+                            var listString = showModel;
+                            var nickname = data.data[i]['opName']['nickname'];
+                            data.data[i]['nickname'] = nickname;
+
+                            for (var key in data.data[i]) {
+                                var reg = new RegExp("\{" + key + "\}");
+                                listString = listString.replace(reg, data.data[i][key]);
+                                // listString = listString.replace(/{tname}/, 'aaaa');
+                            }
+                            pushHtmlString += listString;
+                        }
+                        $('#show-list').html(pushHtmlString);
+
+                    } else {
+                        $('#show-list').html('该任务还没有日志！');
+                    }
+                }
+            });
+
+            // 弹框放在click方法里面
+            alterBox_index = layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                shade: 0.2,
+                shadeClose: false,
+                content: $("#alterBox"),
+                area: ['400px', '300px']
+            });
+            
+            // 取消事件
+            $('.resetbtn').click(function () {
+                layer.close(alterBox_index);
+            });
+        });
+    });
+</script>

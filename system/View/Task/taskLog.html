@@ -1,0 +1,27 @@
+<div class="pd-20">        
+    <table class="table table-border table-bordered table-bg">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">任务变更日志列表</th>
+        </tr>
+        <tr class="text-c">
+            <!-- <th><input name="" type="checkbox" class="selectAll" value=""></th> -->
+            <th>编号</th>
+            <th>操作人</th>
+            <th>日志内容</th>
+            <th>操作时间</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($logs as $log) { ?>
+        <tr class="text-c">
+            <td width="4%"><?php echo $log['lid']?></td>
+            <td width="5%"><?php echo $log['opuser']?></td>
+            <td width="20%"><?php echo $log['content']?></td>
+            <td width="8%"><?php echo $log['time']?></td>      
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+</div>

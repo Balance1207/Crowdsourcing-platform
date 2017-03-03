@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>
+                登录/注册
+            </title>
+            <?php ArView::load('bootstrap.min.css'); ?>
+            <?php ArView::load('login.css'); ?>
+            <?php ArView::load('jquery.js', 1); ?>
+            <?php ArView::load('bootstrap.min.js'); ?>
+            <?php ArView::load('jquery.validate.min.js'); ?>
+            <?php ArView::load('messages_zh.js'); ?>
+            <?php ArView::load('login.js'); ?>
+            <?php ArView::load('jquery.form.js'); ?>
+            <?php ArView::load('common.js'); ?>
+            <?php ArView::load('layer/layer.js'); ?>
+            <?php //ArView::layout('abc'); ?>
+            <?php ArView::start(); ?>
+        </meta>
+    </head>
+    <body>
+        <div class="hole_form col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4" style="text-align: center;">
+                    <h1>
+                        码云
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2" style="text-align: center;">
+                    <h4>
+                        与世界分享你的知识、经验和见解
+                    </h4>
+                </div>
+            </div>
+            <div class="row rl_box">
+                <div class="col-xs-6 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-4" style="text-align: right;">
+                    <a class="login_btn" href="###">
+                        登录
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-2">
+                    <a class="register_btn" href="###">
+                        注册
+                    </a>
+                </div>
+            </div>
+            <!--注册-->
+            <div class="register_form_box">
+                <form action="<?php echo arU('Index/register');?>" class="form-horizontal" id="register_form" method="post" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control all_input" id="username" name="username" placeholder="用户名" type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control all_input" id="password" name="password" placeholder="密码(不少于6位)" type="password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control all_input" id="confirmpassword" name="repassword" placeholder="密码(与上面密码一致)" type="password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <div class="input-group">
+                                <input class="form-control" name="verify" placeholder="验证码" type="text"/>
+                                <div class="input-group-addon">
+                                    <img onclick="javascript:this.src='<?php echo arU('Index/confirm'); ?>?tm='+Math.random();" src="<?php echo arU('Index/confirm'); ?>" style="height: 25px;width: 70px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group all_btn">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control btn btn-primary ajax-post" href="" name="submit" type="submit" url="<?php echo arU('Index/register');?>" value="立即注册"/>
+                        </div>
+                    </div>
+                    <div class="form-group download">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control myPopover" data-toggle="popover" data-placement="top" type="button" value="微信扫描二维码"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--登录-->
+            <div class="login_form_box">
+                <form action="<?php echo arU('Index/login');?>" class="form-horizontal" id="login_form" method="post" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control all_input" id="username" name="username" placeholder="用户名" type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control all_input" id="password" name="password" placeholder="密码" type="password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <div class="input-group">
+                                <input class="form-control" name="verify" placeholder="验证码" type="text"/>
+                                <div class="input-group-addon">
+                                    <img onclick="javascript:this.src='<?php echo arU('Index/confirm'); ?>?tm='+Math.random();" src="<?php echo arU('Index/confirm'); ?>" style="height: 25px;width: 70px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group all_btn">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control btn btn-primary ajax-post" href="" name="submit" type="submit" url="<?php echo arU('Index/login');?>" value="登录"/>
+                        </div>
+                    </div>
+                    <div class="form-group download">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <input class="form-control myPopover" data-toggle="popover" data-placement="top" type="button" value="微信扫描二维码"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <?php ArView::end(); ?>
+    </body>
+</html>

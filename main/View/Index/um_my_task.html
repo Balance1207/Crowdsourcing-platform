@@ -1,0 +1,45 @@
+<?php ArView::load('wqQuickoaCss.css'); ?>
+<ul id="um_my_task" class="container-fluid" style="padding-top: 15px"></ul>
+<!-- 任务模板 -->
+<div id="taskModel" style="display: none;">
+    <li class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    任务<span class="task-num">taskNum</span>
+                    <a href="<?php echo arU('Index/um_my_taskinfo',array('id'=>'aa')) ?>" class="pull-right info-btn">
+                        任务详情
+                        <span class="glyphicon glyphicon-arrow-right pull-right"></span>
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="w87">任务名称</th>
+                            <td>taskName</td>
+                        </tr>
+                        <tr>
+                            <th>所属项目</th>
+                            <td>taskProject</td>
+                        </tr>
+                        <tr>
+                            <th>当前处理人</th>
+                            <td >taskuser</td>
+                        </tr>
+                        <tr>
+                            <th>处理状态</th>
+                            <td>taskStatus</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+
+<!-- <?php ArView::load('tasks.js'); ?> -->
+<script>
+    window.onload = function(){
+        taskList();
+    }
+</script>

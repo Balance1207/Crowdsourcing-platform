@@ -1,0 +1,70 @@
+<div class="pd-20">
+    <form action="" method="post" class="form form-horizontal" id="form-article-add">
+        <input type="hidden" name="taskId" value="<?php echo $taskId ?>">
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务名称：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="" placeholder=""
+                       name="tname">
+            </div>
+        </div>
+        <!-- <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>项目id：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="text" class="input-text"
+                       value="" placeholder=""
+                       name="iid">
+            </div>
+        </div> -->
+        <!-- <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>发布人：</label>
+            <div class="formControls col-2" style="position: relative;">
+                <input type="hidden" name="publisher" id="hiddenId"
+                       value="<?php if(isset($taskInfo['publisher'])) { echo $taskInfo['publisher']; } ?>">
+                <input type="text" class="input-text receiverName"
+                       value="<?php if(isset($taskInfo['publisherName'])) { echo $taskInfo['publisherName']; } ?>"
+                       placeholder="" name="publisherName">
+                <div id="receiverName" style="width:100px;max-height:215px;overflow-y:scroll;overflow-x: hidden; padding:5px 0; position:absolute;z-index:10;
+                top: 1px;right: -100px;background-color: #F5F5F5; display: none">
+
+                </div>
+            </div>
+        </div> -->
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>任务描述：</label>
+            <div class="formControls col-4">
+                <textarea name="content" style="height: 150px" class="textarea" placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,200)">
+                </textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-2"><span class="c-red">*</span>成员：</label>
+            <div class="formControls col-2">
+                <select id="usersSelect" class="selectpicker show-tick form-control" data-width="100%" multiple
+                        title="-- 请选择 --" name="users[]">
+                    <?php foreach($users as $row) { ?>
+                    <option value="<?php echo $row['id']; ?>"
+                    <?php
+                        if(isset($preList['users'] )){
+                            foreach($preList['users'] as $v) {
+                                if($v ==  $row['id']) echo "selected = 'selected'";
+                            }
+                        }
+                      ?> >
+                    <?php echo $row['nickname']; ?>
+                    </option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-10 col-offset-2">
+                <button class="btn btn-secondary radius ajax-post" type="submit">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
+                <button class="btn btn-default radius" type="button" id="reset" style="margin-left: 20px">
+                    &nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</div>

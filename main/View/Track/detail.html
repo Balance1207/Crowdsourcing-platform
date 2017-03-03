@@ -1,0 +1,152 @@
+<?php ArView::load('track-detail.js'); ?>
+
+<script>
+    // 任务tid
+    var tid = '<?php echo arRequest('tid'); ?>';
+    // 项目iid
+    var iid = '<?php echo $track['iid']; ?>';
+    var login_user = {};
+    login_user.uid = '<?php echo arModule('Lib.User')->getUid(); ?>';
+</script>
+<div class="weui-cells__title">任务信息</div>
+<div class="weui-cells weui-cells_form" id="tpl-trackInfo">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">任务名称</label></div>
+        <div class="weui-cell__bd">
+           {tname}
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+            <label class="weui-label">任务编号</label>
+        </div>
+        <div class="weui-cell__bd">
+           {tid}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">所属项目</label></div>
+        <div class="weui-cell__bd">
+            {itemName}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">任务内容</label></div>
+        <div class="weui-cell__bd">
+            {content}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <?php $codeurl = arU('Track/detail', array('tid' => arRequest('tid')), 'FULL'); ?>
+        <div class="weui-cell__hd"><label class="weui-label">地址</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" value="<?php echo $codeurl; ?>" >
+        </div>
+    </div>
+     <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">二维码</label></div>
+        <div class="weui-cell__bd">
+            <img src="<?php echo arU('/wechat/Api/qrcode', array('data' => urlencode($codeurl)), 'FULL');?>" alt="任务二维码" height="150" width="150">
+        </div>
+    </div>
+     <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">开发状态</label></div>
+        <div class="weui-cell__bd">
+            {dev_status}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">开发者</label></div>
+        <div class="weui-cell__bd">
+            <div class="weui-grids" style="display:none" id="tpl-deverlopers">
+                <a href="javascript:personalInformation({user.id});" class="weui-grid" id="dialog1">
+                    <div class="weui-grid__icon">
+                        <img src="{photo}" alt="">
+                    </div>
+                    <p class="weui-grid__label">{nickname}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php if (arModule('Lib.Track')->hasUser(arRequest('tid'))): ?>
+<a href="javascript:assign(iid, tid);" class="weui-btn weui-btn_default">指派任务</a>
+<div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui_cell_bd weui_cell_primary" id="load-more">
+            <!--隐藏加载-->
+        </div>
+    </div>
+</div>
+
+<div class="weui-cells__title">任务日志</div>
+<div class="weui-cells" id="track-list">
+
+</div>
+
+<div class="weui-cells__title">添加任务说明</div>
+<div class="weui-btn-area">
+    <a class="weui-btn weui-btn_plain-primary" href="javascript:trackNote('<?php echo arRequest('tid'); ?>')" >添加说明</a>
+</div>
+
+
+<div id="tpl-track-list" style="display:none">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><img src="{photo}" alt="" title="{nickname}" style="width:50px;height:50px;margin-right:5px;display:block"></div>
+        <div class="weui-cell__bd">
+             {content}
+        </div>
+        <div class="weui-cell__ft">
+        {timeview}
+        </div>
+    </div>
+
+</div>
+
+<div class="weui-cells__title">添加任务说明</div>
+<div class="weui-btn-area">
+    <a class="weui-btn weui-btn_primary" href="javascript:trackNote('<?php echo arRequest('tid'); ?>')" >添加</a>
+</div>
+
+<?php else :?>
+
+
+<div class="weui-cells__title">任务申请信息</div>
+<div class="weui-btn-area">
+        <?php if (arModule('Lib.Track')->hasUser(arRequest('tid'))): ?>
+            <!-- <a class="weui-btn weui-btn_plain-primary weui-btn_plain-disabled" href="javascript:quit('<?php echo arRequest('tid'); ?>')" >退出任务</a> -->
+        <?php else : ?>
+            <?php if (arModule('Lib.Track')->hasApply(arRequest('tid'))): ?>
+                <a class="weui-btn weui-btn_default" href="javascript:applyCancel('<?php echo arRequest('tid'); ?>')" >撤销申请</a>
+                <div class="weui-cells__tips">
+                申请请求已提交，请耐心等待审核结果, 通过即可加入任务
+                </div>
+            <?php else : ?>
+                <a class="weui-btn weui-btn_primary" href="javascript:apply('<?php echo arRequest('tid'); ?>')" >申请任务</a>
+                <div class="weui-cells__tips">
+                申请成功即可加入任务
+                </div>
+            <?php endif ?>
+        <?php endif ?>
+</div>
+<?php endif; ?>
+
+<div id="userBox" class="layui-layer-content"  style="display: none ">
+    <div class="one clearfix">
+        <div class="oneLeft"><img src="{photo}" alt="" style="width:100px;height:107px"></div>
+        <div class="oneRight">
+            <div>昵称:{nickname}</div>
+            <div>微信号:{weixin}</div>
+            <div>参与项目个数:2</div>
+            <div>参与任务个数:3</div>
+        </div>
+        <div class="img1" >
+            <img src="<?php echo arCfg('PATH.PUBLIC'); ?>images/4bf_03.png" alt="" style="width: 107px;">
+        </div>
+    </div>
+    <div class=" two">
+        <a  href="javascript:;" class="btn btn-default">发送消息</a>
+    </div>
+</div>
+

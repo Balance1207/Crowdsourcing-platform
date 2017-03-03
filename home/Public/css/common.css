@@ -1,0 +1,127 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.header ul li {
+	padding: 11px 19px;
+	display:inline;
+}
+/*.header ul li:hover{
+	background: red;
+}
+*/
+/*.proList li:hover a {
+	border-bottom: solid;
+}*/
+
+.topNav ul li a {
+	font-size: 16px;
+	color: #5eb95e;
+}
+
+.topNav ul li a:hover{
+	color: #13b313;
+}
+
+.headerLogo {
+	line-height: 74px;
+}
+.navbar {
+	margin-bottom: 0px;
+}
+
+.usernameId span {
+	display: inline-block;
+	margin-top: 15px;
+}
+
+.usernameId label {
+	width: 20px;
+	height: 20px;
+	border-radius: 50px;
+	background-color: #428bca;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+
+.logins span {
+	display: inline-block;
+	margin-top: 13px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.loginsLeft {
+	border-right: solid 2px white;
+}
+
+.logins span a {
+	text-decoration: none;
+	padding: 8px;
+}
+
+.logins span a:hover {
+	color: #000;
+}
+
+.menuList {
+	background: #31708f;
+}
+
+.menuList li a:hover {
+	background: none;
+}
+
+.footer {
+	margin-top: 40px;
+	margin: 0 auto;
+	background-color:black;
+	color:rgb(12, 247, 12);
+}
+
+.logo {
+	width: 70px;
+	height: 65px;
+	background: url(../images/c9.png) no-repeat center;
+	background-size: 80px 80px;
+}
+
+.title {
+	font-size: 30px;
+	font-family: Sans-serif;
+	color: #FFFFFF;
+}
+
+.hyperlink {
+	margin: 15px 0 15px;
+}
+
+.link {
+	width: 29px;
+	height: 29px;
+	border-radius: 15px;
+	margin-right: 7px;
+}
+
+.aboutUs {
+	font-size: 22px;
+	color: #FFFFFF;
+	margin-bottom: 24px;
+}
+
+.useHelp {
+	font-size: 22px;
+	color: #FFFFFF;
+	margin-bottom: 24px;
+}
+
+.copyright hr {
+	border-color: #989898;
+}
+
+.copyright p {
+	color: #0cf70c;
+	text-align: center;
+}

@@ -1,0 +1,93 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 部门管理
+    <span class="c-gray en">&gt;</span> 部门列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm" url="<?php echo arU('del'); ?>"
+                    />
+        </span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">部门列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>部门ID</th>
+            <th>部门名称</th>
+            <th>部门编号</th>
+            <th>部门地址</th>
+            <th>所属部门</th>
+            <th>排序</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($result['data'] as $row) { ?>
+        <tr class="text-c">
+            <td width="8%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $row['id']?>"/></td>
+            <td width="10%"><?php echo $row['id']?></td>
+            <td width="15%" style="text-align:left;padding-left: 40px;"><?php echo $row['d_name']?></td> 
+            <td width="8%"><?php echo $row['d_number']?></td>  
+            <td width="8%"><?php echo $row['d_address']?></td>       
+            <td width="10%">顶级部门</td> 
+            <td width="10%"><?php echo $row['sort']?></td>
+
+            <td class="td-manage">
+                <a title="编辑" href="<?php echo arU('update',array('id' => $row['id'])); ?>" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                   <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('del',array('id' => $row['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="margin-left:8px;text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php if(isset($info)){
+            foreach($info as $vol){
+                if($vol['pid'] == $row['id']){
+        ?>
+        <tr class="text-c">
+            <td width="8%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $vol['id']?>"/></td>
+            <td width="10%"><?php echo $vol['id']?></td>
+            <td width="15%" style="text-align:left;padding-left: 80px;"><?php echo $vol['d_name']?></td> 
+            <td width="8%"><?php echo $vol['d_number']?></td>  
+            <td width="8%"><?php echo $vol['d_address']?></td>       
+            <td width="10%"><?php echo $vol['pname'] ?></td> 
+            <td width="10%"><?php echo $vol['sort']?></td>
+
+            <td class="td-manage">
+                <a title="编辑" href="<?php echo arU('update',array('id' => $vol['id'])); ?>" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                   <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('del',array('id' => $vol['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="margin-left:8px;text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php }}} ?>
+        <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $result['pageHtml'] ?>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿<div class="pd-20" style="padding-top:20px;">
+    <?php foreach($rows as $row) { ?>
+    <p class="f-20 text-success">亲爱的&nbsp;<?php echo $row['username'] ?>，欢迎您！</p>
+    <p style="font-weight: bold">上次登录IP：<?php echo $row['last_ip'] ?>
+                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上次登录时间：<?php echo $row['last_login'] ?> </p>
+    <?php } ?>
+
+    <table class="table table-border table-bordered table-bg mt-20">
+        <thead>
+        <tr>
+            <th colspan="2" scope="col">服务器信息</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th width="200">服务器系统</th>
+            <td><span id="lbServerName"><?php echo php_uname(); ?></span></td>
+        </tr>
+        <tr>
+            <td>服务器主机名</td>
+            <!--服务器主机的名称-->
+            <td><?php echo $_SERVER['SERVER_NAME']; ?></td>
+        </tr>
+        <tr>
+            <td>服务器版本</td>
+            <!--服务器主机的名称-->
+            <td><?php echo $_SERVER['SERVER_SOFTWARE']; ?></td>
+        </tr>
+        <tr>
+            <td>服务器端口</td>
+            <td><?php echo $_SERVER['SERVER_PORT']; ?></td>
+        </tr>
+
+        <tr>
+            <td>PHP版本</td>
+            <td><?php echo PHP_VERSION; ?></td>
+        </tr>
+        <tr>
+            <td>Zend版本</td>
+            <td><?php echo Zend_Version(); ?></td>
+        </tr>
+
+        <tr>
+            <td>浏览器语言</td>
+            <td><?php echo $_SERVER['HTTP_ACCEPT_LANGUAGE']; ?></td>
+        </tr>
+
+        <tr>
+            <td>客户端IP</td>
+            <td><?php echo $_SERVER['REMOTE_ADDR']; ?></td>
+        </tr>
+        <tr>
+            <td>当前进程用户名</td>
+            <td><?php echo Get_Current_User(); ?></td>
+        </tr>
+
+        <tr>
+            <td>本文件所在目录</td>
+            <td><?php echo $_SERVER['DOCUMENT_ROOT']; ?></td>
+        </tr>
+        <tr>
+            <td>当前执行脚本的绝对路径名</td>
+            <td><?php echo $_SERVER['SCRIPT_FILENAME']; ?></td>
+        </tr>
+        <tr>
+            <td>当前执行脚本路径名</td>
+            <td><?php echo $_SERVER['SCRIPT_NAME']; ?></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<footer class="footer">
+    <p>
+        感谢CCTV，感谢SCTV
+    </p>
+</footer>

@@ -1,0 +1,144 @@
+<?php //ArView::load('mine.js'); ?>
+<?php //ArView::layout('abc'); ?>
+<!--登录页面-->
+<div id="loginMask">
+    <div id="loginWrap">
+        <div>
+            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">coopcoder项目开发系统(内测..)</a>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default mzm-panel-default-fixed">
+                <form id="login" class="panel-collapse collapse mzm-collapsing-fixed in">
+                    <div class="panel-body">
+                        <div class="input-group has-feedback">
+                            <span class="input-group-addon" style="width:70px">用户名</span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <input type="text" class="form-control" name="tel" placeholder="请输入用户名">
+                        </div>
+                        <br>
+                        <div class="input-group has-feedback">
+                            <span class="input-group-addon" style="width:70px">密码</span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <input type="password" maxlength="15" class="form-control" name="pwd" placeholder="请输入密码">
+                        </div>
+                        <br>
+                        <div class="input-group has-feedback">
+                            <span class="input-group-addon" style="width:70px">验证码</span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true" style="right:80px"></span>
+                            <input type="text" class="form-control" name="verifyCode" placeholder="验证码">
+                            <span class="input-group-addon" style="padding: 0 5px;"><img style="width: 92px" src="<?php echo arU('Index/confirm'); ?>" onclick="javascript:this.src='<?php echo arU('Index/confirm'); ?>?tm='+Math.random();"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel panel-default mzm-panel-default-fixed">
+                <form id="weix_login" class="panel-collapse collapse mzm-collapsing-fixed">
+                    <div class="panel-body text-center">
+                        <?php $loginurl = arModule('wechat.Base')->loginUrl();?>
+                            <img src="<?php echo arU('/wechat/Api/qrcode', array('data' => urlencode($pcLoginCodeUrl)), 'FULL');?>" alt="微信图片" width="180" height="180">
+                            <div class="weui-cells__tips">微信扫码登入PC端</div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel panel-default mzm-panel-default-fixed">
+                <form id="signup" class="panel-collapse collapse mzm-collapsing-fixed">
+                    <div class="panel-body">
+                        <div class="input-group has-feedback">
+                            <span class="input-group-addon" style="width:82px">用户名</span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <input type="text" class="form-control" name="tel" placeholder="手机号码">
+                        </div>
+                        <br>
+                        <div class="input-group has-feedback">
+                            <span class="input-group-addon" style="width:82px">用户密码</span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <input type="password"  maxlength="15" class="form-control" name="pwd" placeholder="6~15位(字母数字)">
+                        </div>
+                        <br>
+                        <div class="input-group has-feedback">
+                            <span class="input-group-addon" style="width:82px">再次输入</span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <input type="password"  maxlength="15" class="form-control" name="pwd2" placeholder="再次输入密码" disabled="disabled">
+                        </div>
+                        <br>
+                        <div class="input-group has-feedback">
+                            <span class="input-group-addon" style="width:82px">验证码</span>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true" style="right:80px"></span>
+                            <input type="text" class="form-control" name="verifyCode" placeholder="验证码">
+                            <span class="input-group-addon" style="padding: 0 5px;"><img style="width: 95px" src="<?php echo arU('Index/confirm'); ?>" onclick="javascript:this.src='<?php echo arU('Index/confirm'); ?>?tm='+Math.random();"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <?php
+                if (!arCfg('IS_ONLINE')) :
+            ?>
+            <div class="panel-heading mzm-panel-heading-fixed">
+                <input type="button" id="loginBtn" class="btn btn-primary btn-lg btn-block mzm-btn-toggle" value="登陆" data-toggle="collapse" data-parent="#accordion" href="#login">
+            </div>
+            <?php
+                endif;
+            ?>
+
+            <div class="panel-heading mzm-panel-heading-fixed">
+                <?php if (arComp('tools.util')->isMobile()): ?>
+                    <?php if (arModule('wechat.Base')->isWeixin()): ?>
+                        <a href="<?php echo $loginurl; ?>" class="weui-btn weui-btn_plain-primary">微信登陆</a>
+                    <?php else :?>
+                        <div class="weui-cells__tips">用手机微信打开此页面可以直接微信登陆</div>
+                    <?php endif ?>
+                <?php else :?>
+                 <input type="button" id="weix_login_btn" class="btn btn-default btn-lg btn-block mzm-btn-toggle" value="微信扫码登入" data-toggle="collapse" data-parent="#accordion" href="#weix_login">
+                <?php endif ?>
+
+            </div>
+            <div class="panel-heading mzm-panel-heading-fixed">
+                <input type="button" id="signupBtn" class="btn btn-default btn-lg btn-block mzm-btn-toggle" value="注册" data-toggle="collapse" data-parent="#accordion" href="#signup">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-body">
+            <div class="modal-main" style="padding-top: 10px"></div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default"
+               data-dismiss="modal">
+               确定
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+window.onload=function(){
+    indexJs();
+
+    checkAutoLogin();
+};
+
+
+// 是否自动登陆
+function checkAutoLogin()
+{
+    setInterval(function () {
+        $.get(JSV.PATH_SERVER + 'api/User/autoLogin', function(res){
+            if (res.success == '1') {
+                layer.msg(res.ret_msg);
+                setTimeout(function(){
+                    location.href = res.url;
+
+                }, 3000);
+            }
+        }, 'json');
+
+    }, 5000);
+}
+
+
+</script>
+<!--登录页面 END-->

@@ -1,0 +1,52 @@
+项目中常用技巧写法
+
+ 1.  控制器新建一个 test 方法 模板为test.html
+public function testAction()
+{
+    $this->display();
+
+}
+
+2. 模板中加载js css
+<?php /*第二个参数为true, 例如让jquery在头部生效，否则在底部生效*/ ArView::load('jquery.js', true); ?>
+<?php ArView::load('test.js'); ?>  // 默认在Public/js目录加载
+<?php ArView::load('test.css'); ?> // 默认在Public/css目录
+<?php ArView::load('/abc/test.css'); ?> // 加载Public/abc/test.css  js类似
+<?php ArView::load('abc/test.css'); ?> // 加载Public/css/abc/test.css
+
+<?php
+/*让加载的js css 生效, 不加这行load函数加载的js,css无法显示,确保页面只执行一次, 复制代码请去掉注释行*/
+ArView::start();
+?>
+
+<?php /*让加载的js在底部生效*/ ArView::end(); ?>
+
+
+3. 使用布局文件
+<?php
+/*在View/Layout目录下建abc_header.html,abc_footer.html两个文件*/
+ArView::layout('abc');
+?>
+
+4. 读取JS全局环境变量
+<script>/*js打印全局变量JSV*/ console.log(JSV)</script>
+
+5. 输出URL跳转路径 A标签常用   例如： <a href="<?php /*不带参数，使用请去掉注释行*/ echo arU('User/msg');?>">跳转</a>
+
+<?php /*不带参数，使用请去掉注释行*/ echo arU('User/msg');?>
+<?php /*带参数*/ echo arU('User/msg', array('myname' => 'hello world'));?>
+
+6. 前端获取页面参数
+
+<script>
+// php 代码只能在html中运行,不能在js或者css中执行，执行结果可以查看页面源代码
+var mymame = "<?php echo arRequest('myname'); ?>";
+</script>
+
+7.引入图片路径
+<?php echo arCfg('PATH.PUBLIC'); ?>     // 生成当前项目的Public路径 如quickoa/main/Public/
+<?php echo arCfg('PATH.GPUBLIC'); ?>    // 生成全局应用Public路径   如quickoa/Public/
+例如 <img src="<?php echo arCfg('PATH.PUBLIC'); ?>img/test.jpg">
+
+
+待续...

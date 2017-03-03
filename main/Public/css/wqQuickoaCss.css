@@ -1,0 +1,116 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors Wu Qiang (happyboy_tu@163.com)
+ * @date    2017-01-11 10:20:53
+ * @version $Id$
+ */
+.color-warning{
+    /*color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236*/
+    color: #f0ad4e;
+}
+
+/*个人管理 -> 我的仓库*/
+#my_gitlist
+{
+    /*background: red;*/
+    padding: 15px 15px 0;
+}
+
+/*个人管理 -> 申请仓库*/
+.apply-git-wrap{
+    margin-bottom: 15px;
+}
+.apply-git-btn{
+    font-size: 16px;
+    padding: 8px 16px!important;
+    background-color: #f5f5f5!important;
+    margin-bottom: 10px!important;
+}
+.apply-git-btn span{
+    font-size: 14px;
+    margin-left: 2px;
+}
+.apply-git-wrap .apply-form textarea{
+    height: 94px;
+    overflow: auto;
+}
+/*仓库*/
+.panel .panel-heading .info-btn span{
+    line-height: 18px;
+}
+
+.panel table th.w76{
+    width: 76px;
+}
+
+.panel table th.w87{
+    width: 87px;
+}
+
+.panel .panel-body table td p{
+    margin: 0;
+    max-height: 76px;
+    overflow: auto;
+}
+
+.panel .panel-body table td a{
+    word-break: break-all;
+}
+
+/*个人管理 -> 仓库详情*/
+#git_info{
+    padding: 15px;
+}
+
+.panel-body .parter-info span{
+    margin-right: 8px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/*个人管理 -> 我的任务*/
+#um_my_task .task-num{
+    padding-left: 2px;
+}
+
+/*我的任务 -> 任务详情*/
+#um_my_taskinfo{
+    padding: 15px;
+}
+.panel-body .change-statues{
+    margin-top: 10px;
+}
+.um_my_taskinfo_text{
+    padding-top: 10px;
+    line-height: 24px;
+}
+.um_my_taskinfo_text ul li{
+    list-style-type: decimal;
+}
+.um_my_taskinfo_text ul{
+    margin-left: 15px;
+}
+/*更改按钮*/
+a.tryitbtn, a.tryitbtn:link, a.tryitbtn:visited {
+    float: right;
+    display: inline-block;
+    color: #FFF;
+    background-color: #5BC0DE;/*#8ac007;*/
+    /*font-weight: 700;*/
+    font-size: 12px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    text-decoration: none;
+    margin-right: 5px;
+    /*margin-top: 0;
+    margin-bottom: 5px;*/
+    /*border: 1px solid #aaa;*/
+    border-radius: 5px;
+    white-space: nowrap;
+}

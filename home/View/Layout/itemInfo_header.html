@@ -1,0 +1,80 @@
+<!-- 
+    引入插件版本信息：
+       jQuery：jquery.min-1.10.2.js
+        layui：layui-1.0.7
+    bootstrap：bootstrap.min-3.3.5
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>quickOA [VIEW::start]</title>
+
+    <?php ArView::load('iconfont.css'); ?>
+    <?php ArView::load('mobiscroll_date.css'); ?>
+    <?php ArView::load('wangEditor.min.css'); ?>
+    <?php ArView::load('jquery.js', true); ?>
+    <?php ArView::start(); ?>
+
+    <script>
+        //展开/折叠全部panel
+        $(function () {
+            //点击顶部导航栏标题，页面滚动到顶部
+            $("#topTitle").on("click", function () {
+                // $("body")[0].scrollIntoView();
+                // $("body").scrollTop(0);
+                var body = $("body");
+                if (!body.is(":animated")) {
+                    $("body").animate({scrollTop: 0}, 1000);
+                }
+            });
+            $("#unfoldAll").on("click", function () {
+                var $this = $(this);
+                if (!$this.data("isUnfold")) {
+                    $(".panel-collapse").addClass("in").attr("aria-expanded", true).css("height", "auto");
+                    $("[data-toggle=collapse]").attr("aria-expanded", true);
+                    $this.data("isUnfold", true).css("color", "#19D8C8");
+                } else {
+                    $(".panel-collapse").removeClass("in").attr("aria-expanded", false).css("height", "0");
+                    $("[data-toggle=collapse]").attr("aria-expanded", false);
+                    $this.data("isUnfold", false).css("color", "#fff");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="container-fluid bg-primary" id="topNavWrap">
+    <div class="row">
+        <ul class="nav nav-pills">
+            <li class="col-xs-2"><a href="javascript:;" id="unfoldAll"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a></li>
+            <li class="col-xs-8"><a href="javascript:;" id="topTitle">标题</a></li>
+            <li class="dropdown col-xs-2">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                    <span class="glyphicon glyphicon-menu-hamburger"><i class="msgTips"></i></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right text-left" style="max">
+                    <li><a href="<?php echo arU('Index/pm'); ?>">项目管理</a></li>
+                    <li class="divider"></li>
+                    <li><a href="<?php echo arU('Index/dm'); ?>">部门管理</a></li>
+                    <li class="divider"></li>
+                    <li><a href="javascript:;">权限管理</a></li>
+                    <li class="divider"></li>
+                    <li><a href="<?php echo arU('Index/um'); ?>">个人管理</a></li>
+                    <li class="divider"></li>
+                    <li><a href="<?php echo arU('Msg/msg'); ?>">私信<span class="badge"></span></a></li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="<?php echo arU('Index/user'); ?>" class="half">主页</a>
+                        <a href="<?php echo arU('Index/logout'); ?>" class="half glyphicon glyphicon-log-out"></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

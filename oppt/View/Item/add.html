@@ -1,0 +1,45 @@
+<?php ArView::load('temp.css'); ?>
+<form class="layui-form">
+
+    <table class="site-table table-hover ">
+                          <tr >
+                                <th>项目编号</th>
+                                <th>项目名称</th>
+                                <th>发布人</th>
+                                <th>合同日期</th>
+                                <th>需求</th>
+                                <th>项目进度</th>
+                                <th>金额</th>
+                                <th>审核状态</th>
+                                <th>项目状态</th>
+
+                           </tr>
+                          <tr >
+                                <th><input type="text"  class="num"></th>
+                                <th><input type="text"  class="projectName"></th>
+                                <th><input type="text"  class="personName"></th>
+                                <th><input type="text"  class="date"></th>
+                                <th><input type="text" class="req" ></th>
+                                <th><input type="text"  class="projectTime"></th>
+                                <th><input type="text"  class="money"></th>
+                                <th><input type="text"  class="checkStatus"></th>
+                                <th><input type="text"  class="projectStatus"></th>
+
+                            </tr>
+            </table>
+    <div class="layui-form-item " id="add-btn">
+        <div class="layui-input-block">
+            <a  class="layui-btn" lay-submit lay-filter="*" id="sub">立即添加</a>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+</form>
+
+<script>
+	document.getElementById("sub").onclick=function(){
+		
+//		var index=parent.layer.getFrameIndex(window.name);
+//		parent.layer.close(index);
+	}
+</script>

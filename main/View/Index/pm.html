@@ -1,0 +1,59 @@
+<?php ArView::load('wqUm.js'); ?>
+<!--项目管理-->
+<div id="pm_wrap">
+    <div class="panel-group" id="accordion">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                      href="#collapseTwo">
+                      查看项目
+                    </a>
+                    <span class="caret mzm-caret-fixed"></span>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collaps collapse in">
+                <div class="panel-body" style="padding-bottom:0">
+                   <!--  <div class="manage_wrap">
+                        <span class="mzm-manage-btn pull-left glyphicon glyphicon-remove"></span>
+                        <span class="mzm-manage-btn pull-right glyphicon glyphicon-cog"></span>
+                    </div> -->
+                    <!-- 所有项目展示盒子 开始 -->
+                    <div class="row" id="project_wrap"></div><!-- 所有项目展示盒子 结束 -->
+                </div>
+                <div id="loading_more">
+                    <a href="javascript:;">
+                        加载更多<span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="prject_modal" style="display: none;">
+    <div class="pItemWrap col-xs-6 col-sm-3">
+        <div class="thumbnail">
+            <a href="<?php echo arU('Index/pd_item', array('id' => 'prejectIdM'));?>">
+                <img src="prejectSrcM" width="100" height="100" style="height:100px" alt="项目二维码">
+            </a>
+            <div class="caption clearfix relative">
+                <h4 class="projectName"  data-id="prejectIdM">prejectNameM</h4>
+                <p class="pdJoinNum pull-left"><span>partersM</span>人参与</p>
+                <p class="pull-right status">prejectStatusM</p>
+                <a href="<?php echo arU('Index/pm2',array('id'=>'aa')) ?>" class="fillMask"></a>
+                <span class="glyphicon glyphicon-remove removeBtn"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="<?php echo arCfg('PATH.GPUBLIC'); ?>js/mobiscroll_date.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC'); ?>js/mobiscroll.js"></script>
+<script>
+    window.onload=function(){
+        pmJs();
+        pmProjectJs();
+    };
+</script>
+<!--项目管理 END-->

@@ -1,0 +1,119 @@
+<?php ArView::load('wqQuickoaCss.css'); ?>
+<div id="um_my_taskinfo">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            任务信息
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="w87">任务名称</th>
+                    <td>哇哈哈</td>
+                </tr>
+                <tr>
+                    <th>所属项目</th>
+                    <td>呵呵哈</td>
+                </tr>
+                <tr>
+                    <th>任务内容</th>
+                    <td>你是一个好人，感谢你一直默默地为我占座位。哇哈哈哈哈哈哈</td>
+                </tr>
+                <tr>
+                    <th>当前处理人</th>
+                    <td>
+                        <span>张三</span>
+                        <!-- 更改处理人 -->
+                        <a id="modal-566463" href="#modal-container-566463" role="button" class="tryitbtn" data-toggle="modal">选择/更改</a>
+                        <!-- 处理人弹出层 选择更改 -->
+                        <div class="modal fade" id="modal-container-566463" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            项目处理人
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        内容...
+                                    </div>
+                                    <div class="modal-footer">
+                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 处理人弹出层结束  -->
+                    </td>
+                </tr>
+                <tr>
+                    <th>处理状态</th>
+                    <td>
+                        <span>成功</span>
+                        <!-- 更改处理人 -->
+                        <a id="modal-566464" href="#modal-container-566464" role="button" class="tryitbtn" data-toggle="modal">选择/更改</a>
+                        <!-- 处理人弹出层 选择更改 -->
+                        <div class="modal fade" id="modal-container-566464" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            处理状态
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        内容...
+                                    </div>
+                                    <div class="modal-footer">
+                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 处理人弹出层结束  -->
+                    </td>
+                </tr>
+            </table>
+            <!-- 文字说明内容 -->
+            <div class="um_my_taskinfo_text">
+                <b>说明：</b>
+                <ul>
+                    <li>1111111</li>
+                    <li>2222222</li>
+                    <li>3333333</li>
+                </ul>
+            </div>
+            <!-- 更新状态 按钮 -->
+            <div class="change-statues">
+                <a href="javascript:;" class="btn btn-primary btn-block">更新状态</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 弹窗 -->
+<div id="popup_content">
+    <form>
+        <div>
+            <label for="">指派给</label>
+            <input type="text">
+        </div>
+        <div>
+            <label for="">状态</label>
+            <select name="" id="">
+                <option value="0">成功</option>
+                <option value="1">失败</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+
+<?php ArView::load('tasks.js'); ?>
+<script>
+    window.onload = function(){
+        um_my_taskinfo_hln();
+    }
+</script>

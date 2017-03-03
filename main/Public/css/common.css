@@ -1,0 +1,125 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a:hover {
+	color: white;
+}
+
+.header {
+	height: 531px;
+}
+
+.header ul li {
+	padding: 11px;
+}
+
+.proList li:hover a {
+	border-bottom: solid;
+}
+
+.topNav ul li a {
+	font-size: 17px;
+	font-weight: bolder;
+	color: white;
+}
+
+.topNav ul li a:hover{
+	color: white;
+}
+
+.headerLogo {
+	line-height: 74px;
+}
+
+.topNav {
+	height: 81px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+	background: rgb(136,197,225);
+	border-bottom: solid 6px #54abd4;
+	opacity: 0.8;
+}
+
+.logins span {
+	display: inline-block;
+	margin-top: 13px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.loginsLeft {
+	border-right: solid 2px white;
+}
+
+.logins span a {
+	text-decoration: none;
+	color: #777;
+}
+
+.logins span a:hover {
+	color: #000;
+}
+
+.menuList {
+	background: #31708f;
+}
+
+.menuList li a:hover {
+	background: none;
+}
+
+.footer {
+	margin-top: 40px;
+	margin: 0 auto;
+	background-color: #003366;
+	color: white;
+}
+
+.logo {
+	width: 70px;
+	height: 65px;
+	background: url(../images/logo.png) no-repeat center;
+	background-size: 80px 80px;
+}
+
+.title {
+	font-size: 30px;
+	font-family: Sans-serif;
+	color: #FFFFFF;
+}
+
+.hyperlink {
+	margin: 15px 0 15px;
+}
+
+.link {
+	width: 29px;
+	height: 29px;
+	border-radius: 15px;
+	margin-right: 7px;
+}
+
+.aboutUs {
+	font-size: 22px;
+	color: #FFFFFF;
+	margin-bottom: 24px;
+}
+
+.useHelp {
+	font-size: 22px;
+	color: #FFFFFF;
+	margin-bottom: 24px;
+}
+
+.copyright hr {
+	border-color: #989898;
+}
+
+.copyright p {
+	color: #B0B0B0;
+	text-align: center;
+}

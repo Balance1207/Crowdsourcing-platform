@@ -1,0 +1,147 @@
+<?php ArView::load('wqQuickoaCss.css'); ?>
+<script>
+    var projectId = '<?php echo arRequest('id');?>';
+</script>
+<div id="um_project_info_wrap">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">基本信息</h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-preject-info">
+                <tr>
+                    <th style="width:80px;">项目名称</th>
+                    <td class="item-name"></td>
+                </tr>
+                <tr>
+                    <th>状态信息</th>
+                    <td class="itme-status"></td>
+                </tr>
+                <tr>
+                    <th>项目金额 </th>
+                    <td class="itme-money"></td>
+                </tr>
+                <tr>
+                    <th>发布人</th>
+                    <td class="item-publisher"></td>
+                </tr>
+                <tr>
+                    <th>需求描述</th>
+                    <td class="check-info">点击查看</td>
+                </tr>
+                <tr>
+                    <th>合同日期</th>
+                    <td class="contract-date"></td>
+                </tr>
+                <tr>
+                    <th>发布日期</th>
+                    <td class="publish-date"></td>
+                </tr>
+                <tr>
+                    <th>开发周期</th>
+                    <td class="development-time"></td>
+                </tr>
+                <tr>
+                    <th>二维码</th>
+                    <td class="text-center">
+                        <img class="coder-img" src="" alt="项目二维码" width="100" height="100">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 仓库 开始 -->
+    <div>
+        <div class="apply-git-wrap">
+            <a href="javascript:;" class="btn btn-block btn-default btn-lg
+            apply-git-btn" style="display: none;">
+                申请仓库
+                <span class="glyphicon glyphicon-export"></span>
+            </a>
+            <!-- 申请表单 -->
+            <div class="apply-form panel panel-default" style="display:none;">
+                <div class="panel-heading">
+                    申请仓库
+                </div>
+                <div class="panel-body">
+                    <!-- <form method=""> -->
+                        <div class="form-group has-feedback">
+                            <label class="control-label" for="inputError1">仓库名称</label>
+                            <input type="text" name="gitName" class="form-control" id="inputError1" placeholder="仓库名称只能是字母">
+                            <span class="glyphicon form-control-feedback"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">申请信息</label>
+                            <input type="text" name="requirement" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">仓库描述</label>
+                            <textarea class="form-control" name="decription"></textarea>
+                        </div>
+                        <div class="">
+                            <input type="submit" name="submit" value="提交" class="btn btn-default">
+                            <input type="button" name="cancel" value="取消" class="btn btn-default">
+                        </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+        <!-- 仓库信息 开始 -->
+        <div class="panel panel-default" id="git_show" style="display: none;">
+            <div class="panel-heading">
+                <span>仓库信息</span>
+                <a href="<?php echo arU('Git/gitInfo') ?>" class="pull-right info-btn">
+                    详情
+                    <span class="glyphicon glyphicon-arrow-right pull-right"></span>
+                </a>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:76px;">仓库名称</th>
+                        <td>quickoa</td>
+                    </tr>
+                    <tr>
+                        <th>所属项目</th>
+                        <td>哇哈哈</td>
+                    </tr>
+                    <tr>
+                        <th>仓库地址</th>
+                        <td><a href="javascript:;">localhost/quickoa/Git/applyGit</a></td>
+                    </tr>
+                    <tr>
+                        <th>仓库描述</th>
+                        <td>
+                            <p>哇哈哈简介简介军军军军军军军军军军军军军军军军军军军军军军军军军军军</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="panel-footer text-right">
+                <button class="btn btn-warning btn-sm">禁用</button>
+                <button class="btn btn-success btn-sm">启用</button>
+            </div>
+        </div><!-- 仓库信息 结束 -->
+    </div>
+    <!-- 项目评估 开始 -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">项目评估</h4>
+        </div>
+        <div class="panel-body">
+            <textarea name="" id="" rows="5" style="width:100%;padding:5px"></textarea>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button type="button" class="btn btn-primary btn-sm">提交</button>
+            </div>
+        </div>
+    </div><!-- 项目评估 结束 -->
+</div>
+
+<script>
+    window.onload = function(){
+        umProjectInfoJs();
+    }
+</script>

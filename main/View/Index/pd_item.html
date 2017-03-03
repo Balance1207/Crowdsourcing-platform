@@ -1,0 +1,174 @@
+<?php ArView::load('item.js');?>
+<?php ArView::load('item-track.js');?>
+
+
+<div class="weui-cells__title">项目信息</div>
+<div class="weui-cells weui-cells_form" id="tpl-itemInfo">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">项目名称</label></div>
+        <div class="weui-cell__bd">
+           {i_name}
+        </div>
+    </div>
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+            <label class="weui-label">状态信息</label>
+        </div>
+        <div class="weui-cell__bd">
+           {audit}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">项目描述</label></div>
+        <div class="weui-cell__bd">
+            {requirement}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">开发费用</label></div>
+        <div class="weui-cell__bd">
+            {money}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="" class="weui-label">发布人</label></div>
+        <div class="weui-cell__bd">
+            {publisher}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">合同结束日期</label></div>
+        <div class="weui-cell__bd">
+            {contractDate}
+        </div>
+    </div>
+     <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">发布日期</label></div>
+        <div class="weui-cell__bd">
+          {releaseDate}
+        </div>
+    </div>
+    <div class="weui-cell">
+        <?php $codeurl = arU('pd_item', array('id' => arRequest('id')), 'FULL'); ?>
+        <div class="weui-cell__hd"><label class="weui-label">地址</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" value="<?php echo $codeurl; ?>" >
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">二维码</label></div>
+        <div class="weui-cell__bd">
+           <img src="<?php echo arU('/wechat/Api/qrcode', array('data' => urlencode($codeurl)), 'FULL');?>" alt="项目二维码" height="150" width="150">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">项目成员</label></div>
+        <div class="weui-cell__bd">
+            <div class="weui-grids" style="display:none" id="tpl-deverlopers">
+                <a href="javascript:;" class="weui-grid">
+                    <div class="weui-grid__icon">
+                        <img src="{photo}" alt="">
+                    </div>
+                    <p class="weui-grid__label">{nickname}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--weui css 实现-->
+
+<div class="weui-cells__title">任务列表</div>
+
+<div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__bd" id="load-more">
+        <!--隐藏加载-->
+        </div>
+    </div>
+</div>
+
+<div class="weui-cells" id="track-list">
+
+
+</div>
+
+<div id="tpl-track-list" style="display:none">
+     <a class="weui-cell weui-cell_access" href="{track_url}">
+        <div class="weui-cell__bd">
+           {tid}.{tname}
+        </div>
+        <div class="weui-cell__ft {level}">
+            查看
+        </div>
+    </a>
+</div>
+
+
+<div class="weui-cells__title">项目申请信息</div>
+<div class="weui-btn-area">
+    <div class="weui-cells__tips">
+        已成功加入开发团队
+    </div>
+    <?php if (arModule('Lib.Item')->hasUser(arRequest('id'))): ?>
+        <a href="<?php echo arU('Item/group', array('iid' => arRequest('id'))); ?>" class="weui-btn weui-btn_plain-primary">我的群组</a>
+        <a class="weui-btn weui-btn_plain-primary weui-btn_plain-disabled" href="javascript:quit('<?php echo arRequest('id'); ?>')" >退出项目</a>
+    <?php else : ?>
+        <?php if (arModule('Lib.Item')->hasApply(arRequest('id'))): ?>
+            <a class="weui-btn weui-btn_default" href="javascript:applyCancel('<?php echo arRequest('id'); ?>')" >撤销申请</a>
+            <div class="weui-cells__tips">
+            申请请求已提交，请耐心等待审核结果, 通过即可加入开发团队
+            </div>
+        <?php else : ?>
+            <a class="weui-btn weui-btn_primary" href="javascript:apply('<?php echo arRequest('id'); ?>')" >申请项目</a>
+            <div class="weui-cells__tips">
+            申请成功即可加入开发团队
+            </div>
+        <?php endif ?>
+    <?php endif ?>
+</div>
+<!--weui css end-->
+
+</div>
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -8px;">
+                    &times;
+                </button>
+                <h5 class="modal_title"></h5>
+            </div>
+            <div class="modal-body scrollable">
+                <div class="modal-main">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modalBtn" class="btn btn-default" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="<?php echo arCfg('PATH.GPUBLIC'); ?>js/mobiscroll_date.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC'); ?>js/mobiscroll.js"></script>
+<script src="<?php echo arCfg('PATH.GPUBLIC'); ?>js/wangEditor.min.js"></script>
+
+<script>
+    var pmProjectId = '<?php echo arRequest('id') ?>';
+    $(function() {
+        // 获取项目详细信息
+        getItemDetail(pmProjectId);
+        // 获取任务列表
+        getItemTrackList(pmProjectId);
+    });
+</script>
+
+<script>
+window.onload = function() {
+    pd_itemJs();
+    // pmProjectInfoJs();
+
+    //富文本编辑器
+};
+</script>

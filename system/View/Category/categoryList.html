@@ -1,0 +1,114 @@
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页
+    <span class="c-gray en">&gt;</span> 分类管理
+    <span class="c-gray en">&gt;</span> 分类列表
+    <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="Hui-iconfont">&#xe68f;</i>
+    </a>
+</nav>
+<div class="pd-20">
+    <form action="" method="get">
+        <div class="text-c"> 分类名称：
+            <input type="text" name="catename" value="<?php echo $catename ?>" class="input-text"
+                   style="width:150px" />
+
+            <button type="submit" class="btn btn-success" name="" style="margin-left: 10px"><i class="Hui-iconfont">
+                &#xe665;</i> 搜索
+            </button>
+            <button type="button" class="btn btn-success" id="reset" value="清空" style="margin-left: 10px">清空</button>
+        </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+         <span class="l">
+             <input type="button" value="批量删除" class="btn btn-danger radius ajax-post confirm" url="<?php echo arU('delete'); ?>"
+                    />
+        </span>
+    </div>
+
+    <table class="table table-border table-bordered table-bg" style="">
+        <thead>
+        <tr>
+            <th scope="col" colspan="16">分类列表</th>
+        </tr>
+        <tr class="text-c">
+            <th><input name="" type="checkbox" class="selectAll" value=""></th>
+            <th>分类ID</th>
+            <th>分类名称</th>
+            <th>所属分类</th>
+            <th>排序</th>
+            <th>别名</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($result['rows'] as $row) { ?>
+        <tr class="text-c">
+            <td width="8%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $row['id']?>"/></td>
+            <td width="10%"><?php echo $row['id']?></td>
+            <td width="15%" style="text-align:left;padding-left: 30px;"><?php echo $row['cate_name']?></td>        
+            <td width="10%"><?php if ($row['pid'] == 0): ?>顶级分类<?php else: echo $row['pname']; endif ?></td> 
+            <td width="10%"><?php echo $row['sort']?></td>
+            <td width="10%"><?php echo $row['alias']?></td>
+
+            <td class="td-manage">
+                <a title="编辑" href="<?php echo arU('update',array('id'=>$row['id'])); ?>" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                   <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('delete',array('id'=>$row['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="margin-left:8px;text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+            
+            <?php if(isset($data)){
+                foreach($data as $vol){
+                    if($row['id'] == $vol['pid']){
+            
+            ?>
+            <tr class="text-c">
+            <td width="8%"><input class="ids" type="checkbox" name="id[]" value="<?php echo $vol['id']?>"/></td>
+            <td width="10%"><?php echo $vol['id']?></td>
+            <td width="15%" style="text-align:left;padding-left: 80px;"><?php echo $vol['cate_name']?></td>
+            <td width="10%"><?php echo $vol['pname']?></td> 
+            <td width="10%"><?php echo $vol['sort']?></td>
+            <td width="10%"><?php echo $vol['alias']?></td>
+
+            <td class="td-manage">
+                <a title="编辑" href="<?php echo arU('update',array('id'=>$vol['id'])); ?>" class="ml-5"
+                   style="margin-left:8px;text-decoration:none ">
+                   <i class="Hui-iconfont" style="font-size: 16px">&#xe6df;</i>
+                </a>
+                <a title="删除" href="<?php echo arU('delete',array('id'=>$vol['id'])); ?>"
+                   class="ml-5 ajax-get confirm"
+                   style="margin-left:8px;text-decoration:none">
+                    <i class="Hui-iconfont" style="font-size: 16px">&#xe6e2;</i>
+                </a>
+            </td>
+        </tr>
+        <?php }} ?>
+        <?php } ?>
+        <?php } ?>
+        </tbody>
+
+    </table>
+    <div class="pagin" align="right">
+        <ul class="paginList">
+            <?php echo $result['pageHtml'] ?>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    $('tbody tr:nth-child(odd)').css("background-color", "#F5F5F5");
+    // 清空搜索框
+    $('#reset').click(function () {
+        $(this).prevAll('input').prop('value', "");
+    });
+    
+</script>
